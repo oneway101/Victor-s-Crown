@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Deh-jP-j9b">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ProfileController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVe-Os-03Y" userLabel="profileImage">
+                                <rect key="frame" x="137" y="62" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DhF-35-QVY">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Profile" id="7Zn-n0-Zm8"/>
+                                    <tabBarItem title="Read" id="Twe-Pt-rfW"/>
+                                    <tabBarItem title="Pray" id="wHx-Mh-Y5D"/>
+                                    <tabBarItem title="Setting" id="8lo-rs-0np"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Lef-rQ-GMf">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </objects>
+        </scene>
+        <!--Timer Controller-->
+        <scene sceneID="T2H-fq-Tee">
+            <objects>
+                <viewController id="Deh-jP-j9b" customClass="TimerController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k6M-5n-FlB"/>
+                        <viewControllerLayoutGuide type="bottom" id="UCi-Az-eMo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ai8-96-pwF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMg-e6-UUR">
+                                <rect key="frame" x="59" y="200" width="258" height="72"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-fl-O1s">
+                                <rect key="frame" x="245" y="322" width="64" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="xgk-fK-LKq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySK-HC-wRU">
+                                <rect key="frame" x="66" y="322" width="62" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="FiD-SQ-IFb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ySK-HC-wRU" firstAttribute="top" secondItem="wMg-e6-UUR" secondAttribute="bottom" constant="50" id="GYP-gz-R6O"/>
+                            <constraint firstItem="wMg-e6-UUR" firstAttribute="centerX" secondItem="ai8-96-pwF" secondAttribute="centerX" id="NtW-XU-CXV"/>
+                            <constraint firstItem="wMg-e6-UUR" firstAttribute="top" secondItem="k6M-5n-FlB" secondAttribute="bottom" constant="180" id="X7c-Uw-xbO"/>
+                            <constraint firstItem="ySK-HC-wRU" firstAttribute="leading" secondItem="ai8-96-pwF" secondAttribute="leadingMargin" constant="50" id="Yer-LN-dEP"/>
+                            <constraint firstItem="rLy-fl-O1s" firstAttribute="top" secondItem="wMg-e6-UUR" secondAttribute="bottom" constant="50" id="l3D-fj-6mX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rLy-fl-O1s" secondAttribute="trailing" constant="50" id="lvy-cm-Y7b"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="start" destination="rLy-fl-O1s" id="6Wt-o8-wiV"/>
+                        <outlet property="timecode" destination="wMg-e6-UUR" id="TNY-4c-i7a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G8q-LR-ucV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.399999999999999" y="826.23688155922048"/>
+        </scene>
+    </scenes>
+</document>
