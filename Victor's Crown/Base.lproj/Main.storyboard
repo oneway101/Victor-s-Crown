@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Deh-jP-j9b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IbN-Zp-GVG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,49 +10,140 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Profile-->
+        <scene sceneID="xne-Rw-5Fl">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ProfileController" sceneMemberID="viewController">
+                <viewController id="Yxg-Hk-FT3" customClass="ProfileTableViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="Wb7-js-hmR"/>
+                        <viewControllerLayoutGuide type="bottom" id="qed-2F-8cl"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="TQO-PJ-YAg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVe-Os-03Y" userLabel="profileImage">
-                                <rect key="frame" x="137" y="62" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lCp-Q0-psu">
+                                <rect key="frame" x="31" y="50" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="8kE-D8-da5"/>
+                                    <constraint firstAttribute="height" constant="100" id="Kgq-mb-nXm"/>
+                                </constraints>
                             </imageView>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DhF-35-QVY">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem title="Profile" id="7Zn-n0-Zm8"/>
-                                    <tabBarItem title="Read" id="Twe-Pt-rfW"/>
-                                    <tabBarItem title="Pray" id="wHx-Mh-Y5D"/>
-                                    <tabBarItem title="Setting" id="8lo-rs-0np"/>
-                                </items>
-                            </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJn-i3-Tr7">
+                                <rect key="frame" x="156" y="50" width="80" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="kLZ-oh-t50"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suR-XC-fe3">
+                                <rect key="frame" x="156" y="82" width="80" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Praying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1C-0C-Rbw">
+                                <rect key="frame" x="256" y="50" width="80" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="eqW-C0-xxX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWg-kv-FGn">
+                                <rect key="frame" x="256" y="82" width="80" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="teH-SK-f6E">
+                                <rect key="frame" x="0.0" y="180" width="375" height="438"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" id="iUV-vS-M9F" customClass="ProfileTableViewCell" customModule="Victor_s_Crown" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iUV-vS-M9F" id="MpH-BV-gwv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-m8-02P">
+                                                    <rect key="frame" x="23" y="9" width="53" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwA-tr-Yps">
+                                                    <rect key="frame" x="289" y="15" width="58" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genesis 1-5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-U0-ZMZ">
+                                                    <rect key="frame" x="161" y="15" width="108" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mwA-tr-Yps" firstAttribute="leading" secondItem="2g9-U0-ZMZ" secondAttribute="trailing" constant="20" id="FMt-X7-vVc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mwA-tr-Yps" secondAttribute="trailing" constant="20" id="Pnz-9Q-kMY"/>
+                                                <constraint firstItem="JNW-m8-02P" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="15" id="RCk-lc-b4d"/>
+                                                <constraint firstItem="mwA-tr-Yps" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="Svc-WQ-mSd"/>
+                                                <constraint firstItem="JNW-m8-02P" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="erS-Dm-ub0"/>
+                                                <constraint firstItem="2g9-U0-ZMZ" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="fC4-xS-qch"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chaptersRead" destination="2g9-U0-ZMZ" id="nJ2-zx-pys"/>
+                                            <outlet property="day" destination="JNW-m8-02P" id="Ktk-Ss-XJc"/>
+                                            <outlet property="prayerTime" destination="mwA-tr-Yps" id="ndw-9W-vvm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qed-2F-8cl" firstAttribute="top" secondItem="teH-SK-f6E" secondAttribute="bottom" id="0sN-Ug-bOL"/>
+                            <constraint firstItem="x1C-0C-Rbw" firstAttribute="top" secondItem="Wb7-js-hmR" secondAttribute="bottom" constant="30" id="37S-hG-JAZ"/>
+                            <constraint firstItem="YJn-i3-Tr7" firstAttribute="top" secondItem="Wb7-js-hmR" secondAttribute="bottom" constant="30" id="B8C-6A-iAy"/>
+                            <constraint firstItem="suR-XC-fe3" firstAttribute="width" secondItem="YJn-i3-Tr7" secondAttribute="width" id="GuK-IJ-KDR"/>
+                            <constraint firstItem="wWg-kv-FGn" firstAttribute="leading" secondItem="x1C-0C-Rbw" secondAttribute="leading" id="IYw-Ox-pX0"/>
+                            <constraint firstItem="lCp-Q0-psu" firstAttribute="top" secondItem="Wb7-js-hmR" secondAttribute="bottom" constant="30" id="KNs-es-1VT"/>
+                            <constraint firstItem="lCp-Q0-psu" firstAttribute="leading" secondItem="TQO-PJ-YAg" secondAttribute="leadingMargin" constant="15" id="KRk-pR-QOq"/>
+                            <constraint firstItem="suR-XC-fe3" firstAttribute="top" secondItem="YJn-i3-Tr7" secondAttribute="bottom" constant="10" id="KwM-q3-7vR"/>
+                            <constraint firstItem="wWg-kv-FGn" firstAttribute="top" secondItem="x1C-0C-Rbw" secondAttribute="bottom" constant="10" id="Mkc-Z2-4il"/>
+                            <constraint firstItem="teH-SK-f6E" firstAttribute="top" secondItem="lCp-Q0-psu" secondAttribute="bottom" constant="30" id="Wtk-8A-o6y"/>
+                            <constraint firstItem="suR-XC-fe3" firstAttribute="leading" secondItem="YJn-i3-Tr7" secondAttribute="leading" id="Yzg-l5-Qgj"/>
+                            <constraint firstItem="wWg-kv-FGn" firstAttribute="width" secondItem="x1C-0C-Rbw" secondAttribute="width" id="cWl-2x-pq4"/>
+                            <constraint firstItem="teH-SK-f6E" firstAttribute="leading" secondItem="TQO-PJ-YAg" secondAttribute="leading" id="pdz-2S-2Ii"/>
+                            <constraint firstItem="x1C-0C-Rbw" firstAttribute="leading" secondItem="YJn-i3-Tr7" secondAttribute="trailing" constant="20" id="rLH-PY-zZB"/>
+                            <constraint firstAttribute="trailing" secondItem="teH-SK-f6E" secondAttribute="trailing" id="v0t-mn-8Jp"/>
+                            <constraint firstItem="YJn-i3-Tr7" firstAttribute="leading" secondItem="lCp-Q0-psu" secondAttribute="trailing" constant="25" id="yU0-oe-NFK"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="Qcm-zu-s6F"/>
+                    <connections>
+                        <outlet property="prayingLabel" destination="x1C-0C-Rbw" id="eyV-Pv-RC7"/>
+                        <outlet property="prayingProgress" destination="wWg-kv-FGn" id="ZDg-Mj-cpN"/>
+                        <outlet property="profilePhoto" destination="lCp-Q0-psu" id="ahW-ok-Mbu"/>
+                        <outlet property="readingLabel" destination="YJn-i3-Tr7" id="FOA-DO-9xD"/>
+                        <outlet property="readingProgress" destination="suR-XC-fe3" id="Ip7-fB-98V"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="Lef-rQ-GMf">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aay-Hh-iHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1306.4000000000001" y="930.58470764617698"/>
         </scene>
-        <!--Timer Controller-->
+        <!--Pray-->
         <scene sceneID="T2H-fq-Tee">
             <objects>
-                <viewController id="Deh-jP-j9b" customClass="TimerController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Deh-jP-j9b" customClass="TimerViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k6M-5n-FlB"/>
                         <viewControllerLayoutGuide type="bottom" id="UCi-Az-eMo"/>
@@ -62,23 +153,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMg-e6-UUR">
-                                <rect key="frame" x="59" y="200" width="258" height="72"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
+                                <rect key="frame" x="67" y="200" width="241" height="57"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-fl-O1s">
-                                <rect key="frame" x="245" y="322" width="64" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <rect key="frame" x="266" y="307" width="43" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="xgk-fK-LKq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySK-HC-wRU">
-                                <rect key="frame" x="66" y="322" width="62" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Stop"/>
+                                <rect key="frame" x="66" y="307" width="51" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Reset"/>
                                 <connections>
                                     <action selector="stopButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="FiD-SQ-IFb"/>
                                 </connections>
@@ -94,6 +185,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="rLy-fl-O1s" secondAttribute="trailing" constant="50" id="lvy-cm-Y7b"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Pray" id="qh0-Rk-N58"/>
                     <connections>
                         <outlet property="start" destination="rLy-fl-O1s" id="6Wt-o8-wiV"/>
                         <outlet property="timecode" destination="wMg-e6-UUR" id="TNY-4c-i7a"/>
@@ -101,7 +193,129 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8q-LR-ucV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26.399999999999999" y="826.23688155922048"/>
+            <point key="canvasLocation" x="1300" y="930.58470764617698"/>
+        </scene>
+        <!--Bible View Controller-->
+        <scene sceneID="MeH-fj-YOE">
+            <objects>
+                <viewController id="aFP-mS-Joi" customClass="BibleViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Ad-4N-JKY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wcu-xR-j2w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xxi-oW-ga9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ams-AN-TH3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sVn-v0-p5h">
+                                    <size key="itemSize" width="70" height="70"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BibleChapterCell" id="9ey-hv-iwS" customClass="BibleChapterCell" customModule="Victor_s_Crown" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apj-lP-vRB">
+                                                    <rect key="frame" x="8" y="8" width="54" height="54"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="apj-lP-vRB" secondAttribute="trailing" id="LeL-jz-FU7"/>
+                                            <constraint firstItem="apj-lP-vRB" firstAttribute="leading" secondItem="9ey-hv-iwS" secondAttribute="leadingMargin" id="RiB-jr-ZJk"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="apj-lP-vRB" secondAttribute="bottom" id="nrb-aH-8kx"/>
+                                            <constraint firstItem="apj-lP-vRB" firstAttribute="top" secondItem="9ey-hv-iwS" secondAttribute="topMargin" id="qMs-ed-05n"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="chapterNumber" destination="apj-lP-vRB" id="NLu-4m-Cn3"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AdZ-l6-Ucl"/>
+                    <connections>
+                        <outlet property="bibleCollectionView" destination="Ams-AN-TH3" id="xPa-eq-NAw"/>
+                        <outlet property="flowLayout" destination="sVn-v0-p5h" id="m06-xa-IC8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLM-go-W75" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="391" y="931"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="bTY-2W-a88">
+            <objects>
+                <viewController id="lrB-ib-eoF" customClass="SettingsViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pFj-Ts-aaz"/>
+                        <viewControllerLayoutGuide type="bottom" id="uET-FF-Pmo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6KT-cr-dKC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="2or-OC-hAe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MkT-Zh-0oy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2176.8000000000002" y="930.58470764617698"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="GLG-qu-Idt">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IbN-Zp-GVG" customClass="MainTabBarController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="l1o-Wz-Lls">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Yxg-Hk-FT3" kind="relationship" relationship="viewControllers" id="n8E-XL-IdO"/>
+                        <segue destination="5Gw-qJ-5DV" kind="relationship" relationship="viewControllers" id="u8b-Di-0Gb"/>
+                        <segue destination="Deh-jP-j9b" kind="relationship" relationship="viewControllers" id="dqu-K6-60M"/>
+                        <segue destination="lrB-ib-eoF" kind="relationship" relationship="viewControllers" id="Xbr-qu-2Jr"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wil-YA-Dzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+        <!--Bible-->
+        <scene sceneID="vAV-oT-EID">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Gw-qJ-5DV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bible" id="hoz-aQ-jtP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nvT-NT-3yF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aFP-mS-Joi" kind="relationship" relationship="rootViewController" id="zfb-HB-zuA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzr-Db-TiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-460" y="930.58470764617698"/>
         </scene>
     </scenes>
 </document>

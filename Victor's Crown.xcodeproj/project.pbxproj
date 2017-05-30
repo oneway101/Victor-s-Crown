@@ -7,25 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		846F34E21EDDDF4300B8063E /* BibleChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F34E11EDDDF4300B8063E /* BibleChapterCell.swift */; };
+		847832781ED5EAAB00056370 /* BibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832771ED5EAAB00056370 /* BibleViewController.swift */; };
+		8478327A1ED5EAB900056370 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832791ED5EAB900056370 /* SettingsViewController.swift */; };
+		8478327C1ED6501300056370 /* ProgressUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478327B1ED6501300056370 /* ProgressUIView.swift */; };
+		847832801ED7811F00056370 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478327F1ED7811F00056370 /* ProfileTableViewController.swift */; };
+		847832821ED7813B00056370 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832811ED7813B00056370 /* ProfileTableViewCell.swift */; };
 		8490DF351ECF915300C78173 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490DF341ECF915300C78173 /* AppDelegate.swift */; };
-		8490DF371ECF915300C78173 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490DF361ECF915300C78173 /* ProfileController.swift */; };
+		8490DF371ECF915300C78173 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8490DF361ECF915300C78173 /* MainTabBarController.swift */; };
 		8490DF3A1ECF915300C78173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8490DF381ECF915300C78173 /* Main.storyboard */; };
 		8490DF3D1ECF915300C78173 /* Victors_Crown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8490DF3B1ECF915300C78173 /* Victors_Crown.xcdatamodeld */; };
 		8490DF3F1ECF915300C78173 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8490DF3E1ECF915300C78173 /* Assets.xcassets */; };
 		8490DF421ECF915300C78173 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8490DF401ECF915300C78173 /* LaunchScreen.storyboard */; };
-		84E52AD51ED3BB4E00861AD1 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E52AD41ED3BB4E00861AD1 /* TimerController.swift */; };
+		84E52AD51ED3BB4E00861AD1 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E52AD41ED3BB4E00861AD1 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		846F34E11EDDDF4300B8063E /* BibleChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleChapterCell.swift; sourceTree = "<group>"; };
+		847832771ED5EAAB00056370 /* BibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleViewController.swift; sourceTree = "<group>"; };
+		847832791ED5EAB900056370 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8478327B1ED6501300056370 /* ProgressUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressUIView.swift; sourceTree = "<group>"; };
+		8478327F1ED7811F00056370 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		847832811ED7813B00056370 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		8490DF311ECF915300C78173 /* Victor's Crown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Victor's Crown.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8490DF341ECF915300C78173 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8490DF361ECF915300C78173 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		8490DF361ECF915300C78173 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8490DF391ECF915300C78173 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8490DF3C1ECF915300C78173 /* Victors_Crown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Victors_Crown.xcdatamodel; sourceTree = "<group>"; };
 		8490DF3E1ECF915300C78173 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8490DF411ECF915300C78173 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8490DF431ECF915300C78173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84E52AD41ED3BB4E00861AD1 /* TimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
+		84E52AD41ED3BB4E00861AD1 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +51,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847832831ED7845400056370 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8490DF381ECF915300C78173 /* Main.storyboard */,
+				8490DF3E1ECF915300C78173 /* Assets.xcassets */,
+				8490DF401ECF915300C78173 /* LaunchScreen.storyboard */,
+				8490DF431ECF915300C78173 /* Info.plist */,
+				8490DF3B1ECF915300C78173 /* Victors_Crown.xcdatamodeld */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		8490DF281ECF915200C78173 = {
 			isa = PBXGroup;
 			children = (
@@ -59,13 +83,15 @@
 			isa = PBXGroup;
 			children = (
 				8490DF341ECF915300C78173 /* AppDelegate.swift */,
-				8490DF361ECF915300C78173 /* ProfileController.swift */,
-				84E52AD41ED3BB4E00861AD1 /* TimerController.swift */,
-				8490DF381ECF915300C78173 /* Main.storyboard */,
-				8490DF3E1ECF915300C78173 /* Assets.xcassets */,
-				8490DF401ECF915300C78173 /* LaunchScreen.storyboard */,
-				8490DF431ECF915300C78173 /* Info.plist */,
-				8490DF3B1ECF915300C78173 /* Victors_Crown.xcdatamodeld */,
+				8490DF361ECF915300C78173 /* MainTabBarController.swift */,
+				8478327F1ED7811F00056370 /* ProfileTableViewController.swift */,
+				847832811ED7813B00056370 /* ProfileTableViewCell.swift */,
+				8478327B1ED6501300056370 /* ProgressUIView.swift */,
+				847832771ED5EAAB00056370 /* BibleViewController.swift */,
+				846F34E11EDDDF4300B8063E /* BibleChapterCell.swift */,
+				84E52AD41ED3BB4E00861AD1 /* TimerViewController.swift */,
+				847832791ED5EAB900056370 /* SettingsViewController.swift */,
+				847832831ED7845400056370 /* Assets */,
 			);
 			path = "Victor's Crown";
 			sourceTree = "<group>";
@@ -143,10 +169,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8490DF371ECF915300C78173 /* ProfileController.swift in Sources */,
-				84E52AD51ED3BB4E00861AD1 /* TimerController.swift in Sources */,
+				8490DF371ECF915300C78173 /* MainTabBarController.swift in Sources */,
+				84E52AD51ED3BB4E00861AD1 /* TimerViewController.swift in Sources */,
+				8478327A1ED5EAB900056370 /* SettingsViewController.swift in Sources */,
 				8490DF351ECF915300C78173 /* AppDelegate.swift in Sources */,
+				847832821ED7813B00056370 /* ProfileTableViewCell.swift in Sources */,
+				8478327C1ED6501300056370 /* ProgressUIView.swift in Sources */,
+				846F34E21EDDDF4300B8063E /* BibleChapterCell.swift in Sources */,
+				847832801ED7811F00056370 /* ProfileTableViewController.swift in Sources */,
 				8490DF3D1ECF915300C78173 /* Victors_Crown.xcdatamodeld in Sources */,
+				847832781ED5EAAB00056370 /* BibleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
