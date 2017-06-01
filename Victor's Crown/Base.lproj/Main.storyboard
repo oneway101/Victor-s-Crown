@@ -70,27 +70,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-m8-02P">
-                                                    <rect key="frame" x="23" y="9" width="53" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-m8-02P">
+                                                    <rect key="frame" x="23" y="16.5" width="32" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwA-tr-Yps">
-                                                    <rect key="frame" x="289" y="15" width="58" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwA-tr-Yps">
+                                                    <rect key="frame" x="301" y="17.5" width="46" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genesis 1-5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-U0-ZMZ">
-                                                    <rect key="frame" x="161" y="15" width="108" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genesis 1-5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-U0-ZMZ">
+                                                    <rect key="frame" x="208" y="17.5" width="86.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mwA-tr-Yps" firstAttribute="leading" secondItem="2g9-U0-ZMZ" secondAttribute="trailing" constant="20" id="FMt-X7-vVc"/>
+                                                <constraint firstItem="2g9-U0-ZMZ" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="200" id="4Uf-da-udR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mwA-tr-Yps" secondAttribute="trailing" constant="20" id="Pnz-9Q-kMY"/>
                                                 <constraint firstItem="JNW-m8-02P" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="15" id="RCk-lc-b4d"/>
                                                 <constraint firstItem="mwA-tr-Yps" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="Svc-WQ-mSd"/>
@@ -132,6 +132,7 @@
                         <outlet property="prayingLabel" destination="x1C-0C-Rbw" id="eyV-Pv-RC7"/>
                         <outlet property="prayingProgress" destination="wWg-kv-FGn" id="ZDg-Mj-cpN"/>
                         <outlet property="profilePhoto" destination="lCp-Q0-psu" id="ahW-ok-Mbu"/>
+                        <outlet property="profileTableView" destination="teH-SK-f6E" id="C9m-2O-GUK"/>
                         <outlet property="readingLabel" destination="YJn-i3-Tr7" id="FOA-DO-9xD"/>
                         <outlet property="readingProgress" destination="suR-XC-fe3" id="Ip7-fB-98V"/>
                     </connections>
@@ -195,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="1300" y="930.58470764617698"/>
         </scene>
-        <!--Bible View Controller-->
+        <!--Bible List View Controller-->
         <scene sceneID="MeH-fj-YOE">
             <objects>
-                <viewController id="aFP-mS-Joi" customClass="BibleViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aFP-mS-Joi" customClass="BibleListViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Ad-4N-JKY"/>
                         <viewControllerLayoutGuide type="bottom" id="Wcu-xR-j2w"/>
@@ -207,26 +208,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ams-AN-TH3">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ams-AN-TH3">
+                                <rect key="frame" x="10" y="70" width="355" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sVn-v0-p5h">
-                                    <size key="itemSize" width="70" height="70"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="sVn-v0-p5h">
+                                    <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BibleChapterCell" id="9ey-hv-iwS" customClass="BibleChapterCell" customModule="Victor_s_Crown" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apj-lP-vRB">
-                                                    <rect key="frame" x="8" y="8" width="54" height="54"/>
+                                                    <rect key="frame" x="8" y="8" width="34" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -245,8 +245,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDa-gr-Vse">
+                                <rect key="frame" x="296" y="29" width="63" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.011764705882352941" green="0.47450980392156861" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel" destination="aFP-mS-Joi" eventType="touchUpInside" id="KkL-ih-zR4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ams-AN-TH3" firstAttribute="top" secondItem="3Ad-4N-JKY" secondAttribute="bottom" constant="50" id="Iwh-Vx-5X7"/>
+                            <constraint firstAttribute="trailing" secondItem="Ams-AN-TH3" secondAttribute="trailing" constant="10" id="SjT-5z-xMh"/>
+                            <constraint firstItem="Ams-AN-TH3" firstAttribute="leading" secondItem="xxi-oW-ga9" secondAttribute="leading" constant="10" id="ga6-9Y-B3q"/>
+                            <constraint firstItem="Wcu-xR-j2w" firstAttribute="top" secondItem="Ams-AN-TH3" secondAttribute="bottom" id="hNs-fr-FU5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PDa-gr-Vse" secondAttribute="trailing" id="sIv-u8-WVY"/>
+                            <constraint firstItem="Ams-AN-TH3" firstAttribute="top" secondItem="PDa-gr-Vse" secondAttribute="bottom" constant="5" id="wZD-sa-YPf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AdZ-l6-Ucl"/>
                     <connections>
@@ -256,7 +274,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLM-go-W75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="391" y="931"/>
+            <point key="canvasLocation" x="248.80000000000001" y="1709.5952023988007"/>
+        </scene>
+        <!--Texts View Controller-->
+        <scene sceneID="lUZ-Tm-vx2">
+            <objects>
+                <viewController id="d0T-RC-uXt" customClass="TextsViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KZk-OQ-fzU"/>
+                        <viewControllerLayoutGuide type="bottom" id="xte-di-rP3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xla-5z-bQd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-h5-Xpc">
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0qm-h5-Xpc" firstAttribute="top" secondItem="KZk-OQ-fzU" secondAttribute="bottom" id="KLV-yC-mHA"/>
+                            <constraint firstItem="0qm-h5-Xpc" firstAttribute="leading" secondItem="Xla-5z-bQd" secondAttribute="leadingMargin" id="Zor-Kx-tqy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0qm-h5-Xpc" secondAttribute="trailing" id="geu-ET-LiR"/>
+                            <constraint firstItem="xte-di-rP3" firstAttribute="top" secondItem="0qm-h5-Xpc" secondAttribute="bottom" id="lyd-gC-krI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="317-dt-lVr"/>
+                    <connections>
+                        <outlet property="navigationItem" destination="317-dt-lVr" id="Q9e-h6-WrC"/>
+                        <segue destination="aFP-mS-Joi" kind="presentation" identifier="ChapterList" id="JWX-Jq-3xt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5m-Ah-Kap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-460" y="1710"/>
         </scene>
         <!--Settings-->
         <scene sceneID="bTY-2W-a88">
@@ -301,6 +357,7 @@
         <!--Bible-->
         <scene sceneID="vAV-oT-EID">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzr-Db-TiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Gw-qJ-5DV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bible" id="hoz-aQ-jtP"/>
                     <toolbarItems/>
@@ -310,10 +367,9 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aFP-mS-Joi" kind="relationship" relationship="rootViewController" id="zfb-HB-zuA"/>
+                        <segue destination="d0T-RC-uXt" kind="relationship" relationship="rootViewController" id="fF3-dM-DSf"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dzr-Db-TiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-460" y="930.58470764617698"/>
         </scene>

@@ -11,9 +11,7 @@ import UIKit
 class ProfileTableViewCell: UITableViewCell {
     
     @IBOutlet weak var day: UILabel!
-    
     @IBOutlet weak var prayerTime: UILabel!
-    
     @IBOutlet weak var chaptersRead: UILabel!
     
     override func awakeFromNib() {
