@@ -22,6 +22,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     //Mark: History Table View
     @IBOutlet weak var profileTableView: UITableView!
     
+    var notes:[Note] = [Note]()
+    
     let historyData = [
         [   "day": "Sunday",
             "reading": "Psalms 1",
@@ -58,24 +60,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         profileTableView.delegate = self
         profileTableView.dataSource = self
-        profilePhoto.image = UIImage(named: "no-profile")
-        currentDate()
-        
-    }
-    
-    func currentDate()-> String {
-        let date = Date()
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        let weekday = calendar.component(.weekday, from: date)
-        print(year)
-        print(month)
-        print(day)
-        print(weekday)
-        print(Date().dayOfWeek()!)
-        return Date().dayOfWeek()!
+        profilePhoto.image = UIImage(named: "no-profile")        
     }
 
     // MARK: - Table view data source
@@ -90,11 +75,10 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ProfileTableViewCell
-        let history = historyData[(indexPath as NSIndexPath).row]
+        //let history = notes[(indexPath as NSIndexPath).row]
         
-        cell.day.text = history["day"]
-        cell.chaptersRead.text = history["reading"]
-        cell.prayerTime.text = history["praying"]
+        //cell.chaptersRead.text = notes["reading"]
+        //cell.prayerTime.text = notes["praying"]
         
         return cell
     }

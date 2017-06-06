@@ -70,8 +70,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-m8-02P">
-                                                    <rect key="frame" x="23" y="16.5" width="32" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-m8-02P">
+                                                    <rect key="frame" x="18" y="16.5" width="62.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -88,20 +88,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/12/2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLK-qS-53M">
+                                                    <rect key="frame" x="21" y="40" width="57" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2g9-U0-ZMZ" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="200" id="4Uf-da-udR"/>
+                                                <constraint firstItem="JNW-m8-02P" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="10" id="DUU-nw-dad"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mwA-tr-Yps" secondAttribute="trailing" constant="20" id="Pnz-9Q-kMY"/>
-                                                <constraint firstItem="JNW-m8-02P" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="15" id="RCk-lc-b4d"/>
+                                                <constraint firstItem="oLK-qS-53M" firstAttribute="top" secondItem="JNW-m8-02P" secondAttribute="bottom" constant="2" id="QfG-fy-Pk1"/>
                                                 <constraint firstItem="mwA-tr-Yps" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="Svc-WQ-mSd"/>
                                                 <constraint firstItem="JNW-m8-02P" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="erS-Dm-ub0"/>
                                                 <constraint firstItem="2g9-U0-ZMZ" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="fC4-xS-qch"/>
+                                                <constraint firstItem="oLK-qS-53M" firstAttribute="centerX" secondItem="JNW-m8-02P" secondAttribute="centerX" id="gEu-Jk-hOs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="chaptersRead" destination="2g9-U0-ZMZ" id="nJ2-zx-pys"/>
-                                            <outlet property="day" destination="JNW-m8-02P" id="Ktk-Ss-XJc"/>
+                                            <outlet property="dateLabel" destination="oLK-qS-53M" id="dza-lH-gmA"/>
                                             <outlet property="prayerTime" destination="mwA-tr-Yps" id="ndw-9W-vvm"/>
+                                            <outlet property="weekdayLabel" destination="JNW-m8-02P" id="tUA-YP-8jU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -172,22 +181,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Reset"/>
                                 <connections>
-                                    <action selector="stopButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="FiD-SQ-IFb"/>
+                                    <action selector="resetButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="btN-Ai-sES"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sB-TK-4Tc">
+                                <rect key="frame" x="114" y="532" width="148" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save on timeline"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="oZ8-wW-TAi"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UCi-Az-eMo" firstAttribute="top" secondItem="3sB-TK-4Tc" secondAttribute="bottom" constant="50" id="2pg-vL-EM9"/>
                             <constraint firstItem="ySK-HC-wRU" firstAttribute="top" secondItem="wMg-e6-UUR" secondAttribute="bottom" constant="50" id="GYP-gz-R6O"/>
                             <constraint firstItem="wMg-e6-UUR" firstAttribute="centerX" secondItem="ai8-96-pwF" secondAttribute="centerX" id="NtW-XU-CXV"/>
                             <constraint firstItem="wMg-e6-UUR" firstAttribute="top" secondItem="k6M-5n-FlB" secondAttribute="bottom" constant="180" id="X7c-Uw-xbO"/>
                             <constraint firstItem="ySK-HC-wRU" firstAttribute="leading" secondItem="ai8-96-pwF" secondAttribute="leadingMargin" constant="50" id="Yer-LN-dEP"/>
+                            <constraint firstItem="3sB-TK-4Tc" firstAttribute="centerX" secondItem="ai8-96-pwF" secondAttribute="centerX" id="fmj-dl-fu5"/>
                             <constraint firstItem="rLy-fl-O1s" firstAttribute="top" secondItem="wMg-e6-UUR" secondAttribute="bottom" constant="50" id="l3D-fj-6mX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rLy-fl-O1s" secondAttribute="trailing" constant="50" id="lvy-cm-Y7b"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pray" id="qh0-Rk-N58"/>
                     <connections>
+                        <outlet property="saveTimecode" destination="3sB-TK-4Tc" id="GjL-pd-sDe"/>
                         <outlet property="start" destination="rLy-fl-O1s" id="6Wt-o8-wiV"/>
                         <outlet property="timecode" destination="wMg-e6-UUR" id="TNY-4c-i7a"/>
                     </connections>
@@ -291,7 +311,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-h5-Xpc">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -357,7 +377,6 @@
         <!--Bible-->
         <scene sceneID="vAV-oT-EID">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dzr-Db-TiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Gw-qJ-5DV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bible" id="hoz-aQ-jtP"/>
                     <toolbarItems/>
@@ -370,6 +389,7 @@
                         <segue destination="d0T-RC-uXt" kind="relationship" relationship="rootViewController" id="fF3-dM-DSf"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzr-Db-TiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-460" y="930.58470764617698"/>
         </scene>

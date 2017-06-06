@@ -47,7 +47,7 @@ class CoreDataStack {
 
     // MARK: - Core Data Saving support
 
-    func saveContext () {
+    class func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
