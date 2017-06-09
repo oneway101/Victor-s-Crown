@@ -50,9 +50,15 @@ class TimerViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender:Any) {
         print(seconds)
         let context = CoreDataStack.getContext()
-        let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
-        note.prayerRecord = Int16(seconds)
-        CoreDataStack.saveContext()
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
     }
 
     func runTimer(){
@@ -85,13 +91,12 @@ class TimerViewController: UIViewController {
         //MARK: Fetch Request
         let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
         fetchRequest.sortDescriptors = []
-        fetchRequest.predicate = NSPredicate(format: "date = %@")
-        //fetchRequest.predicate = NSPredicate(format: "date = \(timestamp)")
+        fetchRequest.predicate = NSPredicate(format: "date = %@", "\(timestamp)")
         let context = CoreDataStack.getContext()
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         do {
-            try fetchedResultsController.performFetch()
+            let fetchedResults = try fetchedResultsController.performFetch()
             
         } catch {
             let fetchError = error as NSError
@@ -100,12 +105,14 @@ class TimerViewController: UIViewController {
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
-            notes = data
+            
             print("\(data.count) notes from core data fetched.")
             
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
             note.date = timestamp
+            note.prayerRecord = Int16(seconds)
+            note.readingRecord = ""
             CoreDataStack.saveContext()
             print("Today's data saved.")
         }

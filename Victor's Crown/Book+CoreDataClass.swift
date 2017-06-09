@@ -1,5 +1,5 @@
 //
-//  Note+CoreDataClass.swift
+//  Book+CoreDataClass.swift
 //  Victor's Crown
 //
 //  Created by Ha Na Gill on 6/7/17.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Note)
-public class Note: NSManagedObject {
+@objc(Book)
+public class Book: NSManagedObject {
 
 }

@@ -1,5 +1,5 @@
 //
-//  Note+CoreDataClass.swift
+//  DataModel.swift
 //  Victor's Crown
 //
 //  Created by Ha Na Gill on 6/7/17.
@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import CoreData
 
-@objc(Note)
-public class Note: NSManagedObject {
-
+extension BiblesClient {
+    
+    
+    
 }
