@@ -12,7 +12,6 @@ import Foundation
 
 extension BiblesClient {
     
-    //let token:String = "JLHmbY2si2lgdwgy0NWpCNm7oZhdCgSxDfsSHFtu"
     
     // MARK: Bibles API
     struct Constants {
@@ -37,7 +36,7 @@ extension BiblesClient {
     
     // MARK: Bibles API Parameter Values
     struct BiblesParameterValues {
-        static let Response = "resonse"
+        static let Response = "response"
         static let Books = "books"
         static let Search = "search"
         static let Result = "result"

@@ -8,9 +8,9 @@
 
 import UIKit
 
-private let reuseIdentifier = "BibleChapterCell"
+private let reuseIdentifier = "BookChapterCell"
 
-class BibleListViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class BookChapterListViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var bibleCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -46,16 +46,16 @@ class BibleListViewController: UIViewController, UINavigationControllerDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BibleChapterCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookChapterCell
         
         let chapter = chapterNum[(indexPath as NSIndexPath).row]
-        cell.chapterNumber.text = String(chapter)
+        cell.chapterNumber.text! = String(chapter)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! BibleChapterCell
+        let cell = collectionView.cellForItem(at: indexPath) as! BookChapterCell
         
     }
 

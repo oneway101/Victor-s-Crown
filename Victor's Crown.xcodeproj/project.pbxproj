@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		846F34E21EDDDF4300B8063E /* BibleChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F34E11EDDDF4300B8063E /* BibleChapterCell.swift */; };
-		847527A51EDF23D3009D9D39 /* BibleReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847527A41EDF23D3009D9D39 /* BibleReadingViewController.swift */; };
+		846F34E21EDDDF4300B8063E /* BookChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F34E11EDDDF4300B8063E /* BookChapterCell.swift */; };
+		847527A51EDF23D3009D9D39 /* ScriptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847527A41EDF23D3009D9D39 /* ScriptureViewController.swift */; };
 		847527A71EDF9F46009D9D39 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847527A61EDF9F46009D9D39 /* CoreDataStack.swift */; };
 		847563DA1EE73AD700C7949E /* BiblesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847563D91EE73AD700C7949E /* BiblesClient.swift */; };
 		847563DC1EE73B6D00C7949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847563DB1EE73B6D00C7949E /* Constants.swift */; };
-		847832781ED5EAAB00056370 /* BibleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832771ED5EAAB00056370 /* BibleListViewController.swift */; };
+		84770EB01EEAFD8000350216 /* BookNameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */; };
+		84770EB51EEB041F00350216 /* BookNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84770EB41EEB041F00350216 /* BookNameCell.swift */; };
+		847832781ED5EAAB00056370 /* BookChapterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832771ED5EAAB00056370 /* BookChapterListViewController.swift */; };
 		8478327A1ED5EAB900056370 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832791ED5EAB900056370 /* SettingsViewController.swift */; };
 		847832801ED7811F00056370 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478327F1ED7811F00056370 /* ProfileTableViewController.swift */; };
 		847832821ED7813B00056370 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832811ED7813B00056370 /* ProfileTableViewCell.swift */; };
@@ -33,12 +35,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		846F34E11EDDDF4300B8063E /* BibleChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleChapterCell.swift; sourceTree = "<group>"; };
-		847527A41EDF23D3009D9D39 /* BibleReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleReadingViewController.swift; sourceTree = "<group>"; };
-		847527A61EDF9F46009D9D39 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		846F34E11EDDDF4300B8063E /* BookChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookChapterCell.swift; sourceTree = "<group>"; };
+		847527A41EDF23D3009D9D39 /* ScriptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureViewController.swift; sourceTree = "<group>"; };
+		847527A61EDF9F46009D9D39 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Victor's Crown/CoreDataStack.swift"; sourceTree = "<group>"; };
 		847563D91EE73AD700C7949E /* BiblesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BiblesClient.swift; path = "Victor's Crown/BiblesClient.swift"; sourceTree = "<group>"; };
 		847563DB1EE73B6D00C7949E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Victor's Crown/Constants.swift"; sourceTree = "<group>"; };
-		847832771ED5EAAB00056370 /* BibleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleListViewController.swift; sourceTree = "<group>"; };
+		84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookNameListViewController.swift; sourceTree = "<group>"; };
+		84770EB41EEB041F00350216 /* BookNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookNameCell.swift; sourceTree = "<group>"; };
+		847832771ED5EAAB00056370 /* BookChapterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookChapterListViewController.swift; sourceTree = "<group>"; };
 		847832791ED5EAB900056370 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8478327F1ED7811F00056370 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		847832811ED7813B00056370 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -74,18 +78,43 @@
 		846F34E31EDE3A0500B8063E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				847527A61EDF9F46009D9D39 /* CoreDataStack.swift */,
-				8490DF361ECF915300C78173 /* MainTabBarController.swift */,
-				8478327F1ED7811F00056370 /* ProfileTableViewController.swift */,
-				847832811ED7813B00056370 /* ProfileTableViewCell.swift */,
-				847527A41EDF23D3009D9D39 /* BibleReadingViewController.swift */,
-				847832771ED5EAAB00056370 /* BibleListViewController.swift */,
-				846F34E11EDDDF4300B8063E /* BibleChapterCell.swift */,
-				84E52AD41ED3BB4E00861AD1 /* TimerViewController.swift */,
+				84770EB31EEB032600350216 /* Profile */,
+				84770EB11EEB02E100350216 /* Bible */,
+				84770EB21EEB02F600350216 /* Pray */,
 				847832791ED5EAB900056370 /* SettingsViewController.swift */,
 				8479305B1EE20E5F00F02B5D /* Helpers.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		84770EB11EEB02E100350216 /* Bible */ = {
+			isa = PBXGroup;
+			children = (
+				847527A41EDF23D3009D9D39 /* ScriptureViewController.swift */,
+				84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */,
+				847832771ED5EAAB00056370 /* BookChapterListViewController.swift */,
+				846F34E11EDDDF4300B8063E /* BookChapterCell.swift */,
+				84770EB41EEB041F00350216 /* BookNameCell.swift */,
+			);
+			name = Bible;
+			sourceTree = "<group>";
+		};
+		84770EB21EEB02F600350216 /* Pray */ = {
+			isa = PBXGroup;
+			children = (
+				84E52AD41ED3BB4E00861AD1 /* TimerViewController.swift */,
+			);
+			name = Pray;
+			sourceTree = "<group>";
+		};
+		84770EB31EEB032600350216 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8490DF361ECF915300C78173 /* MainTabBarController.swift */,
+				8478327F1ED7811F00056370 /* ProfileTableViewController.swift */,
+				847832811ED7813B00056370 /* ProfileTableViewCell.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		847832831ED7845400056370 /* Assets */ = {
@@ -112,6 +141,7 @@
 				847563D91EE73AD700C7949E /* BiblesClient.swift */,
 				847563DB1EE73B6D00C7949E /* Constants.swift */,
 				847A322A1EE89F1F00ABBA32 /* DataModel.swift */,
+				847527A61EDF9F46009D9D39 /* CoreDataStack.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -219,6 +249,7 @@
 				8490DF371ECF915300C78173 /* MainTabBarController.swift in Sources */,
 				8479305C1EE20E5F00F02B5D /* Helpers.swift in Sources */,
 				84D9CA6F1EE8BD9700E80CBF /* Book+CoreDataProperties.swift in Sources */,
+				84770EB01EEAFD8000350216 /* BookNameListViewController.swift in Sources */,
 				847563DA1EE73AD700C7949E /* BiblesClient.swift in Sources */,
 				84E52AD51ED3BB4E00861AD1 /* TimerViewController.swift in Sources */,
 				847A322B1EE89F1F00ABBA32 /* DataModel.swift in Sources */,
@@ -226,15 +257,16 @@
 				847A321F1EE892C600ABBA32 /* GCDBlackBox.swift in Sources */,
 				84D9CA6E1EE8BD9700E80CBF /* Book+CoreDataClass.swift in Sources */,
 				84D9CA711EE8BD9700E80CBF /* Note+CoreDataProperties.swift in Sources */,
+				84770EB51EEB041F00350216 /* BookNameCell.swift in Sources */,
 				8490DF351ECF915300C78173 /* AppDelegate.swift in Sources */,
 				847563DC1EE73B6D00C7949E /* Constants.swift in Sources */,
 				847832821ED7813B00056370 /* ProfileTableViewCell.swift in Sources */,
 				847930461EE2029F00F02B5D /* Victor_s_Crown.xcdatamodeld in Sources */,
-				846F34E21EDDDF4300B8063E /* BibleChapterCell.swift in Sources */,
+				846F34E21EDDDF4300B8063E /* BookChapterCell.swift in Sources */,
 				847527A71EDF9F46009D9D39 /* CoreDataStack.swift in Sources */,
 				847832801ED7811F00056370 /* ProfileTableViewController.swift in Sources */,
-				847832781ED5EAAB00056370 /* BibleListViewController.swift in Sources */,
-				847527A51EDF23D3009D9D39 /* BibleReadingViewController.swift in Sources */,
+				847832781ED5EAAB00056370 /* BookChapterListViewController.swift in Sources */,
+				847527A51EDF23D3009D9D39 /* ScriptureViewController.swift in Sources */,
 				84D9CA701EE8BD9700E80CBF /* Note+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

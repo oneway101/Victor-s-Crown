@@ -49,16 +49,17 @@ class TimerViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender:Any) {
         print(seconds)
-        let context = CoreDataStack.getContext()
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-        
-        do {
-            try context.execute(deleteRequest)
-            try context.save()
-        } catch {
-            print ("There was an error")
-        }
+        fetchNotes()
+//        let context = CoreDataStack.getContext()
+//        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+//        
+//        do {
+//            try context.execute(deleteRequest)
+//            try context.save()
+//        } catch {
+//            print ("There was an error")
+//        }
     }
 
     func runTimer(){
@@ -91,7 +92,7 @@ class TimerViewController: UIViewController {
         //MARK: Fetch Request
         let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
         fetchRequest.sortDescriptors = []
-        fetchRequest.predicate = NSPredicate(format: "date = %@", "\(timestamp)")
+        fetchRequest.predicate = NSPredicate(format: "date = %@", timestamp)
         let context = CoreDataStack.getContext()
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         

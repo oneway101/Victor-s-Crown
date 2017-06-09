@@ -21,13 +21,15 @@ class BiblesClient: NSObject {
     
     func getScriptures(_ completionHandler: @escaping (_ result: [Book]?, _ error: NSError?) -> Void) {
 
-        let urlString = "https://bibles.org/v2/versions/eng-NIV/books.js"
+        let urlString = "https://bibles.org/v2/versions/eng-GNTD/books.js"
         
-        let headerFields = [
-            "token": Constants.APIKey
-        ]
+        let username = Constants.APIKey
+        let password = "pass"
+        let loginString = String(format: "%@:%@", username, password)
+        let loginData = loginString.data(using: String.Encoding.utf8)!
+        let base64LoginString = loginData.base64EncodedString()
         
-        let task = taskForGETMethod(urlString, headerFields) { (parsedResult, error) in
+        let task = taskForGETMethod(urlString, base64LoginString) { (parsedResult, error) in
             
             // display error
             func displayError(_ error: String) {
@@ -36,10 +38,10 @@ class BiblesClient: NSObject {
             }
             
             /* GUARD: Did BiblesAPI return an error (stat != ok)? */
-            guard let stat = parsedResult?[BiblesResponseKeys.Status] as? String, stat == BiblesResponseValues.OKStatus else {
-                displayError("BiblesAPI returned an error. See error code and message in \(String(describing: parsedResult))")
-                return
-            }
+//            guard let stat = parsedResult?[BiblesResponseKeys.Status] as? String, stat == BiblesResponseValues.OKStatus else {
+//                displayError("BiblesAPI returned an error. See error code and message in \(String(describing: parsedResult))")
+//                return
+//            }
             
             /* GUARD: Is the "response" key in our result? */
             guard let response = parsedResult?[BiblesParameterValues.Response] as? [String:AnyObject] else {
@@ -83,16 +85,14 @@ class BiblesClient: NSObject {
     // MARK: Helpers
     
     // MARK: GET Method
-    func taskForGETMethod(_ urlString: String, _ headerFields: [String:String], _ completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(_ urlString: String, _ loginString: String, _ completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* Build the URL, Configure the request */
         let urlString = urlString
         let request = NSMutableURLRequest(url:URL(string:urlString)!)
         request.httpMethod = "GET"
-        
-        for (field, value) in headerFields {
-            request.addValue(value, forHTTPHeaderField: field)
-        }
+        request.setValue("Basic \(loginString)", forHTTPHeaderField: "Authorization")
+
         
         /* Make the request */
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in

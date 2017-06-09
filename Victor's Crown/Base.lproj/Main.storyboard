@@ -214,12 +214,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8q-LR-ucV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="930.58470764617698"/>
+            <point key="canvasLocation" x="1311" y="931"/>
         </scene>
-        <!--Bible List View Controller-->
+        <!--Book Name List View Controller-->
+        <scene sceneID="PrF-j1-x5E">
+            <objects>
+                <tableViewController id="oAr-Wi-wNm" customClass="BookNameListViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pt4-86-z7a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fll-Bp-q4h">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fll-Bp-q4h" id="S65-q9-e5c">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oAr-Wi-wNm" id="noI-Pr-DRl"/>
+                            <outlet property="delegate" destination="oAr-Wi-wNm" id="GcP-Bp-ALa"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lq2-RE-e0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-546" y="1693"/>
+        </scene>
+        <!--Book Chapter List View Controller-->
         <scene sceneID="MeH-fj-YOE">
             <objects>
-                <viewController id="aFP-mS-Joi" customClass="BibleListViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aFP-mS-Joi" customClass="BookChapterListViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Ad-4N-JKY"/>
                         <viewControllerLayoutGuide type="bottom" id="Wcu-xR-j2w"/>
@@ -238,7 +266,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BibleChapterCell" id="9ey-hv-iwS" customClass="BibleChapterCell" customModule="Victor_s_Crown" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookChapterCell" id="9ey-hv-iwS" customClass="BookChapterCell" customModule="Victor_s_Crown" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -260,7 +288,7 @@
                                             <constraint firstItem="apj-lP-vRB" firstAttribute="top" secondItem="9ey-hv-iwS" secondAttribute="topMargin" id="qMs-ed-05n"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="chapterNumber" destination="apj-lP-vRB" id="NLu-4m-Cn3"/>
+                                            <outlet property="chapterNumber" destination="apj-lP-vRB" id="vSt-3j-TnQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -294,12 +322,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLM-go-W75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248.80000000000001" y="1709.5952023988007"/>
+            <point key="canvasLocation" x="334" y="1693"/>
         </scene>
-        <!--Bible Reading View Controller-->
+        <!--Scripture View Controller-->
         <scene sceneID="lUZ-Tm-vx2">
             <objects>
-                <viewController id="d0T-RC-uXt" customClass="BibleReadingViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="d0T-RC-uXt" customClass="ScriptureViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KZk-OQ-fzU"/>
                         <viewControllerLayoutGuide type="bottom" id="xte-di-rP3"/>
@@ -332,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5m-Ah-Kap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-460" y="1710"/>
+            <point key="canvasLocation" x="334" y="931"/>
         </scene>
         <!--Settings-->
         <scene sceneID="bTY-2W-a88">
@@ -391,7 +419,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzr-Db-TiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-460" y="930.58470764617698"/>
+            <point key="canvasLocation" x="-545" y="931"/>
         </scene>
     </scenes>
 </document>

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class BibleChapterCell: UICollectionViewCell {
+class BookChapterCell: UICollectionViewCell {
     
     @IBOutlet weak var chapterNumber: UILabel!
+    
 }
