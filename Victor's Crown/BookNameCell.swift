@@ -8,12 +8,9 @@
 
 import UIKit
 
-class BookNameTableViewCell: UITableViewCell {
+class BookNameCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var bookNameLabel:UILabel!
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

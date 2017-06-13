@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension UIViewController {
     
@@ -30,6 +31,20 @@ extension UIViewController {
         let currentDate = "\(month)/\(day)/\(year)"
         let currentWeekday = "\(weekday!)"
         return (currentDate, currentWeekday, date)
+    }
+    
+    func deleteAll(entity:String){
+        let context = CoreDataStack.getContext()
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
+
     }
     
 }

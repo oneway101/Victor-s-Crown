@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import CoreData
 
-extension BiblesClient {
+class DataModel:NSObject {
     
-    
+    static var notes:[Note] = [Note]()
+    static var books:[Book] = [Book]()
     
 }

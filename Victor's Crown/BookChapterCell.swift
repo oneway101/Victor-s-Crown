@@ -10,6 +10,6 @@ import UIKit
 
 class BookChapterCell: UICollectionViewCell {
     
-    @IBOutlet weak var chapterNumber: UILabel!
+    @IBOutlet weak var bookChapterLabel: UILabel!
     
 }

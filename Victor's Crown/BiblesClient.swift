@@ -14,14 +14,17 @@ class BiblesClient: NSObject {
     static let sharedInstance = BiblesClient()
     var session = URLSession.shared
     
-    //Q: Where to Create Shared Instance of Core Data of Books?
-    var scriptures:[Book] = [Book]()
+    //Q: Where to create Shared Instance of Core Data of Books?
+    var bible:[Book] = [Book]()
     
     // MARK: Bibles API
     
-    func getScriptures(_ completionHandler: @escaping (_ result: [Book]?, _ error: NSError?) -> Void) {
-
-        let urlString = "https://bibles.org/v2/versions/eng-GNTD/books.js"
+    func getScripture(book:String, chapter:String, _ completionHandler: @escaping (_ result: [Book]?, _ error: NSError?) -> Void) {
+        let versionID = "eng-KJV"
+        let bookID = "2Tim"
+        let includeChapters = "?include_chapters=true"
+        let urlString = "https://bibles.org/v2/versions/\(versionID)/books.js"+includeChapters
+        let chapters = "/books/\(versionID):\(bookID)/chapters"
         
         let username = Constants.APIKey
         let password = "pass"
@@ -49,32 +52,37 @@ class BiblesClient: NSObject {
                 return
             }
             
-            /* GUARD: Is the "photo" key in photosDictionary? */
-            guard let books = response[BiblesParameterValues.Books] as? [[String: AnyObject]] else {
+            /* GUARD: Is the "books" key in our response? */
+            guard let books = response[BiblesParameterValues.Books] as? [[String:AnyObject]] else {
                 displayError("Cannot find key '\(BiblesParameterValues.Books)' in \(response)")
                 return
             }
             
-            performUIUpdatesOnMain {
-                
-                let context = CoreDataStack.getContext()
-                
-                for book in books {
-                    guard let bookName = book[ParameterKeys.Name] as? String else {
-                        displayError("Cannot find key '\(ParameterKeys.Name)' in \(books)")
-                        return
-                    }
-                    let book:Book = NSEntityDescription.insertNewObject(forEntityName: "Book", into: context ) as! Book
-
-                    book.name = bookName
-                    book.chapter = "1"
-                    book.text = "sample text..."
-                    self.scriptures.append(book)
-                    CoreDataStack.saveContext()
+            //Mark: Finding Book names and number of chapters
+            for book in books {
+                guard let name = book[BiblesParameterValues.Name] as? String else {
+                    displayError("Cannot find key '\(BiblesParameterValues.Name)' in \(book)")
+                    return
                 }
+                guard let chapters = book[BiblesParameterValues.Chapters] as? NSArray else {
+                    displayError("Cannot find key '\(BiblesParameterValues.Chapters)' in \(book)")
+                    return
+                }
+//                performUIUpdatesOnMain {
+//                    let context = CoreDataStack.getContext()
+//                    let book:Book = NSEntityDescription.insertNewObject(forEntityName: "Book", into: context ) as! Book
+//                    book.name = name
+//                    book.chapter = chapters
+//                    book.text = "sample text..."
+//                    self.bible.append(book)
+//                }
+                print("***book***")
+                print(name)
+                print(chapters)
             }
+            
 
-            completionHandler(self.scriptures, nil)
+            completionHandler(self.bible, nil)
             
         }
         
@@ -175,28 +183,4 @@ class BiblesClient: NSObject {
         completionHandlerForConvertData(parsedResult, nil)
     }
     
-    // given a dictionary of parameters, covert unsafe ASCII characters and correctly formated url string.
-    func escapedParameters(_ parameters: [String:AnyObject]) -> String {
-        
-        if parameters.isEmpty {
-            return ""
-        } else {
-            var keyValuePairs = [String]()
-            
-            for (key, value) in parameters {
-                
-                // make sure that it is a string value
-                let stringValue = "\(value)"
-                
-                // escape it
-                let escapedValue = stringValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                
-                // append it
-                keyValuePairs.append(key + "=" + "\(escapedValue!)")
-                
-            }
-            
-            return "?\(keyValuePairs.joined(separator: "&"))"
-        }
-    }
 }

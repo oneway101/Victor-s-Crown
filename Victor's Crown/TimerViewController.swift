@@ -20,8 +20,6 @@ class TimerViewController: UIViewController {
     var timer = Timer()
     var isTimerRunning = false
     
-    var notes:[Note] = [Note]()
-    
     let today = Date()
     var timestamp = ""
     
@@ -29,8 +27,8 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         saveTimecode.isEnabled = false
         timestamp = DateFormatter.localizedString(from: today, dateStyle: .short, timeStyle: .none)
-        print("today: \(timestamp)")
-        let isToday = Calendar.current.isDateInToday(today)
+        print("today's date: \(timestamp)")
+        //let isToday = Calendar.current.isDateInToday(today)
     }
     
     @IBAction func startButtonTapped(_ sender: Any) {
@@ -50,16 +48,6 @@ class TimerViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender:Any) {
         print(seconds)
         fetchNotes()
-//        let context = CoreDataStack.getContext()
-//        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-//        
-//        do {
-//            try context.execute(deleteRequest)
-//            try context.save()
-//        } catch {
-//            print ("There was an error")
-//        }
     }
 
     func runTimer(){
@@ -97,8 +85,8 @@ class TimerViewController: UIViewController {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         do {
-            let fetchedResults = try fetchedResultsController.performFetch()
-            
+            try fetchedResultsController.performFetch()
+
         } catch {
             let fetchError = error as NSError
             print("Unable to Perform Fetch Request")
@@ -106,9 +94,9 @@ class TimerViewController: UIViewController {
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
-            
-            print("\(data.count) notes from core data fetched.")
-            
+            data[0].prayerRecord += Int16(seconds)
+            print("Time has been upated to \(data[0].prayerRecord).")
+            CoreDataStack.saveContext()
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
             note.date = timestamp

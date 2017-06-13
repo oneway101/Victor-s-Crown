@@ -49,7 +49,7 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookChapterCell
         
         let chapter = chapterNum[(indexPath as NSIndexPath).row]
-        cell.chapterNumber.text! = String(chapter)
+        cell.bookChapterLabel.text! = String(chapter)
         
         return cell
     }

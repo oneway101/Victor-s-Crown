@@ -30,7 +30,6 @@ extension BiblesClient {
         static let Books = "books"
         static let Chapters = "chapters"
         static let Path = "path"
-        static let Name = "name"
         static let Id = "id"
     }
     
@@ -38,6 +37,9 @@ extension BiblesClient {
     struct BiblesParameterValues {
         static let Response = "response"
         static let Books = "books"
+        static let Book = "book"
+        static let Chapters = "chapters"
+        static let Name = "name"
         static let Search = "search"
         static let Result = "result"
         static let Passages = "passages"
