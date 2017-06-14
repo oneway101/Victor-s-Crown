@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 
 class BookNameListController: UITableViewController {
 
     private let reuseIdentifier = "BookNameCell"
+    private let segueIdentifier = "ScriptureViewSegue"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +33,35 @@ class BookNameListController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return BiblesClient.sharedInstance.bible.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! BookNameCell
-
-        // Configure the cell...
-
+        
+        let bookList = BiblesClient.sharedInstance.bible[(indexPath as NSIndexPath).row]
+        cell.bookNameLabel.text = bookList.name
+        
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedBook = BiblesClient.sharedInstance.bible[(indexPath as NSIndexPath).row]
+        print(selectedBook)
+        self.performSegue(withIdentifier: segueIdentifier, sender: selectedBook)
+    }
 
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == segueIdentifier {
+            let controller = segue.destination as! ScriptureViewController
+            let selectedBook = sender as! Book
+            controller.selectedBook = selectedBook
+        }
     }
-    */
+ 
 
 }

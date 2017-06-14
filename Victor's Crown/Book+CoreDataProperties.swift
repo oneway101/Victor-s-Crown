@@ -2,7 +2,7 @@
 //  Book+CoreDataProperties.swift
 //  Victor's Crown
 //
-//  Created by Ha Na Gill on 6/7/17.
+//  Created by Ha Na Gill on 6/13/17.
 //  Copyright © 2017 cosmostream. All rights reserved.
 //
 
@@ -16,8 +16,6 @@ extension Book {
         return NSFetchRequest<Book>(entityName: "Book")
     }
 
-    @NSManaged public var chapter: String?
     @NSManaged public var name: String?
-    @NSManaged public var text: String?
 
 }

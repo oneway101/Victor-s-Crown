@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Book" representedClassName="Book" syncable="YES">
-        <attribute name="chapter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prayerRecord" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="readingRecord" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Scripture" representedClassName="Scripture" parentEntity="Book" syncable="YES">
+        <attribute name="chapter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verse" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chapters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Book" positionX="-36" positionY="36" width="128" height="90"/>
-        <element name="Note" positionX="-36" positionY="9" width="128" height="90"/>
+        <element name="Book" positionX="277" positionY="15" width="128" height="58"/>
+        <element name="Note" positionX="-90" positionY="9" width="128" height="90"/>
+        <element name="Scripture" positionX="90" positionY="17" width="128" height="73"/>
     </elements>
 </model>

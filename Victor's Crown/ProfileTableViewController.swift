@@ -64,6 +64,10 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     // MARK: - Table view data source
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return historyData.count

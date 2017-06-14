@@ -216,16 +216,16 @@
             </objects>
             <point key="canvasLocation" x="1311" y="931"/>
         </scene>
-        <!--Book Name List View Controller-->
+        <!--Book Name List Controller-->
         <scene sceneID="PrF-j1-x5E">
             <objects>
-                <tableViewController id="oAr-Wi-wNm" customClass="BookNameListViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oAr-Wi-wNm" customClass="BookNameListController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pt4-86-z7a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fll-Bp-q4h" customClass="BookNameCell" customModule="Victor_s_Crown" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookNameCell" id="Fll-Bp-q4h" customClass="BookNameCell" customModule="Victor_s_Crown" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fll-Bp-q4h" id="S65-q9-e5c">
@@ -255,6 +255,9 @@
                             <outlet property="delegate" destination="oAr-Wi-wNm" id="GcP-Bp-ALa"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="U6W-mL-PPi" kind="show" identifier="ScriptureViewSegue" id="6o9-cp-JbE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lq2-RE-e0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLM-go-W75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="1693"/>
+            <point key="canvasLocation" x="1276" y="1693"/>
         </scene>
         <!--Scripture View Controller-->
         <scene sceneID="SeS-bR-HEQ">
@@ -397,10 +400,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="xZj-wk-OzX" id="9MG-1I-VZB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbY-GG-MGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085.5999999999999" y="1692.5037481259371"/>
+            <point key="canvasLocation" x="358" y="1693"/>
         </scene>
         <!--Bible Root View Controller-->
         <scene sceneID="lUZ-Tm-vx2">
@@ -413,24 +419,13 @@
                     <view key="view" contentMode="scaleToFill" id="Xla-5z-bQd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhL-QD-SXu">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="NhL-QD-SXu" secondAttribute="trailing" id="A3y-XD-nIv"/>
-                            <constraint firstItem="xte-di-rP3" firstAttribute="top" secondItem="NhL-QD-SXu" secondAttribute="bottom" id="LC7-o4-i6w"/>
-                            <constraint firstItem="NhL-QD-SXu" firstAttribute="leading" secondItem="Xla-5z-bQd" secondAttribute="leading" id="Mlb-BM-ooE"/>
-                            <constraint firstItem="NhL-QD-SXu" firstAttribute="top" secondItem="KZk-OQ-fzU" secondAttribute="bottom" id="afX-8b-x6M"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="317-dt-lVr"/>
                     <connections>
                         <outlet property="navigationItem" destination="317-dt-lVr" id="Q9e-h6-WrC"/>
-                        <outlet property="scrollView" destination="NhL-QD-SXu" id="QuC-w9-YdT"/>
                         <segue destination="aFP-mS-Joi" kind="presentation" identifier="ChapterList" id="JWX-Jq-3xt"/>
+                        <segue destination="oAr-Wi-wNm" kind="show" identifier="BookList" action="showDetailViewController:sender:" id="OEV-lp-2up"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5m-Ah-Kap" userLabel="First Responder" sceneMemberID="firstResponder"/>

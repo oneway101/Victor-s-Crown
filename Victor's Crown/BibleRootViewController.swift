@@ -11,17 +11,17 @@ import CoreData
 
 class BibleRootViewController: UIViewController, UINavigationControllerDelegate {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    //@IBOutlet weak var scrollView: UIScrollView!
     
-    let navTitleButton =  UIButton(type: .custom)
-    let navBookButton = UIButton(type: .custom)
+    let chapterNavButton =  UIButton(type: .custom)
     let selectedBookName = "Psalms"
     let selectedBookChapter = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bookChapterNavigationButton()
-        BiblesClient.sharedInstance.getScripture(book:"Psalms", chapter: "1") { (books, error) in
+        bookNavigationButton()
+        chapterNavigationButton()
+        BiblesClient.sharedInstance.getBookList() { (books, error) in
             if let books = books {
                 //print(books)
                 print("books data returned!")
@@ -36,18 +36,20 @@ class BibleRootViewController: UIViewController, UINavigationControllerDelegate 
         
     }
     
-    func bookNameNavigationButton(){
-        
+    func bookNavigationButton(){
+        //Mark: Create a book list navigation
+        let bookNavButton = UIBarButtonItem(title: "Books", style: .plain, target: self, action: #selector(self.clickOnBookName))
+        self.navigationItem.leftBarButtonItem = bookNavButton
     }
     
     
-    func bookChapterNavigationButton(){
-        //Mark: Create a button navigation title
-        navTitleButton.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        navTitleButton.setTitle(selectedBookName, for: .normal)
-        navTitleButton.setTitleColor(UIColor(red: 3/255, green: 121/255, blue: 251/255, alpha: 1.0), for: .normal)
-        navTitleButton.addTarget(self, action: #selector(self.clickOnBookTitle), for: .touchUpInside)
-        self.navigationItem.titleView = navTitleButton
+    func chapterNavigationButton(){
+        //Mark: Create a chapter list navigation
+        chapterNavButton.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        chapterNavButton.setTitle(selectedBookName, for: .normal)
+        chapterNavButton.setTitleColor(UIColor(red: 3/255, green: 121/255, blue: 251/255, alpha: 1.0), for: .normal)
+        chapterNavButton.addTarget(self, action: #selector(self.clickOnBookTitle), for: .touchUpInside)
+        self.navigationItem.titleView = chapterNavButton
     }
     
     func clickOnBookName(button: UIButton) {
@@ -62,8 +64,6 @@ class BibleRootViewController: UIViewController, UINavigationControllerDelegate 
         let context = CoreDataStack.getContext()
         let book:Book = NSEntityDescription.insertNewObject(forEntityName: "Book", into: context ) as! Book
         book.name = name
-        book.chapter = chapter
-        book.text = text
         CoreDataStack.saveContext()
     }
 

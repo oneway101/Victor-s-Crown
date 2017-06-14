@@ -19,7 +19,7 @@ class BiblesClient: NSObject {
     
     // MARK: Bibles API
     
-    func getScripture(book:String, chapter:String, _ completionHandler: @escaping (_ result: [Book]?, _ error: NSError?) -> Void) {
+    func getBookList(_ completionHandler: @escaping (_ result: [Book]?, _ error: NSError?) -> Void) {
         let versionID = "eng-KJV"
         let bookID = "2Tim"
         let includeChapters = "?include_chapters=true"
@@ -39,12 +39,6 @@ class BiblesClient: NSObject {
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandler(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
-            
-            /* GUARD: Did BiblesAPI return an error (stat != ok)? */
-//            guard let stat = parsedResult?[BiblesResponseKeys.Status] as? String, stat == BiblesResponseValues.OKStatus else {
-//                displayError("BiblesAPI returned an error. See error code and message in \(String(describing: parsedResult))")
-//                return
-//            }
             
             /* GUARD: Is the "response" key in our result? */
             guard let response = parsedResult?[BiblesParameterValues.Response] as? [String:AnyObject] else {
@@ -68,20 +62,16 @@ class BiblesClient: NSObject {
                     displayError("Cannot find key '\(BiblesParameterValues.Chapters)' in \(book)")
                     return
                 }
-//                performUIUpdatesOnMain {
-//                    let context = CoreDataStack.getContext()
-//                    let book:Book = NSEntityDescription.insertNewObject(forEntityName: "Book", into: context ) as! Book
-//                    book.name = name
-//                    book.chapter = chapters
-//                    book.text = "sample text..."
-//                    self.bible.append(book)
-//                }
+                
+                performUIUpdatesOnMain {
+                    let context = CoreDataStack.getContext()
+                    let book:Book = NSEntityDescription.insertNewObject(forEntityName: "Book", into: context ) as! Book
+                        book.name = name
+                        self.bible.append(book)
+                }
                 print("***book***")
                 print(name)
-                print(chapters)
             }
-            
-
             completionHandler(self.bible, nil)
             
         }
