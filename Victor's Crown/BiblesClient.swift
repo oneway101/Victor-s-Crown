@@ -12,19 +12,14 @@ import CoreData
 class BiblesClient: NSObject {
     
     static let sharedInstance = BiblesClient()
-    var session = URLSession.shared
-    
-    //Q: Where to create Shared Instance of Core Data of Books?
-    var bible:[Book] = [Book]()
+    var session = URLSession.shared    
     
     // MARK: Bibles API
     
     func getBookList(_ completionHandler: @escaping (_ result: [Book]?, _ error: NSError?) -> Void) {
         let versionID = "eng-KJV"
-        let bookID = "2Tim"
         let includeChapters = "?include_chapters=true"
         let urlString = "https://bibles.org/v2/versions/\(versionID)/books.js"+includeChapters
-        let chapters = "/books/\(versionID):\(bookID)/chapters"
         
         let username = Constants.APIKey
         let password = "pass"
@@ -41,38 +36,99 @@ class BiblesClient: NSObject {
             }
             
             /* GUARD: Is the "response" key in our result? */
-            guard let response = parsedResult?[BiblesParameterValues.Response] as? [String:AnyObject] else {
-                displayError("Cannot find key '\(BiblesParameterValues.Response)' in \(String(describing: parsedResult))")
+            guard let response = parsedResult?[ResponseKeys.Response] as? [String:AnyObject] else {
+                displayError("Cannot find key '\(ResponseKeys.Response)' in \(String(describing: parsedResult))")
                 return
             }
             
             /* GUARD: Is the "books" key in our response? */
-            guard let books = response[BiblesParameterValues.Books] as? [[String:AnyObject]] else {
-                displayError("Cannot find key '\(BiblesParameterValues.Books)' in \(response)")
+            guard let books = response[ResponseKeys.Books] as? [[String:AnyObject]] else {
+                displayError("Cannot find key '\(ResponseKeys.Books)' in \(response)")
                 return
             }
             
-            //Mark: Finding Book names and number of chapters
+            /* MARK: Finding Book names and number of chapters in books */
+            
             for book in books {
-                guard let name = book[BiblesParameterValues.Name] as? String else {
-                    displayError("Cannot find key '\(BiblesParameterValues.Name)' in \(book)")
-                    return
-                }
-                guard let chapters = book[BiblesParameterValues.Chapters] as? NSArray else {
-                    displayError("Cannot find key '\(BiblesParameterValues.Chapters)' in \(book)")
+                guard let bookName = book[ResponseKeys.Name] as? String else {
+                    displayError("Cannot find key '\(ResponseKeys.Name)' in \(book)")
                     return
                 }
                 
+                guard let bookId = book[ResponseKeys.Id] as? String else {
+                    displayError("Cannot find key '\(ResponseKeys.Id)' in \(book)")
+                    return
+                }
+                
+                guard let chapters = book[ResponseKeys.Chapters] as? [[String:AnyObject]] else {
+                    displayError("Cannot find key '\(ResponseKeys.Chapters)' in \(book)")
+                    return
+                }
+                
+                /* Save Book object to core data */
                 performUIUpdatesOnMain {
                     let context = CoreDataStack.getContext()
                     let book:Book = NSEntityDescription.insertNewObject(forEntityName: "Book", into: context ) as! Book
-                        book.name = name
-                        self.bible.append(book)
+                    book.name = bookName
+                    book.id = bookId
+                    book.numOfChapters = Int16(chapters.count)
+                    DataModel.bible.append(book)
+                    //Q: When to assign chapters for each book for chapters?
                 }
-                print("***book***")
-                print(name)
+                
+                for chapterObj in chapters {
+                    guard let chapterNumber = chapterObj[ResponseKeys.Chapter] as? AnyObject else {
+                        displayError("Cannot find key '\(ResponseKeys.Chapter)' in \(chapterObj)")
+                        return
+                    }
+                    guard let chapterId = chapterObj[ResponseKeys.Id] as? String else {
+                        displayError("Cannot find key '\(ResponseKeys.Id)' in \(chapterObj)")
+                        return
+                    }
+                    
+                    /* Save Chapter object to core data */
+                    performUIUpdatesOnMain {
+                        let context = CoreDataStack.getContext()
+                        let chapter:Chapter = NSEntityDescription.insertNewObject(forEntityName: "Chapter", into: context ) as! Chapter
+                        chapter.number = chapterNumber as? String
+                        chapter.id = chapterId
+                        DataModel.chapters.append(chapter)
+                        //Q: When to add related book for chapters?
+                    }
+                    
+                }
+                
             }
-            completionHandler(self.bible, nil)
+            //Q: Should I save context on main?
+            CoreDataStack.saveContext()
+            completionHandler(DataModel.bible, nil)
+            
+        }
+        
+        // start the task!
+        task.resume()
+    }
+    
+    func getScriptures(chapterId:String, chapterNumber:Int16, _ completionHandler: @escaping (_ result: [Scripture]?, _ error: NSError?) -> Void) {
+        
+        let urlString = "https://bibles.org/v2/chapters/\(chapterId).\(chapterNumber)/verses.js"
+        
+        let username = Constants.APIKey
+        let password = "pass"
+        let loginString = String(format: "%@:%@", username, password)
+        let loginData = loginString.data(using: String.Encoding.utf8)!
+        let base64LoginString = loginData.base64EncodedString()
+        
+        let task = taskForGETMethod(urlString, base64LoginString) { (parsedResult, error) in
+            
+            // display error
+            func displayError(_ error: String) {
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandler(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+            }
+            
+            
+            completionHandler(nil, nil)
             
         }
         
@@ -103,7 +159,7 @@ class BiblesClient: NSObject {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+                sendError("There was an error with your request: \(String(describing: error))")
                 return
             }
             

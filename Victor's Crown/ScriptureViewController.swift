@@ -12,13 +12,31 @@ class ScriptureViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     private let reuseIdentifier = "ScriptureCell"
+
     var selectedBook:Book!
-    
+    var selectedChapter:Chapter!
+    //var verses:[Scripture] = [Scripture]()
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(false)
+        print("*** selectedChapter ***: \(selectedChapter)")
+//        BiblesClient.sharedInstance.getScriptures(chapterId: selectedBook.id!, chapterNumber: selectedChapter.number) { (results, error) in
+//            if let results = results {
+//                performUIUpdatesOnMain {
+//                    print(results)
+//                }
+//                
+//            } else {
+//                performUIUpdatesOnMain {
+//                    self.displayAlert(title: "Error", message: "There was an error.")
+//                    print(error)
+//                }
+//                
+//            }
+//        }
     }
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -30,12 +48,12 @@ class ScriptureViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        return BiblesClient.sharedInstance.bible.count
+        return DataModel.bible.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return BiblesClient.sharedInstance.bible.count
+        return DataModel.scripture.count
     }
 
     

@@ -23,14 +23,12 @@ class BibleRootViewController: UIViewController, UINavigationControllerDelegate 
         chapterNavigationButton()
         BiblesClient.sharedInstance.getBookList() { (books, error) in
             if let books = books {
-                //print(books)
                 print("books data returned!")
-                
             }else{
                 performUIUpdatesOnMain {
                     self.displayAlert(title: "Invalid Link", message: "There was an error.")
+                    print(error)
                 }
-                print(error)
             }
         }
         

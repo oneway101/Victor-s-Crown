@@ -256,12 +256,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="U6W-mL-PPi" kind="show" identifier="ScriptureViewSegue" id="6o9-cp-JbE"/>
+                        <segue destination="aFP-mS-Joi" kind="presentation" identifier="ChapterListSegue" id="U0Q-g0-bCX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lq2-RE-e0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-546.39999999999998" y="1692.5037481259371"/>
+            <point key="canvasLocation" x="-442" y="1730"/>
         </scene>
         <!--Book Chapter List View Controller-->
         <scene sceneID="MeH-fj-YOE">
@@ -337,11 +337,12 @@
                     <connections>
                         <outlet property="bibleCollectionView" destination="Ams-AN-TH3" id="xPa-eq-NAw"/>
                         <outlet property="flowLayout" destination="sVn-v0-p5h" id="m06-xa-IC8"/>
+                        <segue destination="U6W-mL-PPi" kind="show" identifier="ScriptureViewSegue" id="Ttb-yZ-Rtj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLM-go-W75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="1693"/>
+            <point key="canvasLocation" x="334" y="1731"/>
         </scene>
         <!--Scripture View Controller-->
         <scene sceneID="SeS-bR-HEQ">
@@ -367,8 +368,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-iB-5sg">
-                                                    <rect key="frame" x="8" y="8" width="30" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-iB-5sg">
+                                                    <rect key="frame" x="8" y="8" width="28.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -406,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbY-GG-MGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="1693"/>
+            <point key="canvasLocation" x="1138" y="1730"/>
         </scene>
         <!--Bible Root View Controller-->
         <scene sceneID="lUZ-Tm-vx2">
@@ -424,7 +425,6 @@
                     <navigationItem key="navigationItem" id="317-dt-lVr"/>
                     <connections>
                         <outlet property="navigationItem" destination="317-dt-lVr" id="Q9e-h6-WrC"/>
-                        <segue destination="aFP-mS-Joi" kind="presentation" identifier="ChapterList" id="JWX-Jq-3xt"/>
                         <segue destination="oAr-Wi-wNm" kind="show" identifier="BookList" action="showDetailViewController:sender:" id="OEV-lp-2up"/>
                     </connections>
                 </viewController>

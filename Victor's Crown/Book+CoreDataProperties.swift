@@ -2,7 +2,7 @@
 //  Book+CoreDataProperties.swift
 //  Victor's Crown
 //
-//  Created by Ha Na Gill on 6/13/17.
+//  Created by Ha Na Gill on 6/15/17.
 //  Copyright © 2017 cosmostream. All rights reserved.
 //
 
@@ -16,6 +16,26 @@ extension Book {
         return NSFetchRequest<Book>(entityName: "Book")
     }
 
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
+    @NSManaged public var numOfChapters: Int16
+    @NSManaged public var chapters: NSSet?
+
+}
+
+// MARK: Generated accessors for chapters
+extension Book {
+
+    @objc(addChaptersObject:)
+    @NSManaged public func addToChapters(_ value: Chapter)
+
+    @objc(removeChaptersObject:)
+    @NSManaged public func removeFromChapters(_ value: Chapter)
+
+    @objc(addChapters:)
+    @NSManaged public func addToChapters(_ values: NSSet)
+
+    @objc(removeChapters:)
+    @NSManaged public func removeFromChapters(_ values: NSSet)
 
 }

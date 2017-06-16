@@ -14,6 +14,14 @@
 		847527A71EDF9F46009D9D39 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847527A61EDF9F46009D9D39 /* CoreDataStack.swift */; };
 		847563DA1EE73AD700C7949E /* BiblesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847563D91EE73AD700C7949E /* BiblesClient.swift */; };
 		847563DC1EE73B6D00C7949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847563DB1EE73B6D00C7949E /* Constants.swift */; };
+		84758FCC1EF345F7009C08B6 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FC41EF345F7009C08B6 /* Note+CoreDataClass.swift */; };
+		84758FCD1EF345F7009C08B6 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FC51EF345F7009C08B6 /* Note+CoreDataProperties.swift */; };
+		84758FCE1EF345F7009C08B6 /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FC61EF345F7009C08B6 /* Book+CoreDataClass.swift */; };
+		84758FCF1EF345F7009C08B6 /* Book+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FC71EF345F7009C08B6 /* Book+CoreDataProperties.swift */; };
+		84758FD01EF345F7009C08B6 /* Scripture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FC81EF345F7009C08B6 /* Scripture+CoreDataClass.swift */; };
+		84758FD11EF345F7009C08B6 /* Scripture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FC91EF345F7009C08B6 /* Scripture+CoreDataProperties.swift */; };
+		84758FD21EF345F7009C08B6 /* Chapter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FCA1EF345F7009C08B6 /* Chapter+CoreDataClass.swift */; };
+		84758FD31EF345F7009C08B6 /* Chapter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84758FCB1EF345F7009C08B6 /* Chapter+CoreDataProperties.swift */; };
 		84770EB01EEAFD8000350216 /* BookNameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */; };
 		84770EB51EEB041F00350216 /* BookNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84770EB41EEB041F00350216 /* BookNameCell.swift */; };
 		847832781ED5EAAB00056370 /* BookChapterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847832771ED5EAAB00056370 /* BookChapterListViewController.swift */; };
@@ -30,12 +38,6 @@
 		8490DF3F1ECF915300C78173 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8490DF3E1ECF915300C78173 /* Assets.xcassets */; };
 		8490DF421ECF915300C78173 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8490DF401ECF915300C78173 /* LaunchScreen.storyboard */; };
 		84E52AD51ED3BB4E00861AD1 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E52AD41ED3BB4E00861AD1 /* TimerViewController.swift */; };
-		84FC518B1EF08AF300D98989 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC51851EF08AF300D98989 /* Note+CoreDataClass.swift */; };
-		84FC518C1EF08AF300D98989 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC51861EF08AF300D98989 /* Note+CoreDataProperties.swift */; };
-		84FC518D1EF08AF300D98989 /* Scripture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC51871EF08AF300D98989 /* Scripture+CoreDataClass.swift */; };
-		84FC518E1EF08AF300D98989 /* Scripture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC51881EF08AF300D98989 /* Scripture+CoreDataProperties.swift */; };
-		84FC518F1EF08AF300D98989 /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC51891EF08AF300D98989 /* Book+CoreDataClass.swift */; };
-		84FC51901EF08AF300D98989 /* Book+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC518A1EF08AF300D98989 /* Book+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,14 @@
 		847527A61EDF9F46009D9D39 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		847563D91EE73AD700C7949E /* BiblesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BiblesClient.swift; path = "Victor's Crown/BiblesClient.swift"; sourceTree = "<group>"; };
 		847563DB1EE73B6D00C7949E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Victor's Crown/Constants.swift"; sourceTree = "<group>"; };
+		84758FC41EF345F7009C08B6 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "Victor's Crown/Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84758FC51EF345F7009C08B6 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "Victor's Crown/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		84758FC61EF345F7009C08B6 /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Book+CoreDataClass.swift"; path = "Victor's Crown/Book+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84758FC71EF345F7009C08B6 /* Book+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Book+CoreDataProperties.swift"; path = "Victor's Crown/Book+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		84758FC81EF345F7009C08B6 /* Scripture+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scripture+CoreDataClass.swift"; path = "Victor's Crown/Scripture+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84758FC91EF345F7009C08B6 /* Scripture+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scripture+CoreDataProperties.swift"; path = "Victor's Crown/Scripture+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		84758FCA1EF345F7009C08B6 /* Chapter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Chapter+CoreDataClass.swift"; path = "Victor's Crown/Chapter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84758FCB1EF345F7009C08B6 /* Chapter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Chapter+CoreDataProperties.swift"; path = "Victor's Crown/Chapter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookNameListViewController.swift; sourceTree = "<group>"; };
 		84770EB41EEB041F00350216 /* BookNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookNameCell.swift; sourceTree = "<group>"; };
 		847832771ED5EAAB00056370 /* BookChapterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookChapterListViewController.swift; sourceTree = "<group>"; };
@@ -64,12 +74,6 @@
 		8490DF411ECF915300C78173 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8490DF431ECF915300C78173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E52AD41ED3BB4E00861AD1 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		84FC51851EF08AF300D98989 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "Victor's Crown/Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		84FC51861EF08AF300D98989 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "Victor's Crown/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		84FC51871EF08AF300D98989 /* Scripture+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scripture+CoreDataClass.swift"; path = "Victor's Crown/Scripture+CoreDataClass.swift"; sourceTree = "<group>"; };
-		84FC51881EF08AF300D98989 /* Scripture+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scripture+CoreDataProperties.swift"; path = "Victor's Crown/Scripture+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		84FC51891EF08AF300D98989 /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Book+CoreDataClass.swift"; path = "Victor's Crown/Book+CoreDataClass.swift"; sourceTree = "<group>"; };
-		84FC518A1EF08AF300D98989 /* Book+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Book+CoreDataProperties.swift"; path = "Victor's Crown/Book+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +104,12 @@
 			isa = PBXGroup;
 			children = (
 				847527A41EDF23D3009D9D39 /* BibleRootViewController.swift */,
-				847215CF1EED975B00134BC5 /* ScriptureViewController.swift */,
-				847215D11EED979B00134BC5 /* ScriptureCell.swift */,
 				84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */,
 				84770EB41EEB041F00350216 /* BookNameCell.swift */,
 				847832771ED5EAAB00056370 /* BookChapterListViewController.swift */,
 				846F34E11EDDDF4300B8063E /* BookChapterCell.swift */,
+				847215CF1EED975B00134BC5 /* ScriptureViewController.swift */,
+				847215D11EED979B00134BC5 /* ScriptureCell.swift */,
 			);
 			name = Bible;
 			sourceTree = "<group>";
@@ -143,12 +147,14 @@
 		8479302B1EE1C3D800F02B5D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				84FC51851EF08AF300D98989 /* Note+CoreDataClass.swift */,
-				84FC51861EF08AF300D98989 /* Note+CoreDataProperties.swift */,
-				84FC51871EF08AF300D98989 /* Scripture+CoreDataClass.swift */,
-				84FC51881EF08AF300D98989 /* Scripture+CoreDataProperties.swift */,
-				84FC51891EF08AF300D98989 /* Book+CoreDataClass.swift */,
-				84FC518A1EF08AF300D98989 /* Book+CoreDataProperties.swift */,
+				84758FC41EF345F7009C08B6 /* Note+CoreDataClass.swift */,
+				84758FC51EF345F7009C08B6 /* Note+CoreDataProperties.swift */,
+				84758FC61EF345F7009C08B6 /* Book+CoreDataClass.swift */,
+				84758FC71EF345F7009C08B6 /* Book+CoreDataProperties.swift */,
+				84758FC81EF345F7009C08B6 /* Scripture+CoreDataClass.swift */,
+				84758FC91EF345F7009C08B6 /* Scripture+CoreDataProperties.swift */,
+				84758FCA1EF345F7009C08B6 /* Chapter+CoreDataClass.swift */,
+				84758FCB1EF345F7009C08B6 /* Chapter+CoreDataProperties.swift */,
 				8490DF341ECF915300C78173 /* AppDelegate.swift */,
 				847A321E1EE892C600ABBA32 /* GCDBlackBox.swift */,
 				847563D91EE73AD700C7949E /* BiblesClient.swift */,
@@ -258,28 +264,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84758FD21EF345F7009C08B6 /* Chapter+CoreDataClass.swift in Sources */,
 				8490DF371ECF915300C78173 /* MainTabBarController.swift in Sources */,
+				84758FD31EF345F7009C08B6 /* Chapter+CoreDataProperties.swift in Sources */,
 				8479305C1EE20E5F00F02B5D /* Helpers.swift in Sources */,
 				84770EB01EEAFD8000350216 /* BookNameListViewController.swift in Sources */,
 				847563DA1EE73AD700C7949E /* BiblesClient.swift in Sources */,
 				84E52AD51ED3BB4E00861AD1 /* TimerViewController.swift in Sources */,
-				84FC518E1EF08AF300D98989 /* Scripture+CoreDataProperties.swift in Sources */,
 				847A322B1EE89F1F00ABBA32 /* DataModel.swift in Sources */,
 				847215D21EED979B00134BC5 /* ScriptureCell.swift in Sources */,
 				8478327A1ED5EAB900056370 /* SettingsViewController.swift in Sources */,
 				847A321F1EE892C600ABBA32 /* GCDBlackBox.swift in Sources */,
 				84770EB51EEB041F00350216 /* BookNameCell.swift in Sources */,
 				8490DF351ECF915300C78173 /* AppDelegate.swift in Sources */,
-				84FC518C1EF08AF300D98989 /* Note+CoreDataProperties.swift in Sources */,
+				84758FCD1EF345F7009C08B6 /* Note+CoreDataProperties.swift in Sources */,
 				847563DC1EE73B6D00C7949E /* Constants.swift in Sources */,
-				84FC51901EF08AF300D98989 /* Book+CoreDataProperties.swift in Sources */,
 				847215D01EED975B00134BC5 /* ScriptureViewController.swift in Sources */,
-				84FC518D1EF08AF300D98989 /* Scripture+CoreDataClass.swift in Sources */,
+				84758FCF1EF345F7009C08B6 /* Book+CoreDataProperties.swift in Sources */,
+				84758FCE1EF345F7009C08B6 /* Book+CoreDataClass.swift in Sources */,
 				847832821ED7813B00056370 /* ProfileTableViewCell.swift in Sources */,
+				84758FD11EF345F7009C08B6 /* Scripture+CoreDataProperties.swift in Sources */,
 				847930461EE2029F00F02B5D /* Victor_s_Crown.xcdatamodeld in Sources */,
-				84FC518B1EF08AF300D98989 /* Note+CoreDataClass.swift in Sources */,
+				84758FCC1EF345F7009C08B6 /* Note+CoreDataClass.swift in Sources */,
 				846F34E21EDDDF4300B8063E /* BookChapterCell.swift in Sources */,
-				84FC518F1EF08AF300D98989 /* Book+CoreDataClass.swift in Sources */,
+				84758FD01EF345F7009C08B6 /* Scripture+CoreDataClass.swift in Sources */,
 				847527A71EDF9F46009D9D39 /* CoreDataStack.swift in Sources */,
 				847832801ED7811F00056370 /* ProfileTableViewController.swift in Sources */,
 				847832781ED5EAAB00056370 /* BookChapterListViewController.swift in Sources */,

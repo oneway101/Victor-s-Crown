@@ -30,30 +30,20 @@ extension BiblesClient {
         static let Books = "books"
         static let Chapters = "chapters"
         static let Path = "path"
-        static let Id = "id"
     }
     
-    // MARK: Bibles API Parameter Values
-    struct BiblesParameterValues {
+    // MARK: Bibles API Response Keys
+    struct ResponseKeys {
         static let Response = "response"
         static let Books = "books"
-        static let Book = "book"
         static let Chapters = "chapters"
+        static let Chapter = "chapter"
         static let Name = "name"
+        static let Id = "id"
         static let Search = "search"
         static let Result = "result"
         static let Passages = "passages"
         static let Text = "text"
-    }
-    
-    // MARK: Bibles API Response Keys
-    struct BiblesResponseKeys {
-        static let Status = "stat"
-    }
-    
-    // MARK: Bibles API Response Values
-    struct BiblesResponseValues {
-        static let OKStatus = "ok"
     }
     
     
