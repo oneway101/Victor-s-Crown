@@ -38,12 +38,14 @@ extension BiblesClient {
         static let Books = "books"
         static let Chapters = "chapters"
         static let Chapter = "chapter"
+        static let Verses = "verses"
+        static let Verse = "verse"
         static let Name = "name"
         static let Id = "id"
+        static let Text = "text"
         static let Search = "search"
         static let Result = "result"
         static let Passages = "passages"
-        static let Text = "text"
     }
     
     

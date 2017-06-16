@@ -73,6 +73,7 @@ class BiblesClient: NSObject {
                     book.id = bookId
                     book.numOfChapters = Int16(chapters.count)
                     DataModel.bible.append(book)
+                    CoreDataStack.saveContext()
                     //Q: When to assign chapters for each book for chapters?
                 }
                 
@@ -93,6 +94,7 @@ class BiblesClient: NSObject {
                         chapter.number = chapterNumber as? String
                         chapter.id = chapterId
                         DataModel.chapters.append(chapter)
+                        CoreDataStack.saveContext()
                         //Q: When to add related book for chapters?
                     }
                     
@@ -100,7 +102,7 @@ class BiblesClient: NSObject {
                 
             }
             //Q: Should I save context on main?
-            CoreDataStack.saveContext()
+            //CoreDataStack.saveContext()
             completionHandler(DataModel.bible, nil)
             
         }
@@ -109,9 +111,9 @@ class BiblesClient: NSObject {
         task.resume()
     }
     
-    func getScriptures(chapterId:String, chapterNumber:Int16, _ completionHandler: @escaping (_ result: [Scripture]?, _ error: NSError?) -> Void) {
+    func getScriptures(selectedChapter:Chapter, chapterId:String, _ completionHandler: @escaping (_ result: [Scripture]?, _ error: NSError?) -> Void) {
         
-        let urlString = "https://bibles.org/v2/chapters/\(chapterId).\(chapterNumber)/verses.js"
+        let urlString = "https://bibles.org/v2/chapters/\(chapterId)/verses.js"
         
         let username = Constants.APIKey
         let password = "pass"
@@ -127,8 +129,44 @@ class BiblesClient: NSObject {
                 completionHandler(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
             
+            /* GUARD: Is the "response" key in our result? */
+            guard let response = parsedResult?[ResponseKeys.Response] as? [String:AnyObject] else {
+                displayError("Cannot find key '\(ResponseKeys.Response)' in \(String(describing: parsedResult))")
+                return
+            }
             
-            completionHandler(nil, nil)
+            /* GUARD: Is the "verses" key in our response? */
+            guard let verses = response[ResponseKeys.Verses] as? [[String:AnyObject]] else {
+                displayError("Cannot find key '\(ResponseKeys.Verses)' in \(response)")
+                return
+            }
+            
+            for verseObj in verses {
+            
+                guard let verseText = response[ResponseKeys.Text] as? String else {
+                    displayError("Cannot find key '\(ResponseKeys.Text)' in \(verseObj)")
+                    return
+                }
+                
+                guard let verseNumber = response[ResponseKeys.Verse] as? String else {
+                    displayError("Cannot find key '\(ResponseKeys.Verse)' in \(verseObj)")
+                    return
+                }
+                
+                /* Save Chapter object to core data */
+                performUIUpdatesOnMain {
+                    let context = CoreDataStack.getContext()
+                    let scripture:Scripture = NSEntityDescription.insertNewObject(forEntityName: "Scripture", into: context ) as! Scripture
+                    scripture.verseText = String(verseText)
+                    scripture.verseNumber = String(verseNumber)
+                    scripture.chapter = selectedChapter
+                    DataModel.scripture.append(scripture)
+                    CoreDataStack.saveContext()
+                }
+            }
+            
+            
+            completionHandler(DataModel.scripture, nil)
             
         }
         

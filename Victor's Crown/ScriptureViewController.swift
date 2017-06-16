@@ -20,20 +20,20 @@ class ScriptureViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         print("*** selectedChapter ***: \(selectedChapter)")
-//        BiblesClient.sharedInstance.getScriptures(chapterId: selectedBook.id!, chapterNumber: selectedChapter.number) { (results, error) in
-//            if let results = results {
-//                performUIUpdatesOnMain {
-//                    print(results)
-//                }
-//                
-//            } else {
-//                performUIUpdatesOnMain {
-//                    self.displayAlert(title: "Error", message: "There was an error.")
-//                    print(error)
-//                }
-//                
-//            }
-//        }
+        BiblesClient.sharedInstance.getScriptures(selectedChapter: selectedChapter, chapterId: selectedChapter.id!) { (success, error) in
+            if let success = success {
+                performUIUpdatesOnMain {
+                    print(success)
+                }
+                
+            } else {
+                performUIUpdatesOnMain {
+                    self.displayAlert(title: "Error", message: "There was an error.")
+                    print(error)
+                }
+                
+            }
+        }
     }
     
     
