@@ -74,35 +74,30 @@ class BiblesClient: NSObject {
                     book.numOfChapters = Int16(chapters.count)
                     DataModel.bible.append(book)
                     CoreDataStack.saveContext()
-                    //Q: When to assign chapters for each book for chapters?
-                }
                 
-                for chapterObj in chapters {
-                    guard let chapterNumber = chapterObj[ResponseKeys.Chapter] as? AnyObject else {
-                        displayError("Cannot find key '\(ResponseKeys.Chapter)' in \(chapterObj)")
-                        return
-                    }
-                    guard let chapterId = chapterObj[ResponseKeys.Id] as? String else {
-                        displayError("Cannot find key '\(ResponseKeys.Id)' in \(chapterObj)")
-                        return
-                    }
-                    
-                    /* Save Chapter object to core data */
-                    performUIUpdatesOnMain {
+                    for chapterObj in chapters {
+                        guard let chapterNumber = chapterObj[ResponseKeys.Chapter] as? String else {
+                            displayError("Cannot find key '\(ResponseKeys.Chapter)' in \(chapterObj)")
+                            return
+                        }
+                        guard let chapterId = chapterObj[ResponseKeys.Id] as? String else {
+                            displayError("Cannot find key '\(ResponseKeys.Id)' in \(chapterObj)")
+                            return
+                        }
+                        
+                        /* Save Chapter object to core data */
                         let context = CoreDataStack.getContext()
                         let chapter:Chapter = NSEntityDescription.insertNewObject(forEntityName: "Chapter", into: context ) as! Chapter
-                        chapter.number = chapterNumber as? String
+                        chapter.number = chapterNumber
                         chapter.id = chapterId
+                        chapter.book = book
                         DataModel.chapters.append(chapter)
                         CoreDataStack.saveContext()
-                        //Q: When to add related book for chapters?
                     }
                     
                 }
                 
             }
-            //Q: Should I save context on main?
-            //CoreDataStack.saveContext()
             completionHandler(DataModel.bible, nil)
             
         }
@@ -111,7 +106,7 @@ class BiblesClient: NSObject {
         task.resume()
     }
     
-    func getScriptures(selectedChapter:Chapter, chapterId:String, _ completionHandler: @escaping (_ result: [Scripture]?, _ error: NSError?) -> Void) {
+    func getScriptures(_ selectedChapter:Chapter, _ chapterId:String, _ completionHandler: @escaping (_ result: [Scripture]?, _ error: NSError?) -> Void) {
         
         let urlString = "https://bibles.org/v2/chapters/\(chapterId)/verses.js"
         
@@ -142,13 +137,13 @@ class BiblesClient: NSObject {
             }
             
             for verseObj in verses {
-            
-                guard let verseText = response[ResponseKeys.Text] as? String else {
+                
+                guard let verseText = verseObj[ResponseKeys.Text] as? String else {
                     displayError("Cannot find key '\(ResponseKeys.Text)' in \(verseObj)")
                     return
                 }
                 
-                guard let verseNumber = response[ResponseKeys.Verse] as? String else {
+                guard let verseNumber = verseObj[ResponseKeys.Verse] as? String else {
                     displayError("Cannot find key '\(ResponseKeys.Verse)' in \(verseObj)")
                     return
                 }
@@ -157,14 +152,13 @@ class BiblesClient: NSObject {
                 performUIUpdatesOnMain {
                     let context = CoreDataStack.getContext()
                     let scripture:Scripture = NSEntityDescription.insertNewObject(forEntityName: "Scripture", into: context ) as! Scripture
-                    scripture.verseText = String(verseText)
-                    scripture.verseNumber = String(verseNumber)
+                    scripture.verseText = verseText
+                    scripture.verseNumber = verseNumber
                     scripture.chapter = selectedChapter
                     DataModel.scripture.append(scripture)
                     CoreDataStack.saveContext()
                 }
             }
-            
             
             completionHandler(DataModel.scripture, nil)
             

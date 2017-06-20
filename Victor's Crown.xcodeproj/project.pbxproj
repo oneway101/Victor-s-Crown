@@ -104,11 +104,11 @@
 			isa = PBXGroup;
 			children = (
 				847527A41EDF23D3009D9D39 /* BibleRootViewController.swift */,
-				84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */,
-				84770EB41EEB041F00350216 /* BookNameCell.swift */,
-				847832771ED5EAAB00056370 /* BookChapterListViewController.swift */,
-				846F34E11EDDDF4300B8063E /* BookChapterCell.swift */,
 				847215CF1EED975B00134BC5 /* ScriptureViewController.swift */,
+				84770EAF1EEAFD8000350216 /* BookNameListViewController.swift */,
+				847832771ED5EAAB00056370 /* BookChapterListViewController.swift */,
+				84770EB41EEB041F00350216 /* BookNameCell.swift */,
+				846F34E11EDDDF4300B8063E /* BookChapterCell.swift */,
 				847215D11EED979B00134BC5 /* ScriptureCell.swift */,
 			);
 			name = Bible;

@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 private let reuseIdentifier = "BookChapterCell"
-private let segueIdentifier = "ScriptureViewSegue"
 
 class BookChapterListViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -19,6 +18,7 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
 
     var selectedBook:Book!
     var numberOfChapters:Int16!
+    var selectedBookChapters:[Chapter] = []
     
     override func viewWillAppear(_ animated: Bool) {
     
@@ -31,48 +31,43 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         bibleCollectionView.dataSource = self
 
         // MARK: Set spacing between chapters
-        //let space: CGFloat = 1.5
         let viewWidth = self.view.frame.width
         let dimension: CGFloat = (viewWidth-20)/5
-        
-        //flowLayout.minimumInteritemSpacing = space
-        //flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        
+        //Q: Should I use the fetch request to sort chapters of the selected book?
+        // What would be the better way to sort the chapters array?
+        selectedBookChapters = (selectedBook.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
+        
     }
 
     
     // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DataModel.chapters.count
+        return Int(selectedBook.numOfChapters)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookChapterCell
-        
-        //Q: Getting chapters dictionary from selectedBook?
-        let chapter = DataModel.chapters[(indexPath as NSIndexPath).row]
-        
+
+        let chapter = selectedBookChapters[(indexPath as NSIndexPath).row]
         cell.bookChapterLabel.text = chapter.number
-//        for index in 1...numberOfChapters  {
-//            cell.bookChapterLabel.text! = "\(index)"
-//        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath) as! BookChapterCell
-        print("*** selectedCell ***: \(selectedCell)")
-        let selectedChapter = DataModel.chapters[indexPath.row]
+        let selectedChapter = selectedBookChapters[(indexPath as NSIndexPath).row]
         
-        performSegue(withIdentifier: segueIdentifier, sender: selectedChapter)
+        performSegue(withIdentifier: "unwindToScriptureView", sender: selectedChapter)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdentifier {
+        if segue.identifier == "unwindToScriptureView" {
             let controller = segue.destination as! ScriptureViewController
             let selectedChapter = sender as! Chapter
             controller.selectedChapter = selectedChapter

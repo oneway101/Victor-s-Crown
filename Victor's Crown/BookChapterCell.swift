@@ -11,6 +11,6 @@ import UIKit
 class BookChapterCell: UICollectionViewCell {
     
     @IBOutlet weak var bookChapterLabel: UILabel!
-    //Q: Should chapterNumber be initialized with nil? ex) chapterNumber:Int = nil
+    //Q: Should each cell save information of book chapters?
     //let chapterNumber:Int?
 }

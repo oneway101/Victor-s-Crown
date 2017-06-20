@@ -10,12 +10,12 @@ import Foundation
 import CoreData
 
 class DataModel:NSObject {
-    //Q: Do I need shared instance for the DataModel?
-    static let sharedInstance = DataModel()
     
-    static var notes:[Note] = [Note]()
-    static var bible:[Book] = [Book]()
-    static var chapters:[Chapter] = [Chapter]()
-    static var scripture:[Scripture] = [Scripture]()
+    static var notes = [Note]()
+    static var bible = [Book]()
+    static var chapters = [Chapter]()
+    static var scripture = [Scripture]()
+    
+    //static var selectedChapter:Chapter
     
 }

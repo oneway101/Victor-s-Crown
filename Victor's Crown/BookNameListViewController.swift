@@ -15,13 +15,22 @@ class BookNameListController: UITableViewController {
     private let reuseIdentifier = "BookNameCell"
     private let segueIdentifier = "ChapterListSegue"
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        BiblesClient.sharedInstance.getBookList() { (books, error) in
+            if let books = books {
+                print("books data returned!")
+            }else{
+                performUIUpdatesOnMain {
+                    self.displayAlert(title: "Invalid Link", message: "There was an error.")
+                    print(error)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -41,7 +50,7 @@ class BookNameListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedBook = DataModel.bible[(indexPath as NSIndexPath).row]
-        print("*** selectedBook *** \(selectedBook)")
+        print("*** selectedBook *** \(selectedBook.name!)")
         self.performSegue(withIdentifier: segueIdentifier, sender: selectedBook)
     }
 
