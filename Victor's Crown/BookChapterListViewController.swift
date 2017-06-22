@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 private let reuseIdentifier = "BookChapterCell"
+//private let segueIdentifier = "ScriptureViewSegue"
+private let segueIdentifier = "unWindToScriptureView"
 
 class BookChapterListViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -19,10 +21,6 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
     var selectedBook:Book!
     var numberOfChapters:Int16!
     var selectedBookChapters:[Chapter] = []
-    
-    override func viewWillAppear(_ animated: Bool) {
-    
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,13 +59,15 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath) as! BookChapterCell
         let selectedChapter = selectedBookChapters[(indexPath as NSIndexPath).row]
+        DataModel.selectedChapter = selectedChapter
+        print("You've selected Chapter \(selectedChapter.number)")
+        //performSegue(withIdentifier: segueIdentifier, sender: selectedChapter)
         
-        performSegue(withIdentifier: "unwindToScriptureView", sender: selectedChapter)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindToScriptureView" {
+        if segue.identifier == segueIdentifier {
             let controller = segue.destination as! ScriptureViewController
             let selectedChapter = sender as! Chapter
             controller.selectedChapter = selectedChapter

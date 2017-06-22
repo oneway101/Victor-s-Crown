@@ -47,4 +47,75 @@ extension UIViewController {
 
     }
     
+    func bookFetchRequest(bookName:String){
+        
+        //MARK: Get Books from Core Data
+        let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "name = %@", bookName)
+        let context = CoreDataStack.getContext()
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultsController.performFetch()
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
+        if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
+            DataModel.bible = data
+        } else {
+            print("No matching data returned from the chapter request")
+        }
+        
+    }
+    
+    func scriptureFetchRequest(chapterId:String){
+        
+        //MARK: Get Chapters from Core Data
+        let fetchRequest:NSFetchRequest<Chapter> = Chapter.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "id = %@", chapterId)
+        let context = CoreDataStack.getContext()
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultsController.performFetch()
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
+        if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
+            
+            //Q:How to only select or get only one chapter?
+            let selectedChapter = data[0]
+            
+            BiblesClient.sharedInstance.getScriptures(selectedChapter, selectedChapter.id!) { (result, error) in
+                
+                if let result = result {
+                    
+                    DataModel.scripture = result
+                    
+                } else {
+                    performUIUpdatesOnMain {
+                        self.displayAlert(title: "Error", message: "There was an error.")
+                        print(error)
+                    }
+                }
+            } // getScripture
+            
+        } else {
+            print("No Data returned from the scripture request")
+        }
+        
+    }
+    
+    
+    
 }

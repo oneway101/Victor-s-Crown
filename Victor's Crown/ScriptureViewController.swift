@@ -18,49 +18,59 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var tableView: UITableView!
     private let reuseIdentifier = "ScriptureCell"
     
-    var selectedBook:Book!
+    //var selectedBook:Book!
     var selectedChapter:Chapter!
     var scriptures:[Scripture] = []
+    var scriptureLoaded = false
     
-    @IBAction func unwindToScriptureView(segue:UIStoryboardSegue) { }
+    @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) { }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        if selectedChapter != nil {
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if DataModel.bible.count == nil {
             
-            BiblesClient.sharedInstance.getScriptures(selectedChapter, selectedChapter.id!) { (success, error) in
-                if let result = success {
-                    self.scriptures = result
+            //Mark: if Books doesn't exist in Core Data GET from the network
+            BiblesClient.sharedInstance.getBookList() { (result, error) in
+                if let books = result {
+                    DataModel.bible = books
+                    print("bible book list returned!")
+                }else{
                     performUIUpdatesOnMain {
-                        print(self.scriptures)
-                    }
-                    
-                } else {
-                    performUIUpdatesOnMain {
-                        self.displayAlert(title: "Error", message: "There was an error.")
+                        self.displayAlert(title: "Invalid Link", message: "There was an error.")
                         print(error)
                     }
                 }
             }
             
-            print("You've seleted \(String(describing: selectedBook.name)) Chapter \(String(describing: selectedChapter.number))")
-            print("Chapter Id: \(selectedChapter.id!)")
-            
-            
-        } else {
-            
-            performSegue(withIdentifier: "BookListSegue", sender: self)
         }
-
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+            
+        //Get Data to display
+        if let bookName = DataModel.selectedBook?.name {
+            print("selected book: \(bookName)")
+            bookFetchRequest(bookName: bookName)
+        } else {
+            bookFetchRequest(bookName: "Genesis")
+        }
         
+        if let selectedChapterId = DataModel.selectedChapter?.id {
+            print("selected chapter: \(selectedChapterId)")
+            scriptureFetchRequest(chapterId: selectedChapterId)
+        } else {
+            scriptureFetchRequest(chapterId: "eng-KJV:Gen.1")
+        }
+        
+        scriptureLoaded = true
+        
+        // Set delegates
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Set navigtaion buttons
         bookNavigationButton()
         chapterNavigationButton()
         
@@ -74,13 +84,20 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return DataModel.scripture.count
+        //let numberOfVerses = DataModel.selectedChapter?.verses?.count
+        //print("number of verses: \(numberOfVerses!)")
+        return 100
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScriptureCell
+        
+        //Q: filtering verses??
+        let verse = scriptures[(indexPath as NSIndexPath).row]
+        
+        cell.verseNumberLabel.text = verse.verseNumber
+        cell.verseTextView.text = verse.verseText
         
         return cell
     }
@@ -97,8 +114,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     func chapterNavigationButton(){
         
         //Mark: Create a chapter list navigation
-        if selectedChapter != nil {
-            chapterNavButton.setTitle(selectedBook.name!, for: .normal)
+        if scriptureLoaded {
+            chapterNavButton.setTitle(DataModel.selectedBook?.name, for: .normal)
         } else {
             chapterNavButton.setTitle("No Book", for: .normal)
         }

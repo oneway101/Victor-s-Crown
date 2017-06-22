@@ -405,7 +405,7 @@
                         <outlet property="tableView" destination="xZj-wk-OzX" id="9MG-1I-VZB"/>
                         <segue destination="oAr-Wi-wNm" kind="show" identifier="BookListSegue" id="XzE-Nt-ekB"/>
                         <segue destination="aFP-mS-Joi" kind="presentation" identifier="ChapterListSegue" id="DfV-sa-4ck"/>
-                        <segue destination="3E5-Xp-0gC" kind="unwind" identifier="unwindToScriptureView" unwindAction="unwindToScriptureViewWithSegue:" id="JjS-qR-zyN"/>
+                        <segue destination="3E5-Xp-0gC" kind="unwind" identifier="unWindToScriptureView" unwindAction="unWindToScriptureViewWithSegue:" id="0Vl-rC-iav"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbY-GG-MGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,6 +496,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DfV-sa-4ck"/>
+        <segue reference="U0Q-g0-bCX"/>
     </inferredMetricsTieBreakers>
 </document>

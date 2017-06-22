@@ -14,20 +14,6 @@ class BookNameListController: UITableViewController {
 
     private let reuseIdentifier = "BookNameCell"
     private let segueIdentifier = "ChapterListSegue"
-
-    override func viewWillAppear(_ animated: Bool) {
-        
-        BiblesClient.sharedInstance.getBookList() { (books, error) in
-            if let books = books {
-                print("books data returned!")
-            }else{
-                performUIUpdatesOnMain {
-                    self.displayAlert(title: "Invalid Link", message: "There was an error.")
-                    print(error)
-                }
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

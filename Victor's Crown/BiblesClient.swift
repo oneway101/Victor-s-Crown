@@ -136,6 +136,8 @@ class BiblesClient: NSObject {
                 return
             }
             
+            var scriptures:[Scripture] = []
+            
             for verseObj in verses {
                 
                 guard let verseText = verseObj[ResponseKeys.Text] as? String else {
@@ -147,7 +149,7 @@ class BiblesClient: NSObject {
                     displayError("Cannot find key '\(ResponseKeys.Verse)' in \(verseObj)")
                     return
                 }
-                
+                                
                 /* Save Chapter object to core data */
                 performUIUpdatesOnMain {
                     let context = CoreDataStack.getContext()
@@ -155,12 +157,13 @@ class BiblesClient: NSObject {
                     scripture.verseText = verseText
                     scripture.verseNumber = verseNumber
                     scripture.chapter = selectedChapter
-                    DataModel.scripture.append(scripture)
+                    scriptures.append(scripture)
+                    //DataModel.scripture.append(scripture)
                     CoreDataStack.saveContext()
                 }
             }
             
-            completionHandler(DataModel.scripture, nil)
+            completionHandler(scriptures, nil)
             
         }
         
