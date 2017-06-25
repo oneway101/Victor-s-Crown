@@ -19,8 +19,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     private let reuseIdentifier = "ScriptureCell"
     
     //var selectedBook:Book!
-    var selectedChapter:Chapter!
-    var scriptures:[Scripture] = []
+    //var selectedChapter:Chapter!
+    //var scriptures:[Scripture] = []
     var scriptureLoaded = false
     
     @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) { }
@@ -32,39 +32,41 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if DataModel.bible.count == nil {
-            
-            //Mark: if Books doesn't exist in Core Data GET from the network
-            BiblesClient.sharedInstance.getBookList() { (result, error) in
-                if let books = result {
-                    DataModel.bible = books
-                    print("bible book list returned!")
+        //Fetch all Core Data first.
+        loadData()
+        
+        //if books does not exist in Core Data, GET from the book list network request.
+        if DataModel.bookLists.count == 0 {
+            print("Selected Book and Chapter don't exist. Getting the book list from the network...")
+            BiblesClient.sharedInstance.getBookList() { (books, chapters, error) in
+                if let allBooks = books, let allChapters = chapters {
+                    performUIUpdatesOnMain {
+                        DataModel.bookLists = allBooks
+                        print(DataModel.bookLists)
+                        DataModel.chapters = allChapters
+                        print(DataModel.chapters)
+                    }
+                    
+                    print("Bible book list returned!")
                 }else{
                     performUIUpdatesOnMain {
                         self.displayAlert(title: "Invalid Link", message: "There was an error.")
                         print(error)
                     }
                 }
-            }
-            
+            }//getBookList
         }
-            
+        //clearData(entity: "Book")
+        //clearData(entity: "Chapter")
+        //clearData(entity: "Scripture")
+        
+        
         //Get Data to display
-        if let bookName = DataModel.selectedBook?.name {
-            print("selected book: \(bookName)")
-            bookFetchRequest(bookName: bookName)
-        } else {
-            bookFetchRequest(bookName: "Genesis")
-        }
-        
-        if let selectedChapterId = DataModel.selectedChapter?.id {
-            print("selected chapter: \(selectedChapterId)")
-            scriptureFetchRequest(chapterId: selectedChapterId)
-        } else {
-            scriptureFetchRequest(chapterId: "eng-KJV:Gen.1")
-        }
-        
-        scriptureLoaded = true
+        bookFetchRequest(bookName: DataModel.selectedBookName)
+        chapterFetchRequest(chapterId: DataModel.selectedChapterId)
+//        if let chapter = DataModel.selectedChapter, let id = DataModel.selectedChapter?.id {
+//        scriptureFetchRequest(selectedChapter: chapter, chapterId: id)
+//        }
         
         // Set delegates
         tableView.delegate = self
@@ -76,17 +78,17 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         
     }
     
+    
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        return DataModel.bible.count
+        return 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //let numberOfVerses = DataModel.selectedChapter?.verses?.count
-        //print("number of verses: \(numberOfVerses!)")
-        return 100
+        
+        return DataModel.selectedScripture.count
     }
 
     
@@ -94,7 +96,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScriptureCell
         
         //Q: filtering verses??
-        let verse = scriptures[(indexPath as NSIndexPath).row]
+        let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
         
         cell.verseNumberLabel.text = verse.verseNumber
         cell.verseTextView.text = verse.verseText
@@ -114,11 +116,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     func chapterNavigationButton(){
         
         //Mark: Create a chapter list navigation
-        if scriptureLoaded {
-            chapterNavButton.setTitle(DataModel.selectedBook?.name, for: .normal)
-        } else {
-            chapterNavButton.setTitle("No Book", for: .normal)
-        }
+        chapterNavButton.setTitle(DataModel.selectedBookName, for: .normal)
+      
         chapterNavButton.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         chapterNavButton.setTitleColor(UIColor(red: 3/255, green: 121/255, blue: 251/255, alpha: 1.0), for: .normal)
         chapterNavButton.addTarget(self, action: #selector(self.clickOnBookTitle), for: .touchUpInside)

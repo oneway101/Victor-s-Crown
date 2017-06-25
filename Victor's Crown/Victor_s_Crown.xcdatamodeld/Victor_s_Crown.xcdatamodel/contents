@@ -18,6 +18,7 @@
         <attribute name="readingRecord" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Scripture" representedClassName=".Scripture" syncable="YES">
+        <attribute name="chapterId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verseNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verseText" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="chapter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Chapter" inverseName="verses" inverseEntity="Chapter" syncable="YES"/>
@@ -26,6 +27,6 @@
         <element name="Book" positionX="88" positionY="396" width="128" height="105"/>
         <element name="Chapter" positionX="387" positionY="180" width="128" height="105"/>
         <element name="Note" positionX="-90" positionY="9" width="128" height="88"/>
-        <element name="Scripture" positionX="90" positionY="26" width="128" height="90"/>
+        <element name="Scripture" positionX="90" positionY="26" width="128" height="105"/>
     </elements>
 </model>

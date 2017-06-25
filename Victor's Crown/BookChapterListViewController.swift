@@ -18,9 +18,9 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
     @IBOutlet weak var bibleCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
-    var selectedBook:Book!
-    var numberOfChapters:Int16!
-    var selectedBookChapters:[Chapter] = []
+    //var selectedBook:Book!
+    var numberOfChapters:Int!
+    var selectedBookChaptersArray:[Chapter] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,45 +34,43 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
         //Q: Should I use the fetch request to sort chapters of the selected book?
-        // What would be the better way to sort the chapters array?
-        selectedBookChapters = (selectedBook.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
-        
+        //What would be the better way to sort the chapters array?
+        numberOfChapters = Int(DataModel.selectedBook!.numOfChapters)
+        selectedBookChaptersArray = (DataModel.selectedBook?.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
     }
 
     
     // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(selectedBook.numOfChapters)
+        return numberOfChapters
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookChapterCell
-
-        let chapter = selectedBookChapters[(indexPath as NSIndexPath).row]
+        let chapter = selectedBookChaptersArray[(indexPath as NSIndexPath).row]
         cell.bookChapterLabel.text = chapter.number
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath) as! BookChapterCell
-        let selectedChapter = selectedBookChapters[(indexPath as NSIndexPath).row]
+        let selectedChapter = selectedBookChaptersArray[(indexPath as NSIndexPath).row]
         DataModel.selectedChapter = selectedChapter
-        print("You've selected Chapter \(selectedChapter.number)")
+        DataModel.selectedChapterId = selectedChapter.id!
+        print("You've selected Chapter \(selectedChapter.id)")
         //performSegue(withIdentifier: segueIdentifier, sender: selectedChapter)
-        
-        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdentifier {
-            let controller = segue.destination as! ScriptureViewController
-            let selectedChapter = sender as! Chapter
-            controller.selectedChapter = selectedChapter
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == segueIdentifier {
+//            let controller = segue.destination as! ScriptureViewController
+//            let selectedChapter = sender as! Chapter
+//            controller.selectedChapter = selectedChapter
+//        }
+//    }
     
     @IBAction func cancel(){
         dismiss(animated: true, completion: nil)

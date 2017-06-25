@@ -12,11 +12,14 @@ import CoreData
 class DataModel:NSObject {
     
     static var notes = [Note]()
-    static var bible = [Book]()
+    static var bookLists = [Book]()
     static var chapters = [Chapter]()
     static var scripture = [Scripture]()
     
     static var selectedBook:Book?
     static var selectedChapter:Chapter?
+    static var selectedScripture = [Scripture]()
     
+    static var selectedBookName = "Genesis"
+    static var selectedChapterId = "eng-KJV:Gen.1"
 }

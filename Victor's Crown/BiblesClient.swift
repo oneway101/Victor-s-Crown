@@ -16,7 +16,7 @@ class BiblesClient: NSObject {
     
     // MARK: Bibles API
     
-    func getBookList(_ completionHandler: @escaping (_ result: [Book]?, _ error: NSError?) -> Void) {
+    func getBookList(_ completionHandler: @escaping (_ bookResult: [Book]?, _ chapterResult: [Chapter]?, _ error: NSError?) -> Void) {
         let versionID = "eng-KJV"
         let includeChapters = "?include_chapters=true"
         let urlString = "https://bibles.org/v2/versions/\(versionID)/books.js"+includeChapters
@@ -32,7 +32,7 @@ class BiblesClient: NSObject {
             // display error
             func displayError(_ error: String) {
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+                completionHandler(nil, nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
             
             /* GUARD: Is the "response" key in our result? */
@@ -47,7 +47,9 @@ class BiblesClient: NSObject {
                 return
             }
             
-            /* MARK: Finding Book names and number of chapters in books */
+            /* MARK: Find Bible book lists and number of chapters in each book */
+            var bookLists:[Book] = []
+            var allChapters:[Chapter] = []
             
             for book in books {
                 guard let bookName = book[ResponseKeys.Name] as? String else {
@@ -72,9 +74,9 @@ class BiblesClient: NSObject {
                     book.name = bookName
                     book.id = bookId
                     book.numOfChapters = Int16(chapters.count)
-                    DataModel.bible.append(book)
+                    bookLists.append(book)
                     CoreDataStack.saveContext()
-                
+                    
                     for chapterObj in chapters {
                         guard let chapterNumber = chapterObj[ResponseKeys.Chapter] as? String else {
                             displayError("Cannot find key '\(ResponseKeys.Chapter)' in \(chapterObj)")
@@ -91,14 +93,14 @@ class BiblesClient: NSObject {
                         chapter.number = chapterNumber
                         chapter.id = chapterId
                         chapter.book = book
-                        DataModel.chapters.append(chapter)
+                        allChapters.append(chapter)
                         CoreDataStack.saveContext()
                     }
                     
                 }
                 
             }
-            completionHandler(DataModel.bible, nil)
+            completionHandler(bookLists, allChapters, nil)
             
         }
         
@@ -157,6 +159,7 @@ class BiblesClient: NSObject {
                     scripture.verseText = verseText
                     scripture.verseNumber = verseNumber
                     scripture.chapter = selectedChapter
+                    scripture.chapterId = chapterId
                     scriptures.append(scripture)
                     //DataModel.scripture.append(scripture)
                     CoreDataStack.saveContext()

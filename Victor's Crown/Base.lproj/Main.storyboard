@@ -229,7 +229,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fll-Bp-q4h" id="S65-q9-e5c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZz-5H-saV">
@@ -412,28 +412,6 @@
                 <exit id="3E5-Xp-0gC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="81" y="1636"/>
-        </scene>
-        <!--Bible Root View Controller-->
-        <scene sceneID="lUZ-Tm-vx2">
-            <objects>
-                <viewController id="d0T-RC-uXt" customClass="BibleRootViewController" customModule="Victor_s_Crown" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KZk-OQ-fzU"/>
-                        <viewControllerLayoutGuide type="bottom" id="xte-di-rP3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Xla-5z-bQd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="317-dt-lVr"/>
-                    <connections>
-                        <outlet property="navigationItem" destination="317-dt-lVr" id="Q9e-h6-WrC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M5m-Ah-Kap" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1959" y="1693"/>
         </scene>
         <!--Settings-->
         <scene sceneID="bTY-2W-a88">

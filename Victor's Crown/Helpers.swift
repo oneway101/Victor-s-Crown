@@ -33,7 +33,7 @@ extension UIViewController {
         return (currentDate, currentWeekday, date)
     }
     
-    func deleteAll(entity:String){
+    func clearData(entity:String){
         let context = CoreDataStack.getContext()
         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
@@ -45,6 +45,24 @@ extension UIViewController {
             print ("There was an error")
         }
 
+    }
+    
+    func loadData(){
+        
+        let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
+
+        let context = CoreDataStack.getContext()
+        
+        do {
+            
+           DataModel.bookLists = try context.fetch(fetchRequest)
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
     }
     
     func bookFetchRequest(bookName:String){
@@ -66,16 +84,36 @@ extension UIViewController {
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
-            DataModel.bible = data
+            performUIUpdatesOnMain {
+                DataModel.selectedBook = data[0]
+                print("\(bookName) is fetched and set as a selectedBook: \(String(describing: DataModel.selectedBook))")
+            }
+            
         } else {
-            print("No matching data returned from the chapter request")
+            print("No data returned from the bookFetcheRquest. Getting the Book list from the network...")
+            
+            BiblesClient.sharedInstance.getBookList() { (books, chapters, error) in
+                if let allBooks = books, let allChapters = chapters {
+                    performUIUpdatesOnMain {
+                        DataModel.bookLists = allBooks
+                        DataModel.chapters = allChapters
+                    }
+                    
+                    print("Bible book list returned!")
+                }else{
+                    performUIUpdatesOnMain {
+                        self.displayAlert(title: "Invalid Link", message: "There was an error.")
+                        print(error)
+                    }
+                }
+            }//getBookList
         }
         
     }
     
-    func scriptureFetchRequest(chapterId:String){
+    func chapterFetchRequest(chapterId:String){
         
-        //MARK: Get Chapters from Core Data
+        //MARK: Get Initial Chapter from Core Data
         let fetchRequest:NSFetchRequest<Chapter> = Chapter.fetchRequest()
         fetchRequest.sortDescriptors = []
         fetchRequest.predicate = NSPredicate(format: "id = %@", chapterId)
@@ -92,26 +130,57 @@ extension UIViewController {
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
+            performUIUpdatesOnMain {
+                DataModel.selectedChapter = data[0]
+                print("\(chapterId) is fetched and set as a selectedChapter: \(String(describing: DataModel.selectedChapter))")
+                print("Fetching all scriptures of selected chapter...")
+                self.scriptureFetchRequest(selectedChapter: data[0], chapterId: chapterId)
+            }
+        }else {
+            print("No data returned from the chapter fetch request.")
+        }
+        
+    }
+    
+    func scriptureFetchRequest(selectedChapter:Chapter, chapterId:String){
+        
+        //MARK: Get Chapters from Core Data
+        let fetchRequest:NSFetchRequest<Scripture> = Scripture.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "id = %@", chapterId)
+        let context = CoreDataStack.getContext()
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultsController.performFetch()
             
-            //Q:How to only select or get only one chapter?
-            let selectedChapter = data[0]
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
+        if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
+            performUIUpdatesOnMain {
+                DataModel.selectedScripture = data
+                print("Scriputres fetched for \(chapterId) and set as selectedScripture: \(DataModel.selectedScripture)")
+            }
+            
+        } else {
+            print("No data returned from the scripture fetch request. Getting the scripture from the network...")
             
             BiblesClient.sharedInstance.getScriptures(selectedChapter, selectedChapter.id!) { (result, error) in
                 
                 if let result = result {
-                    
-                    DataModel.scripture = result
-                    
+                    DataModel.selectedScripture = result
                 } else {
                     performUIUpdatesOnMain {
                         self.displayAlert(title: "Error", message: "There was an error.")
                         print(error)
                     }
                 }
-            } // getScripture
+            } // getScriptures
             
-        } else {
-            print("No Data returned from the scripture request")
         }
         
     }

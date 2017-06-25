@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-
 class BookNameListController: UITableViewController {
 
     private let reuseIdentifier = "BookNameCell"
@@ -22,37 +21,43 @@ class BookNameListController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataModel.bible.count
+        return DataModel.bookLists.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! BookNameCell
         
-        let bookList = DataModel.bible[(indexPath as NSIndexPath).row]
+        let bookList = DataModel.bookLists[(indexPath as NSIndexPath).row]
         cell.bookNameLabel.text = bookList.name
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedBook = DataModel.bible[(indexPath as NSIndexPath).row]
-        print("*** selectedBook *** \(selectedBook.name!)")
-        self.performSegue(withIdentifier: segueIdentifier, sender: selectedBook)
+        let selectedBook = DataModel.bookLists[(indexPath as NSIndexPath).row]
+        print("You've selected book: \(selectedBook.name!)")
+        DataModel.selectedBook = selectedBook
+        DataModel.selectedBookName = selectedBook.name!
+//        let context = CoreDataStack.getContext()
+//        let selectedBook:SelectedBook = NSEntityDescription.insertNewObject(forEntityName: "SelectedBook", into: context ) as! SelectedBook
+//        selectedBook.bookName = book.name
+//        CoreDataStack.saveContext()
+        self.performSegue(withIdentifier: segueIdentifier, sender: self)
     }
 
 
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdentifier {
-            let controller = segue.destination as! BookChapterListViewController
-            let selectedBook = sender as! Book
-            controller.selectedBook = selectedBook
-            controller.numberOfChapters = selectedBook.numOfChapters
-        }
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == segueIdentifier {
+//            let controller = segue.destination as! BookChapterListViewController
+//            let selectedBook = sender as! Book
+//            controller.selectedBook = selectedBook
+//            controller.numberOfChapters = selectedBook.numOfChapters
+//        }
+//        
+//    }
  
 
 }
