@@ -61,7 +61,9 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         DataModel.selectedChapter = selectedChapter
         DataModel.selectedChapterId = selectedChapter.id!
         print("You've selected Chapter \(selectedChapter.id)")
-        //performSegue(withIdentifier: segueIdentifier, sender: selectedChapter)
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

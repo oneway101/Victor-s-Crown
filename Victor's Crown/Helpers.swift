@@ -65,7 +65,7 @@ extension UIViewController {
         
     }
     
-    func bookFetchRequest(bookName:String){
+    func bookFetchRequest(bookName:String, chapterId:String){
         
         //MARK: Get Books from Core Data
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
@@ -88,6 +88,7 @@ extension UIViewController {
                 DataModel.selectedBook = data[0]
                 print("\(bookName) is fetched and set as a selectedBook: \(String(describing: DataModel.selectedBook))")
             }
+            self.chapterFetchRequest(chapterId: chapterId)
             
         } else {
             print("No data returned from the bookFetcheRquest. Getting the Book list from the network...")
@@ -98,6 +99,7 @@ extension UIViewController {
                         DataModel.bookLists = allBooks
                         DataModel.chapters = allChapters
                     }
+                    self.chapterFetchRequest(chapterId: chapterId)
                     
                     print("Bible book list returned!")
                 }else{
@@ -115,6 +117,7 @@ extension UIViewController {
         
         //MARK: Get Initial Chapter from Core Data
         let fetchRequest:NSFetchRequest<Chapter> = Chapter.fetchRequest()
+        //let sortDescriptor = NSSortDescriptor(key: "number", ascending: true)
         fetchRequest.sortDescriptors = []
         fetchRequest.predicate = NSPredicate(format: "id = %@", chapterId)
         let context = CoreDataStack.getContext()
@@ -147,7 +150,7 @@ extension UIViewController {
         //MARK: Get Chapters from Core Data
         let fetchRequest:NSFetchRequest<Scripture> = Scripture.fetchRequest()
         fetchRequest.sortDescriptors = []
-        fetchRequest.predicate = NSPredicate(format: "id = %@", chapterId)
+        fetchRequest.predicate = NSPredicate(format: "chapterId = %@", chapterId)
         let context = CoreDataStack.getContext()
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -163,7 +166,7 @@ extension UIViewController {
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             performUIUpdatesOnMain {
                 DataModel.selectedScripture = data
-                print("Scriputres fetched for \(chapterId) and set as selectedScripture: \(DataModel.selectedScripture)")
+                print("Scriputres fetched for \(chapterId) and set as selectedScripture.")
             }
             
         } else {
@@ -173,6 +176,7 @@ extension UIViewController {
                 
                 if let result = result {
                     DataModel.selectedScripture = result
+                    print("Selected chapter scriptures are returned!")
                 } else {
                     performUIUpdatesOnMain {
                         self.displayAlert(title: "Error", message: "There was an error.")

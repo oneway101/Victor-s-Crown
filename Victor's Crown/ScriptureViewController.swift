@@ -20,17 +20,12 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     //var selectedBook:Book!
     //var selectedChapter:Chapter!
-    //var scriptures:[Scripture] = []
+    var scriptures:[Scripture] = []
     var scriptureLoaded = false
     
     @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) { }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         //Fetch all Core Data first.
         loadData()
@@ -46,7 +41,6 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                         DataModel.chapters = allChapters
                         print(DataModel.chapters)
                     }
-                    
                     print("Bible book list returned!")
                 }else{
                     performUIUpdatesOnMain {
@@ -62,11 +56,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         
         
         //Get Data to display
-        bookFetchRequest(bookName: DataModel.selectedBookName)
-        chapterFetchRequest(chapterId: DataModel.selectedChapterId)
-//        if let chapter = DataModel.selectedChapter, let id = DataModel.selectedChapter?.id {
-//        scriptureFetchRequest(selectedChapter: chapter, chapterId: id)
-//        }
+        bookFetchRequest(bookName: DataModel.selectedBookName, chapterId: DataModel.selectedChapterId)
         
         // Set delegates
         tableView.delegate = self
@@ -76,6 +66,19 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         bookNavigationButton()
         chapterNavigationButton()
         
+        performUIUpdatesOnMain {
+            self.scriptures = DataModel.selectedScripture
+            for scripture in self.scriptures {
+                let text = scripture.verseText
+                print("text: \(text)")
+            }
+        }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
     }
     
     
@@ -83,20 +86,21 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
 
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return DataModel.selectedScripture.count
+        //return scriptures.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScriptureCell
         
-        //Q: filtering verses??
         let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
+        //let verse = scriptures[(indexPath as NSIndexPath).row]
         
         cell.verseNumberLabel.text = verse.verseNumber
         cell.verseTextView.text = verse.verseText
