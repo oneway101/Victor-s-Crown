@@ -22,6 +22,15 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
     var numberOfChapters:Int!
     var selectedBookChaptersArray:[Chapter] = []
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //Q: Should I use the fetch request to sort chapters of the selected book?
+        //What would be the better way to sort the chapters array?
+        numberOfChapters = Int(DataModel.selectedBook!.numOfChapters)
+        selectedBookChaptersArray = (DataModel.selectedBook?.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,11 +41,6 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         let viewWidth = self.view.frame.width
         let dimension: CGFloat = (viewWidth-20)/5
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        
-        //Q: Should I use the fetch request to sort chapters of the selected book?
-        //What would be the better way to sort the chapters array?
-        numberOfChapters = Int(DataModel.selectedBook!.numOfChapters)
-        selectedBookChaptersArray = (DataModel.selectedBook?.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
     }
 
     

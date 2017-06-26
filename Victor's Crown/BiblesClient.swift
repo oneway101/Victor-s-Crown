@@ -157,7 +157,7 @@ class BiblesClient: NSObject {
                     let context = CoreDataStack.getContext()
                     let scripture:Scripture = NSEntityDescription.insertNewObject(forEntityName: "Scripture", into: context ) as! Scripture
                     
-                    scripture.verseText = verseText.html2String
+                    scripture.verseText = verseText.data.attributedString
                     scripture.verseNumber = verseNumber
                     scripture.chapter = selectedChapter
                     scripture.chapterId = chapterId
@@ -256,18 +256,33 @@ class BiblesClient: NSObject {
     }
     
 }
-
-extension String {
-    var html2AttributedString: NSAttributedString? {
+extension Data {
+    var attributedString: NSAttributedString? {
         do {
-            return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            return try NSAttributedString(data: self, options:[NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
         } catch {
-            print("error:", error)
-            return nil
+            print(error)
         }
-    }
-    var html2String: String {
-        return html2AttributedString?.string ?? ""
+        return nil
     }
 }
+extension String {
+    var data: Data {
+        return Data(utf8)
+    }
+}
+//extension String {
+//    var html2AttributedString: NSAttributedString? {
+//        do {
+//            return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+//        } catch {
+//            print("error:", error)
+//            return nil
+//        }
+//    }
+//    var html2String: String {
+//        return html2AttributedString?.string ?? ""
+//    }
+//}
+
 

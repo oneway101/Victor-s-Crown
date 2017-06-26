@@ -68,8 +68,9 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
             self.scriptures = DataModel.selectedScripture
             for scripture in self.scriptures {
                 let text = scripture.verseText
-                print("text: \(text)")
+                //print("text: \(text)")
             }
+            self.tableView.reloadData()
         }
         
     }
@@ -80,6 +81,14 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         // Set delegates
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        tableView.reloadData()
         
     }
     
@@ -93,20 +102,20 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return DataModel.selectedScripture.count
-        //return scriptures.count
+        //return DataModel.selectedScripture.count
+        return scriptures.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScriptureCell
         
-        let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
-        //let verse = scriptures[(indexPath as NSIndexPath).row]
+        //let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
+        let verse = scriptures[(indexPath as NSIndexPath).row]
         
         cell.verseNumberLabel.text = verse.verseNumber
-        cell.verseTextView.text = verse.verseText
-        print(cell)
+        //cell.verseTextView.text = verse.verseText
+        cell.verseTextView.attributedText = verse.verseText as! NSAttributedString
         
         return cell
     }

@@ -20,7 +20,7 @@
     <entity name="Scripture" representedClassName=".Scripture" syncable="YES">
         <attribute name="chapterId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verseNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="verseText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verseText" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="chapter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Chapter" inverseName="verses" inverseEntity="Chapter" syncable="YES"/>
     </entity>
     <elements>
