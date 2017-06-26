@@ -142,21 +142,22 @@ class BiblesClient: NSObject {
             
             for verseObj in verses {
                 
-                guard let verseText = verseObj[ResponseKeys.Text] as? String else {
-                    displayError("Cannot find key '\(ResponseKeys.Text)' in \(verseObj)")
-                    return
-                }
-                
                 guard let verseNumber = verseObj[ResponseKeys.Verse] as? String else {
                     displayError("Cannot find key '\(ResponseKeys.Verse)' in \(verseObj)")
                     return
                 }
+                guard let verseText = verseObj[ResponseKeys.Text] as? String else {
+                    displayError("Cannot find key '\(ResponseKeys.Text)' in \(verseObj)")
+                    return
+                }
+
                                 
                 /* Save Chapter object to core data */
                 performUIUpdatesOnMain {
                     let context = CoreDataStack.getContext()
                     let scripture:Scripture = NSEntityDescription.insertNewObject(forEntityName: "Scripture", into: context ) as! Scripture
-                    scripture.verseText = verseText
+                    
+                    scripture.verseText = verseText.html2String
                     scripture.verseNumber = verseNumber
                     scripture.chapter = selectedChapter
                     scripture.chapterId = chapterId
@@ -220,20 +221,7 @@ class BiblesClient: NSObject {
         
         return task
     }
-    
-    func getDataFromUrl(_ urlString: String, _ completionHandler: @escaping (_ imageData: Data?, _ error: String?) -> Void) {
-        
-        guard let url = URL(string: urlString) else { return }
-        let request = URLRequest(url: url)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard error == nil else {
-                completionHandler(nil, error?.localizedDescription)
-                return
-            }
-            completionHandler(data, nil)
-        }
-        task.resume()
-    }
+
     
     // MARK: Helper for Creating a URL from Parameters
     
@@ -268,3 +256,18 @@ class BiblesClient: NSObject {
     }
     
 }
+
+extension String {
+    var html2AttributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            print("error:", error)
+            return nil
+        }
+    }
+    var html2String: String {
+        return html2AttributedString?.string ?? ""
+    }
+}
+

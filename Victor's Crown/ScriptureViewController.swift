@@ -91,16 +91,16 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return DataModel.selectedScripture.count
-        //return scriptures.count
+        //return DataModel.selectedScripture.count
+        return scriptures.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScriptureCell
         
-        let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
-        //let verse = scriptures[(indexPath as NSIndexPath).row]
+        //let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
+        let verse = scriptures[(indexPath as NSIndexPath).row]
         
         cell.verseNumberLabel.text = verse.verseNumber
         cell.verseTextView.text = verse.verseText
