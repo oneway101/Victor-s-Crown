@@ -6,7 +6,7 @@
 //  Copyright © 2017 cosmostream. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class BiblesClient: NSObject {

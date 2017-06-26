@@ -175,8 +175,11 @@ extension UIViewController {
             BiblesClient.sharedInstance.getScriptures(selectedChapter, selectedChapter.id!) { (result, error) in
                 
                 if let result = result {
-                    DataModel.selectedScripture = result
-                    print("Selected chapter scriptures are returned!")
+                    performUIUpdatesOnMain {
+                        DataModel.selectedScripture = result
+                        print("Selected chapter scriptures are returned!")
+                    }
+                    
                 } else {
                     performUIUpdatesOnMain {
                         self.displayAlert(title: "Error", message: "There was an error.")
