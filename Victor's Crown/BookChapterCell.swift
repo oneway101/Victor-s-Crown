@@ -11,6 +11,4 @@ import UIKit
 class BookChapterCell: UICollectionViewCell {
     
     @IBOutlet weak var bookChapterLabel: UILabel!
-    //Q: Should each cell save information of book chapters?
-    //let chapterNumber:Int?
 }

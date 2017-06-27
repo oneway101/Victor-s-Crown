@@ -157,7 +157,7 @@ class BiblesClient: NSObject {
                     let context = CoreDataStack.getContext()
                     let scripture:Scripture = NSEntityDescription.insertNewObject(forEntityName: "Scripture", into: context ) as! Scripture
                     
-                    scripture.verseText = verseText.data.attributedString
+                    scripture.verseText = verseText as NSObject
                     scripture.verseNumber = verseNumber
                     scripture.chapter = selectedChapter
                     scripture.chapterId = chapterId
@@ -256,21 +256,24 @@ class BiblesClient: NSObject {
     }
     
 }
-extension Data {
-    var attributedString: NSAttributedString? {
-        do {
-            return try NSAttributedString(data: self, options:[NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
-        } catch {
-            print(error)
-        }
-        return nil
-    }
-}
-extension String {
-    var data: Data {
-        return Data(utf8)
-    }
-}
+
+//extension Data {
+//    var attributedString: NSAttributedString? {
+//        do {
+//            return try NSAttributedString(data: self, options:[NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+//        } catch {
+//            print(error)
+//        }
+//        return nil
+//    }
+//}
+//extension String {
+//    var data: Data {
+//        return Data(utf8)
+//    }
+//}
+
+
 //extension String {
 //    var html2AttributedString: NSAttributedString? {
 //        do {

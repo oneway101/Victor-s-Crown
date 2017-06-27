@@ -67,6 +67,8 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         print("You've selected Chapter \(selectedChapter.id)")
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
         }
     }
     
@@ -79,7 +81,11 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
 //    }
     
     @IBAction func cancel(){
-        dismiss(animated: true, completion: nil)
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 
 }

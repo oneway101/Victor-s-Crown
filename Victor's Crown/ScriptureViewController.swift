@@ -11,65 +11,51 @@ import CoreData
 
 class ScriptureViewController: UIViewController, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    private let reuseIdentifier = "ScriptureCell"
+    
+
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var breadButton: UIButton!
     
     let chapterNavButton =  UIButton(type: .custom)
     var navigationTitle:String!
-    
-    @IBOutlet weak var tableView: UITableView!
-    private let reuseIdentifier = "ScriptureCell"
-    
-    //var selectedBook:Book!
-    //var selectedChapter:Chapter!
+    var bookName:String!
+    var chapterNumber:String!
     var scriptures:[Scripture] = []
     var scriptureLoaded = false
+    
+    let today = Date()
+    var timestamp = ""
     
     @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) { }
     
     override func viewWillAppear(_ animated: Bool) {
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         //Fetch all Core Data first.
         loadData()
         
-        //if books does not exist in Core Data, GET from the book list network request.
-        if DataModel.bookLists.count == 0 {
-            print("Selected Book and Chapter don't exist. Getting the book list from the network...")
-            BiblesClient.sharedInstance.getBookList() { (books, chapters, error) in
-                if let allBooks = books, let allChapters = chapters {
-                    performUIUpdatesOnMain {
-                        DataModel.bookLists = allBooks
-                        print(DataModel.bookLists)
-                        DataModel.chapters = allChapters
-                        print(DataModel.chapters)
-                    }
-                    print("Bible book list returned!")
-                }else{
-                    performUIUpdatesOnMain {
-                        self.displayAlert(title: "Invalid Link", message: "There was an error.")
-                        print(error)
-                    }
-                }
-            }//getBookList
-        }
         //clearData(entity: "Book")
         //clearData(entity: "Chapter")
         //clearData(entity: "Scripture")
         
+        //Q: How to check if the DataModel has been updated?
+        bookName = DataModel.selectedBookName
+        chapterNumber = DataModel.selectedChapterId
+        scriptures = DataModel.selectedScripture
+        
         
         //Get Data to display
-        bookFetchRequest(bookName: DataModel.selectedBookName, chapterId: DataModel.selectedChapterId)
-        
-        
+        bookFetchRequest(bookName: bookName, chapterId: chapterNumber)
         
         // Set navigtaion buttons
         bookNavigationButton()
-        chapterNavigationButton()
+        chapterNavigationButton(bookName, chapterNumber)
         
         performUIUpdatesOnMain {
-            self.scriptures = DataModel.selectedScripture
-            for scripture in self.scriptures {
-                let text = scripture.verseText
-                //print("text: \(text)")
-            }
             self.tableView.reloadData()
         }
         
@@ -81,14 +67,13 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         // Set delegates
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Set row heights
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        breadButton.isHidden = true
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        tableView.reloadData()
+        timestamp = DateFormatter.localizedString(from: today, dateStyle: .short, timeStyle: .none)
         
     }
     
@@ -112,14 +97,22 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         
         //let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
         let verse = scriptures[(indexPath as NSIndexPath).row]
-        
-        cell.verseNumberLabel.text = verse.verseNumber
-        //cell.verseTextView.text = verse.verseText
-        cell.verseTextView.attributedText = verse.verseText as! NSAttributedString
+  
+        cell.verseTextView.setHTMLFromString(htmlText: verse.verseText as! String)
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == scriptures.count {
+            print("end of the row")
+            breadButton.isHidden = false
 
+        }
+    }
+    
+    
+    
     func bookNavigationButton(){
         //Mark: Create a book list navigation
         let bookNavButton = UIBarButtonItem(title: "Books", style: .plain, target: self, action: #selector(self.clickOnBookName))
@@ -129,10 +122,10 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     //Mark: Navigation set-up
     
-    func chapterNavigationButton(){
+    func chapterNavigationButton(_ bookName:String, _ chapterNumber:String){
         
         //Mark: Create a chapter list navigation
-        chapterNavButton.setTitle(DataModel.selectedBookName, for: .normal)
+        chapterNavButton.setTitle("\(bookName) \(chapterNumber)", for: .normal)
       
         chapterNavButton.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         chapterNavButton.setTitleColor(UIColor(red: 3/255, green: 121/255, blue: 251/255, alpha: 1.0), for: .normal)
@@ -148,11 +141,55 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         performSegue(withIdentifier: "ChapterListSegue", sender: self)
     }
     
-    func recordToTimeline(name:String, chapter:String, text:String){
+    @IBAction func recordToTimeline(){
+        //MARK: Fetch Request
+        let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "date = %@", timestamp)
         let context = CoreDataStack.getContext()
-        let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
-        note.readingRecord = "testing..."
-        CoreDataStack.saveContext()
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultsController.performFetch()
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
+        if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
+            data[0].readingRecord = "\(bookName) \(chapterNumber)"
+            print("Reading record has been upated to \(data[0].readingRecord!).")
+            CoreDataStack.saveContext()
+        } else {
+            let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
+            note.date = timestamp
+            note.prayerRecord = 0
+            note.readingRecord = "\(bookName) \(chapterNumber)"
+            CoreDataStack.saveContext()
+            print("Today's reading record has been saved: \(note.readingRecord!).")
+        }
+        
+        breadButton.isHidden = true
+        
     }
 
+}
+
+
+extension UITextView {
+    func setHTMLFromString(htmlText: String) {
+        let modifiedFont = NSString(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>" as NSString, htmlText) as String
+        
+        
+        //process collection values
+        let attrStr = try! NSAttributedString(
+            data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
+            options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue],
+            documentAttributes: nil)
+        
+        
+        self.attributedText = attrStr
+    }
 }

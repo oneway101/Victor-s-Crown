@@ -9,8 +9,7 @@
 import UIKit
 
 class ScriptureCell: UITableViewCell {
-    
-    @IBOutlet weak var verseNumberLabel:UILabel!
+
     @IBOutlet weak var verseTextView:UITextView!
     
     

@@ -95,7 +95,7 @@ class TimerViewController: UIViewController {
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             data[0].prayerRecord += Int16(seconds)
-            print("Time has been upated to \(data[0].prayerRecord).")
+            print("Prayer time has been upated to \(data[0].prayerRecord).")
             CoreDataStack.saveContext()
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
@@ -103,7 +103,7 @@ class TimerViewController: UIViewController {
             note.prayerRecord = Int16(seconds)
             note.readingRecord = ""
             CoreDataStack.saveContext()
-            print("Today's data saved.")
+            print("Today's prayer record has been saved.")
         }
     }
     
