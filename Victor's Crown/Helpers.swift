@@ -47,7 +47,7 @@ extension UIViewController {
 
     }
     
-    func loadData(){
+    func loadBookData(){
         
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
 

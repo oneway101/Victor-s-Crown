@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "HistoryCell"
 
@@ -22,39 +23,28 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     //Mark: History Table View
     @IBOutlet weak var profileTableView: UITableView!
     
-    var notes:[Note] = [Note]()
+    //var notes:[Note] = [Note]()
     
-    let historyData = [
-        [   "day": "Sunday",
-            "reading": "Psalms 1",
-            "praying": "00:45"
-        ],
-        [   "day": "Monday",
-            "reading": "Psalms 2-3",
-            "praying": "00:55"
-        ],
-        [   "day": "Tuesday",
-            "reading": "Psalms 4-7",
-            "praying": "00:22"
-        ],
-        [   "day": "Wednesday",
-            "reading": "Psalms 8",
-            "praying": "01:10"
-        ],
-        [   "day": "Thursday",
-            "reading": "Psalms 9-15",
-            "praying": "00:05"
-        ],
-        [   "day": "Friday",
-            "reading": "Psalms 16",
-            "praying": "01:12"
-        ],
-        [   "day": "Saturday",
-            "reading": "Psalms 17-20",
-            "praying": "0:18"
-        ]
-    ]
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
+        
+        let context = CoreDataStack.getContext()
+        
+        do {
+            
+            DataModel.notes = try context.fetch(fetchRequest)
+            print("Successfully fetched notes: \(DataModel.notes) ")
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
+        profileTableView.reloadData()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,19 +60,15 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return historyData.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return profileTableView.frame.height / CGFloat(historyData.count)
+        return DataModel.notes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ProfileTableViewCell
-        //let history = notes[(indexPath as NSIndexPath).row]
+        let note = DataModel.notes[(indexPath as NSIndexPath).row]
         
-        //cell.chaptersRead.text = notes["reading"]
-        //cell.prayerTime.text = notes["praying"]
+        cell.chaptersRead.text = note.readingRecord
+        cell.prayerTime.text = String(note.prayerRecord)
         
         return cell
     }

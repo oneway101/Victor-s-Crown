@@ -36,7 +36,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     override func viewDidAppear(_ animated: Bool) {
         //Fetch all Core Data first.
-        loadData()
+        loadBookData()
         
         //clearData(entity: "Book")
         //clearData(entity: "Chapter")

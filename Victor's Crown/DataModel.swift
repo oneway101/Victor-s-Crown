@@ -11,7 +11,10 @@ import CoreData
 
 class DataModel:NSObject {
     
-    static var notes = [Note]()
+    //Notes
+    static var notes = [Note]()    
+    
+    //Bible
     static var bookLists = [Book]()
     static var chapters = [Chapter]()
     static var scripture = [Scripture]()
