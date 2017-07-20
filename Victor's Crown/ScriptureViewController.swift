@@ -31,11 +31,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) { }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         //Fetch all Core Data first.
+        //loadEntityData(Book.self)
         loadBookData()
         
         //clearData(entity: "Book")
@@ -46,7 +43,9 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         bookName = DataModel.selectedBookName
         chapterNumber = DataModel.selectedChapterId
         scriptures = DataModel.selectedScripture
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
         //Get Data to display
         bookFetchRequest(bookName: bookName, chapterId: chapterNumber)
@@ -60,6 +59,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         }
         
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

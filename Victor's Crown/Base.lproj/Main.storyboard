@@ -83,7 +83,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genesis 1-5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-U0-ZMZ">
-                                                    <rect key="frame" x="208" y="17.666666666666671" width="86.666666666666686" height="19.333333333333329"/>
+                                                    <rect key="frame" x="105.66666666666666" y="17.666666666666671" width="86.666666666666657" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -96,11 +96,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2g9-U0-ZMZ" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="200" id="4Uf-da-udR"/>
                                                 <constraint firstItem="JNW-m8-02P" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="10" id="DUU-nw-dad"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mwA-tr-Yps" secondAttribute="trailing" constant="20" id="Pnz-9Q-kMY"/>
                                                 <constraint firstItem="oLK-qS-53M" firstAttribute="top" secondItem="JNW-m8-02P" secondAttribute="bottom" constant="2" id="QfG-fy-Pk1"/>
                                                 <constraint firstItem="mwA-tr-Yps" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="Svc-WQ-mSd"/>
+                                                <constraint firstItem="2g9-U0-ZMZ" firstAttribute="leading" secondItem="JNW-m8-02P" secondAttribute="trailing" constant="25" id="Wun-NA-aI1"/>
                                                 <constraint firstItem="JNW-m8-02P" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="erS-Dm-ub0"/>
                                                 <constraint firstItem="2g9-U0-ZMZ" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="fC4-xS-qch"/>
                                                 <constraint firstItem="oLK-qS-53M" firstAttribute="centerX" secondItem="JNW-m8-02P" secondAttribute="centerX" id="gEu-Jk-hOs"/>
@@ -136,7 +136,7 @@
                             <constraint firstItem="YJn-i3-Tr7" firstAttribute="leading" secondItem="lCp-Q0-psu" secondAttribute="trailing" constant="25" id="yU0-oe-NFK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="Qcm-zu-s6F"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="Qcm-zu-s6F"/>
                     <connections>
                         <outlet property="prayingLabel" destination="x1C-0C-Rbw" id="eyV-Pv-RC7"/>
                         <outlet property="prayingProgress" destination="wWg-kv-FGn" id="ZDg-Mj-cpN"/>
@@ -205,7 +205,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="rLy-fl-O1s" secondAttribute="trailing" constant="50" id="lvy-cm-Y7b"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Pray" id="qh0-Rk-N58"/>
+                    <tabBarItem key="tabBarItem" title="Pray" image="pray" id="qh0-Rk-N58"/>
                     <connections>
                         <outlet property="saveTimecode" destination="3sB-TK-4Tc" id="GjL-pd-sDe"/>
                         <outlet property="start" destination="rLy-fl-O1s" id="6Wt-o8-wiV"/>
@@ -276,7 +276,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDa-gr-Vse">
-                                <rect key="frame" x="331" y="74" width="63" height="36"/>
+                                <rect key="frame" x="331" y="30" width="63" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.011764705882352941" green="0.47450980392156861" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -286,7 +286,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ams-AN-TH3">
-                                <rect key="frame" x="10" y="115" width="394" height="572"/>
+                                <rect key="frame" x="10" y="71" width="394" height="665"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="sVn-v0-p5h">
                                     <size key="itemSize" width="50" height="50"/>
@@ -433,13 +433,38 @@
                     <view key="view" contentMode="scaleToFill" id="6KT-cr-dKC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kg-Zw-QgY">
+                                <rect key="frame" x="284" y="116" width="69" height="30"/>
+                                <state key="normal" title="Download"/>
+                                <connections>
+                                    <action selector="downloadEntireBook:" destination="lrB-ib-eoF" eventType="touchUpInside" id="iYg-xS-ltT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read Bible Offline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ity-vt-5lW">
+                                <rect key="frame" x="20" y="119.99999999999999" width="144" height="21.666666666666643"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2kg-Zw-QgY" firstAttribute="centerY" secondItem="Ity-vt-5lW" secondAttribute="centerY" id="8hs-sx-dBp"/>
+                            <constraint firstItem="Ity-vt-5lW" firstAttribute="top" secondItem="pFj-Ts-aaz" secondAttribute="bottom" constant="100" id="ThJ-Ke-mrQ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Ity-vt-5lW" secondAttribute="leading" id="bQy-FK-47j"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2kg-Zw-QgY" secondAttribute="trailing" constant="41" id="kBK-kD-LIt"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="2or-OC-hAe"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="2or-OC-hAe"/>
+                    <connections>
+                        <outlet property="bookDownloadButton" destination="2kg-Zw-QgY" id="Pbw-9Y-M6J"/>
+                        <outlet property="readBibleOfflineLabel" destination="Ity-vt-5lW" id="W6E-KZ-uLH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkT-Zh-0oy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3116" y="930.58470764617698"/>
+            <point key="canvasLocation" x="3115.9420289855075" y="930.16304347826099"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="GLG-qu-Idt">
@@ -466,7 +491,7 @@
         <scene sceneID="TOF-HZ-BZF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HQs-bF-XtQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bible" id="Xlc-sK-RDe"/>
+                    <tabBarItem key="tabBarItem" title="Bible" image="read" id="Xlc-sK-RDe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wn4-7Q-mVI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -482,6 +507,12 @@
             <point key="canvasLocation" x="81" y="899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pray" width="25" height="25"/>
+        <image name="profile" width="25" height="25"/>
+        <image name="read" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DfV-sa-4ck"/>
     </inferredMetricsTieBreakers>

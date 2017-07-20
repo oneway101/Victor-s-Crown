@@ -9,7 +9,11 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
+    @IBOutlet weak var readBibleOfflineLabel: UILabel!
+    @IBOutlet weak var bookDownloadButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,9 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func downloadEntireBook(_ sender: Any) {
+        
+    }
 
     /*
     // MARK: - Navigation

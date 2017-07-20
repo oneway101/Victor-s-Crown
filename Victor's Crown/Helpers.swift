@@ -47,6 +47,25 @@ extension UIViewController {
 
     }
     
+    func loadEntityData<T: NSManagedObject>(_ type: T.Type) -> [T]? {
+        
+        let fetchRequest:NSFetchRequest = T.fetchRequest()
+        
+        let context = CoreDataStack.getContext()
+        
+        do {
+            
+            return try context.fetch(fetchRequest) as? [T]
+            
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+            return nil
+        }
+    }
+    
+    
     func loadBookData(){
         
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
@@ -110,7 +129,6 @@ extension UIViewController {
                 }
             }//getBookList
         }
-        
     }
     
     func chapterFetchRequest(chapterId:String){

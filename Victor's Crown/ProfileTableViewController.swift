@@ -34,7 +34,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         do {
             
             DataModel.notes = try context.fetch(fetchRequest)
-            print("Successfully fetched notes: \(DataModel.notes) ")
+            print("Successfully fetched \(DataModel.notes.count)  notes. ")
             
         } catch {
             let fetchError = error as NSError
@@ -42,7 +42,11 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
-        profileTableView.reloadData()
+        performUIUpdatesOnMain {
+            self.profileTableView.reloadData()
+            print("Reload profileTableView data.")
+        }
+        
         
     }
     

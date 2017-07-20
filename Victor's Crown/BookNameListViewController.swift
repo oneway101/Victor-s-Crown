@@ -38,10 +38,6 @@ class BookNameListController: UITableViewController {
         print("You've selected book: \(selectedBook.name!)")
         DataModel.selectedBook = selectedBook
         DataModel.selectedBookName = selectedBook.name!
-//        let context = CoreDataStack.getContext()
-//        let selectedBook:SelectedBook = NSEntityDescription.insertNewObject(forEntityName: "SelectedBook", into: context ) as! SelectedBook
-//        selectedBook.bookName = book.name
-//        CoreDataStack.saveContext()
         self.performSegue(withIdentifier: segueIdentifier, sender: self)
     }
 
