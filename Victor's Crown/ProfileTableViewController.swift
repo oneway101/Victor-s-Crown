@@ -44,7 +44,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         performUIUpdatesOnMain {
             self.profileTableView.reloadData()
-            print("Reload profileTableView data.")
+            print("Reloaded profileTableView data.")
         }
         
         
@@ -64,15 +64,30 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataModel.notes.count
+        //return DataModel.notes.count
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ProfileTableViewCell
         let note = DataModel.notes[(indexPath as NSIndexPath).row]
         
-        cell.chaptersRead.text = note.readingRecord
-        cell.prayerTime.text = String(note.prayerRecord)
+        if let date = note.date {
+            cell.dateLabel.text = date
+        }
+        cell.weekdayLabel.text = note.day
+        
+        if let readingRecord = note.readingRecord as? [String] {
+            var chaptersRead = ""
+            for (index, chapter) in readingRecord.enumerated() {
+                chaptersRead += "\(chapter), "
+                if index == (readingRecord.count - 1){
+                    chaptersRead += "\(chapter)"
+                }
+            }
+            cell.chaptersRead.text = chaptersRead
+        }
+        cell.prayerTime.text = timeString(time: TimeInterval(note.prayerRecord))
         
         return cell
     }

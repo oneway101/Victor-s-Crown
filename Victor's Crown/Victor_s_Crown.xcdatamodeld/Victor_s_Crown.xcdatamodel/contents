@@ -14,8 +14,9 @@
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="prayerRecord" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="readingRecord" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="prayerRecord" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="readingRecord" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <entity name="Scripture" representedClassName=".Scripture" syncable="YES">
         <attribute name="chapterId" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +27,7 @@
     <elements>
         <element name="Book" positionX="88" positionY="396" width="128" height="105"/>
         <element name="Chapter" positionX="387" positionY="180" width="128" height="105"/>
-        <element name="Note" positionX="-90" positionY="9" width="128" height="88"/>
+        <element name="Note" positionX="-90" positionY="9" width="128" height="105"/>
         <element name="Scripture" positionX="90" positionY="26" width="128" height="105"/>
     </elements>
 </model>

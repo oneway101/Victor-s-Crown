@@ -37,7 +37,7 @@ class BookNameListController: UITableViewController {
         let selectedBook = DataModel.bookLists[(indexPath as NSIndexPath).row]
         print("You've selected book: \(selectedBook.name!)")
         DataModel.selectedBook = selectedBook
-        DataModel.selectedBookName = selectedBook.name!
+        //DataModel.selectedBook = selectedBook.name!
         self.performSegue(withIdentifier: segueIdentifier, sender: self)
     }
 

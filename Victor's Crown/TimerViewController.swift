@@ -22,11 +22,13 @@ class TimerViewController: UIViewController {
     
     let today = Date()
     var timestamp = ""
+    var dayOfWeek = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveTimecode.isEnabled = false
         timestamp = DateFormatter.localizedString(from: today, dateStyle: .short, timeStyle: .none)
+        dayOfWeek = today.dayOfWeek()!
         print("today's date: \(timestamp)")
         //let isToday = Calendar.current.isDateInToday(today)
     }
@@ -68,14 +70,6 @@ class TimerViewController: UIViewController {
         timecode.text = timeString(time: TimeInterval(seconds))
     }
     
-    func timeString(time:TimeInterval) -> String{
-        let hours = Int(time)/3600
-        let minutes = Int(time)/60 % 60
-        let seconds = Int(time) % 60
-        
-        return String(format:"%02i:%02i:%02i",hours,minutes,seconds)
-    }
-    
     func fetchNotes(){
         //MARK: Fetch Request
         let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
@@ -100,8 +94,9 @@ class TimerViewController: UIViewController {
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
             note.date = timestamp
+            note.day = dayOfWeek
             note.prayerRecord = Int16(seconds)
-            note.readingRecord = ""
+            note.readingRecord = [String]() as NSObject
             CoreDataStack.saveContext()
             print("Today's prayer record has been saved.")
         }

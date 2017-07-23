@@ -22,11 +22,14 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     var navigationTitle:String!
     var bookName:String!
     var chapterNumber:String!
+    var chapterId:String!
     var scriptures:[Scripture] = []
     var scriptureLoaded = false
     
     let today = Date()
     var timestamp = ""
+    
+    var readingRecordArray:[String] = []
     
     @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) { }
     
@@ -39,24 +42,39 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         //clearData(entity: "Chapter")
         //clearData(entity: "Scripture")
         
-        //Q: How to check if the DataModel has been updated?
-        bookName = DataModel.selectedBookName
-        chapterNumber = DataModel.selectedChapterId
-        scriptures = DataModel.selectedScripture
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
+        bookName = DataModel.selectedBook?.name
+        
+        if bookName == nil {
+            print("Genesis 1 set as a default chapter")
+            bookName = "Genesis"
+            chapterId = "eng-KJV:Gen.1"
+            chapterNumber = "1"
+        } else {
+            print("\(bookName!)'s chapter number, id and scriptures are set.")
+            chapterNumber = DataModel.selectedChapter?.number
+            chapterId = DataModel.selectedChapterId
+            scriptures = DataModel.selectedScripture
+        }
+        
         //Get Data to display
-        bookFetchRequest(bookName: bookName, chapterId: chapterNumber)
+        bookFetchRequest(bookName: bookName, chapterId: chapterId) { (result, error) in
+            if let result = result {
+                performUIUpdatesOnMain {
+                    self.scriptures = result
+                    self.tableView.reloadData()
+                    print("Scripture tableView reloaded.")
+                }
+            }
+        }
         
         // Set navigtaion buttons
         bookNavigationButton()
         chapterNavigationButton(bookName, chapterNumber)
-        
-        performUIUpdatesOnMain {
-            self.tableView.reloadData()
-        }
         
     }
     
@@ -159,14 +177,21 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
-            data[0].readingRecord = "\(bookName) \(chapterNumber)"
+            if let bookname = bookName, let chapternumber = chapterNumber {
+                readingRecordArray.append("\(bookname) \(chapternumber)")
+                data[0].readingRecord = readingRecordArray as NSObject
+            }
             print("Reading record has been upated to \(data[0].readingRecord!).")
             CoreDataStack.saveContext()
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
             note.date = timestamp
             note.prayerRecord = 0
-            note.readingRecord = "\(bookName) \(chapterNumber)"
+            if let bookname = bookName, let chapternumber = chapterNumber {
+                readingRecordArray.append("\(bookname) \(chapternumber)")
+                note.readingRecord = readingRecordArray as NSObject
+            }
+            
             CoreDataStack.saveContext()
             print("Today's reading record has been saved: \(note.readingRecord!).")
         }

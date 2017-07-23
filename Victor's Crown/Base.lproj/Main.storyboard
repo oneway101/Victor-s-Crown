@@ -70,37 +70,38 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-m8-02P">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Sunday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-m8-02P">
                                                     <rect key="frame" x="18" y="16.666666666666671" width="62.666666666666671" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwA-tr-Yps">
-                                                    <rect key="frame" x="340" y="17.666666666666671" width="46" height="19.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwA-tr-Yps">
+                                                    <rect key="frame" x="317.33333333333326" y="18" width="67.666666666666686" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genesis 1-5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-U0-ZMZ">
-                                                    <rect key="frame" x="105.66666666666666" y="17.666666666666671" width="86.666666666666657" height="19.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Genesis 1-5" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-U0-ZMZ">
+                                                    <rect key="frame" x="100.66666666666669" y="18" width="196.66666666666663" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/12/2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLK-qS-53M">
-                                                    <rect key="frame" x="21" y="40" width="57" height="14.666666666666664"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <rect key="frame" x="13.666666666666664" y="40" width="72" height="19.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="JNW-m8-02P" firstAttribute="leading" secondItem="MpH-BV-gwv" secondAttribute="leadingMargin" constant="10" id="DUU-nw-dad"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mwA-tr-Yps" secondAttribute="trailing" constant="20" id="Pnz-9Q-kMY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mwA-tr-Yps" secondAttribute="trailing" constant="21" id="Pnz-9Q-kMY"/>
                                                 <constraint firstItem="oLK-qS-53M" firstAttribute="top" secondItem="JNW-m8-02P" secondAttribute="bottom" constant="2" id="QfG-fy-Pk1"/>
                                                 <constraint firstItem="mwA-tr-Yps" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="Svc-WQ-mSd"/>
-                                                <constraint firstItem="2g9-U0-ZMZ" firstAttribute="leading" secondItem="JNW-m8-02P" secondAttribute="trailing" constant="25" id="Wun-NA-aI1"/>
+                                                <constraint firstItem="2g9-U0-ZMZ" firstAttribute="leading" secondItem="JNW-m8-02P" secondAttribute="trailing" constant="20" id="Wun-NA-aI1"/>
+                                                <constraint firstItem="mwA-tr-Yps" firstAttribute="leading" secondItem="2g9-U0-ZMZ" secondAttribute="trailing" constant="20" id="ZyB-IS-0WL"/>
                                                 <constraint firstItem="JNW-m8-02P" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="erS-Dm-ub0"/>
                                                 <constraint firstItem="2g9-U0-ZMZ" firstAttribute="centerY" secondItem="MpH-BV-gwv" secondAttribute="centerY" id="fC4-xS-qch"/>
                                                 <constraint firstItem="oLK-qS-53M" firstAttribute="centerX" secondItem="JNW-m8-02P" secondAttribute="centerX" id="gEu-Jk-hOs"/>
@@ -148,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aay-Hh-iHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1366" y="782"/>
+            <point key="canvasLocation" x="-1366.6666666666667" y="781.79347826086962"/>
         </scene>
         <!--Pray-->
         <scene sceneID="T2H-fq-Tee">

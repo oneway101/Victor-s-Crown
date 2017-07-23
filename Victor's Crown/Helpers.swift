@@ -21,6 +21,14 @@ extension UIViewController {
         }
     }
     
+    func timeString(time:TimeInterval) -> String{
+        let hours = Int(time)/3600
+        let minutes = Int(time)/60 % 60
+        let seconds = Int(time) % 60
+        
+        return String(format:"%02i:%02i:%02i",hours,minutes,seconds)
+    }
+    
     func getCurrentDate() -> (date:String, weekday:String, today:Date){
         let date = Date()
         let calendar = Calendar.current
@@ -84,7 +92,7 @@ extension UIViewController {
         
     }
     
-    func bookFetchRequest(bookName:String, chapterId:String){
+    func bookFetchRequest(bookName:String, chapterId:String, _ completionHandler: @escaping ( _ result: [Scripture]?, _ error: NSError?)-> Void){
         
         //MARK: Get Books from Core Data
         let fetchRequest:NSFetchRequest<Book> = Book.fetchRequest()
@@ -105,9 +113,12 @@ extension UIViewController {
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             performUIUpdatesOnMain {
                 DataModel.selectedBook = data[0]
-                print("\(bookName) is fetched and set as a selectedBook: \(String(describing: DataModel.selectedBook))")
+                
+                print("\(bookName) is fetched and set as a selectedBook")
+                self.chapterFetchRequest(chapterId: chapterId, { (result, error) in
+                    completionHandler(result,error)
+                })
             }
-            self.chapterFetchRequest(chapterId: chapterId)
             
         } else {
             print("No data returned from the bookFetcheRquest. Getting the Book list from the network...")
@@ -117,21 +128,19 @@ extension UIViewController {
                     performUIUpdatesOnMain {
                         DataModel.bookLists = allBooks
                         DataModel.chapters = allChapters
+                        self.chapterFetchRequest(chapterId: chapterId, { (result, error) in
+                            completionHandler(result,error)
+                        })
                     }
-                    self.chapterFetchRequest(chapterId: chapterId)
-                    
                     print("Bible book list returned!")
                 }else{
-                    performUIUpdatesOnMain {
-                        self.displayAlert(title: "Invalid Link", message: "There was an error.")
-                        print(error)
-                    }
+                    completionHandler(nil, error)
                 }
             }//getBookList
         }
     }
     
-    func chapterFetchRequest(chapterId:String){
+    func chapterFetchRequest(chapterId:String, _ completionHandler: @escaping ( _ result: [Scripture]?, _ error: NSError?)-> Void){
         
         //MARK: Get Initial Chapter from Core Data
         let fetchRequest:NSFetchRequest<Chapter> = Chapter.fetchRequest()
@@ -155,7 +164,9 @@ extension UIViewController {
                 DataModel.selectedChapter = data[0]
                 print("\(chapterId) is fetched and set as a selectedChapter: \(String(describing: DataModel.selectedChapter))")
                 print("Fetching all scriptures of selected chapter...")
-                self.scriptureFetchRequest(selectedChapter: data[0], chapterId: chapterId)
+                self.scriptureFetchRequest(selectedChapter: data[0], chapterId: chapterId, { (result, error) in
+                    completionHandler(result, error)
+                })
             }
         }else {
             print("No data returned from the chapter fetch request.")
@@ -163,7 +174,7 @@ extension UIViewController {
         
     }
     
-    func scriptureFetchRequest(selectedChapter:Chapter, chapterId:String){
+    func scriptureFetchRequest(selectedChapter:Chapter, chapterId:String, _ completionHandler: @escaping ( _ result: [Scripture]?, _ error: NSError?)-> Void){
         
         //MARK: Get Chapters from Core Data
         let fetchRequest:NSFetchRequest<Scripture> = Scripture.fetchRequest()
@@ -185,6 +196,7 @@ extension UIViewController {
             performUIUpdatesOnMain {
                 DataModel.selectedScripture = data
                 print("Scriputres fetched for \(chapterId) and set as selectedScripture.")
+                completionHandler(data, nil)
             }
             
         } else {
@@ -195,14 +207,13 @@ extension UIViewController {
                 if let result = result {
                     performUIUpdatesOnMain {
                         DataModel.selectedScripture = result
+                        completionHandler(result, nil)
                         print("Selected chapter scriptures are returned!")
                     }
                     
+                    
                 } else {
-                    performUIUpdatesOnMain {
-                        self.displayAlert(title: "Error", message: "There was an error.")
-                        print(error)
-                    }
+                    completionHandler(nil, error)
                 }
             } // getScriptures
             

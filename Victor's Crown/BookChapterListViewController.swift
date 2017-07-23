@@ -64,7 +64,7 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         let selectedChapter = selectedBookChaptersArray[(indexPath as NSIndexPath).row]
         DataModel.selectedChapter = selectedChapter
         DataModel.selectedChapterId = selectedChapter.id!
-        print("You've selected Chapter \(selectedChapter.id)")
+        print("You've selected Chapter\(selectedChapter.number!). ChapterId: \(selectedChapter.id!)")
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
         } else {
