@@ -6,17 +6,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "522366929.920019"
+            timestampString = "522637224.472164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Victor_s_Crown.ScriptureViewController.viewDidAppear (Swift.Bool) -&gt; ()"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/ScriptureViewController.swift"
+                  timestampString = "522638841.701422"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "2458">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Victor_s_Crown.ScriptureViewController.(viewDidAppear (Swift.Bool) -&gt; ()).(closure #1)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/ScriptureViewController.swift"
+                  timestampString = "522638841.705129"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +58,444 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "522366932.464819"
+            timestampString = "522637460.827231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
+            timestampString = "522637504.131558"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522637927.996438"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "bookFetchRequest(bookName:chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522637958.747349"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "bookFetchRequest(bookName:chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522637962.44836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "bookFetchRequest(bookName:chapterId:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.(bookFetchRequest (bookName : Swift.String, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.750516"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "613">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.(bookFetchRequest (bookName : Swift.String, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.754665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638008.799135"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "bookFetchRequest(bookName:chapterId:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.bookFetchRequest (bookName : Swift.String, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.764266"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "1909">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.(bookFetchRequest (bookName : Swift.String, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #2)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.770726"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "62">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638036.50116"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "bookFetchRequest(bookName:chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638117.553861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "chapterFetchRequest(chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638120.854036"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "chapterFetchRequest(chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638136.705163"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "chapterFetchRequest(chapterId:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.(chapterFetchRequest (chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.806307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "923">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.(chapterFetchRequest (chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.810405"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638141.004712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "chapterFetchRequest(chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638154.306141"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "scriptureFetchRequest(selectedChapter:chapterId:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.scriptureFetchRequest (selectedChapter : Victor_s_Crown.Chapter, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.828529"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "1055">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.scriptureFetchRequest (selectedChapter : Victor_s_Crown.Chapter, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.834776"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "1268">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638157.055817"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "scriptureFetchRequest(selectedChapter:chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638159.513698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "scriptureFetchRequest(selectedChapter:chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638162.655607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "scriptureFetchRequest(selectedChapter:chapterId:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.scriptureFetchRequest (selectedChapter : Victor_s_Crown.Chapter, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.858105"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "1779">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Victor_s_Crown):__ObjC.UIViewController.(scriptureFetchRequest (selectedChapter : Victor_s_Crown.Chapter, chapterId : Swift.String, (Swift.Optional&lt;Swift.Array&lt;Victor_s_Crown.Scripture&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #2)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/Helpers.swift"
+                  timestampString = "522638841.86258"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638278.209897"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "scriptureFetchRequest(selectedChapter:chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/Helpers.swift"
+            timestampString = "522638279.910733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "scriptureFetchRequest(selectedChapter:chapterId:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/BiblesClient.swift"
+            timestampString = "522638816.583793"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "getScriptures(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

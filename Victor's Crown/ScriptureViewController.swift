@@ -28,6 +28,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     let today = Date()
     var timestamp = ""
+    var dayOfWeek = ""
     
     var readingRecordArray:[String] = []
     
@@ -92,6 +93,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         breadButton.isHidden = true
         
         timestamp = DateFormatter.localizedString(from: today, dateStyle: .short, timeStyle: .none)
+        dayOfWeek = today.dayOfWeek()!
         
     }
     
@@ -186,6 +188,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
             note.date = timestamp
+            note.day = dayOfWeek
             note.prayerRecord = 0
             if let bookname = bookName, let chapternumber = chapterNumber {
                 readingRecordArray.append("\(bookname) \(chapternumber)")

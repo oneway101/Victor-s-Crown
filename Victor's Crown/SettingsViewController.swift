@@ -16,8 +16,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        bookDownloadButton.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +25,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func downloadEntireBook(_ sender: Any) {
-        
+        //Create a dictionary to download all scriputures at once.
     }
 
     /*

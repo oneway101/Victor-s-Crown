@@ -138,22 +138,22 @@ class BiblesClient: NSObject {
                 return
             }
             
-            var scriptures:[Scripture] = []
-            
-            for verseObj in verses {
+            performUIUpdatesOnMain {
+                var scriptures:[Scripture] = []
                 
-                guard let verseNumber = verseObj[ResponseKeys.Verse] as? String else {
-                    displayError("Cannot find key '\(ResponseKeys.Verse)' in \(verseObj)")
-                    return
-                }
-                guard let verseText = verseObj[ResponseKeys.Text] as? String else {
-                    displayError("Cannot find key '\(ResponseKeys.Text)' in \(verseObj)")
-                    return
-                }
-
-                                
-                /* Save Chapter object to core data */
-                performUIUpdatesOnMain {
+                for verseObj in verses {
+                    
+                    guard let verseNumber = verseObj[ResponseKeys.Verse] as? String else {
+                        displayError("Cannot find key '\(ResponseKeys.Verse)' in \(verseObj)")
+                        return
+                    }
+                    guard let verseText = verseObj[ResponseKeys.Text] as? String else {
+                        displayError("Cannot find key '\(ResponseKeys.Text)' in \(verseObj)")
+                        return
+                    }
+                    
+                    
+                    /* Save Scripture object to core data */
                     let context = CoreDataStack.getContext()
                     let scripture:Scripture = NSEntityDescription.insertNewObject(forEntityName: "Scripture", into: context ) as! Scripture
                     
@@ -162,12 +162,13 @@ class BiblesClient: NSObject {
                     scripture.chapter = selectedChapter
                     scripture.chapterId = chapterId
                     scriptures.append(scripture)
-                    //DataModel.scripture.append(scripture)
                     CoreDataStack.saveContext()
                 }
+                
+                completionHandler(scriptures, nil)
             }
             
-            completionHandler(scriptures, nil)
+            
             
         }
         

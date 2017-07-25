@@ -64,8 +64,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return DataModel.notes.count
-        return 7
+        return DataModel.notes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,9 +79,10 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         if let readingRecord = note.readingRecord as? [String] {
             var chaptersRead = ""
             for (index, chapter) in readingRecord.enumerated() {
-                chaptersRead += "\(chapter), "
                 if index == (readingRecord.count - 1){
                     chaptersRead += "\(chapter)"
+                } else {
+                    chaptersRead += "\(chapter), "
                 }
             }
             cell.chaptersRead.text = chaptersRead
@@ -90,6 +90,18 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         cell.prayerTime.text = timeString(time: TimeInterval(note.prayerRecord))
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            let note = DataModel.notes[(indexPath as NSIndexPath).row]
+            
+        }
     }
 }
 
