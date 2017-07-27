@@ -15,11 +15,18 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     
     //Mark: Progress View
     @IBOutlet weak var profilePhoto: UIImageView!
-    @IBOutlet weak var readingLabel: UILabel!
-    @IBOutlet weak var readingProgress: UILabel!
-    @IBOutlet weak var prayingLabel: UILabel!
-    @IBOutlet weak var prayingProgress: UILabel!
     
+    @IBOutlet weak var goalTermLabel: UILabel!
+    @IBOutlet weak var daysLeftLabel: UILabel!
+    @IBOutlet weak var readingLabel: UILabel!
+    @IBOutlet weak var readingProgressLabel: UILabel!
+    @IBOutlet weak var prayingLabel: UILabel!
+    @IBOutlet weak var prayingProgressLabel: UILabel!
+    
+    //Mark: Goals
+    var setDaysGoal:Int = 0
+    var setReadingGoal:Double = 0.0
+    var setPrayerTimeGoal:Double = 0.0
     
     @IBOutlet weak var goalDescriptionText: UILabel!
     
@@ -53,17 +60,61 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let defaults = UserDefaults.standard
+        if let daysGoal = defaults.string(forKey: "daysGoal"), let readingGoal = defaults.string(forKey: "readingGoal"), let prayerTimeGoal = defaults.string(forKey: "prayerTimeGoal"){
+            
+            setDaysGoal = Int(daysGoal)!
+            setReadingGoal = Double(readingGoal)!
+            setPrayerTimeGoal = Double(prayerTimeGoal)!
+            
+            goalDescriptionText.text = "Your goal is to read \(readingGoal) chapters \n pray \(prayerTimeGoal) minutes for \(daysGoal) days."
+        } else {
+            //Set default goal values.
+            goalDescriptionText.text = "Your goal is to read 7 chapters \n pray 70 minutes for 7 days."
+            defaults.set(7, forKey: "daysGoal")
+            defaults.set(7.0, forKey: "readingGoal")
+            defaults.set(70.0, forKey: "prayerTimeGoal")
+            setDaysGoal = 7
+            setReadingGoal = 7.0
+            setPrayerTimeGoal = 70.0
+        }
+        
+        var totalnumberOfChapters:Int = 0
+        var totalAmountOfTime:Int = 0
+        
+        for note in DataModel.notes {
+            let chapters = note.readingRecord as! [String]
+            
+            totalnumberOfChapters += chapters.count
+        }
+        for note in DataModel.notes {
+            let time = note.prayerRecord
+            totalAmountOfTime += Int(time)
+        }
+        
+        let daysLeft:Int = setDaysGoal - DataModel.notes.count
+        daysLeftLabel.text = String(daysLeft)
+        let readingProgress:Double = (Double(totalnumberOfChapters)/setReadingGoal)*100
+        readingProgressLabel.text = "\(round(readingProgress))%"
+        let prayingProgress:Double = ((Double(totalAmountOfTime)/60)/setPrayerTimeGoal)*100
+        prayingProgressLabel.text = String(round(prayingProgress)) + "%"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTableView.delegate = self
         profileTableView.dataSource = self
-        profilePhoto.image = UIImage(named: "crown")        
+        profilePhoto.image = UIImage(named: "crown")
     }
     
     @IBAction func setGoals(_ sender: Any) {
-        //Q: How to show settings tab?
+        //Q: How to show the settings tab?
     }
     
+    @IBAction func clearHistory(_ sender: Any) {
+        
+    }
 
     // MARK: - Table view data source
     
@@ -96,6 +147,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             cell.chaptersRead.text = chaptersRead
         }
         cell.prayerTime.text = timeString(time: TimeInterval(note.prayerRecord))
+        
         
         return cell
     }

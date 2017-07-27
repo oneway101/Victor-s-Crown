@@ -20,13 +20,14 @@ class TimerViewController: UIViewController {
     var timer = Timer()
     var isTimerRunning = false
     
-    let today = Date()
+    //let today = Date()
     var timestamp = ""
     var dayOfWeek = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveTimecode.isEnabled = false
+        let today = getCurrentDate().today
         timestamp = DateFormatter.localizedString(from: today, dateStyle: .short, timeStyle: .none)
         dayOfWeek = today.dayOfWeek()!
         print("today's date: \(timestamp)")
