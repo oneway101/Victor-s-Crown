@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/BiblesClient.swift"
-            timestampString = "522638816.583793"
+            timestampString = "522650543.314194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "getScriptures(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>

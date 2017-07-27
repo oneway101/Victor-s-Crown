@@ -20,6 +20,9 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var prayingLabel: UILabel!
     @IBOutlet weak var prayingProgress: UILabel!
     
+    
+    @IBOutlet weak var goalDescriptionText: UILabel!
+    
     //Mark: History Table View
     @IBOutlet weak var profileTableView: UITableView!
     
@@ -54,8 +57,13 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         profileTableView.delegate = self
         profileTableView.dataSource = self
-        profilePhoto.image = UIImage(named: "no-profile")        
+        profilePhoto.image = UIImage(named: "crown")        
     }
+    
+    @IBAction func setGoals(_ sender: Any) {
+        //Q: How to show settings tab?
+    }
+    
 
     // MARK: - Table view data source
     
