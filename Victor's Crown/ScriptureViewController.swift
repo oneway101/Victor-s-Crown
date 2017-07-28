@@ -70,6 +70,11 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                     self.tableView.reloadData()
                     print("Scripture tableView reloaded.")
                 }
+            } else {
+                performUIUpdatesOnMain {
+                    self.displayAlert(title: "Error", message: error?.localizedDescription)
+                }
+                
             }
         }
         

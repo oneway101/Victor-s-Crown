@@ -29,17 +29,30 @@ extension UIViewController {
         return String(format:"%02i:%02i:%02i",hours,minutes,seconds)
     }
     
-    func getCurrentDate() -> (date:String, weekday:String, today:Date){
-        let date = Date()
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        let weekday = date.dayOfWeek()
-        let currentDate = "\(month)/\(day)/\(year)"
-        let currentWeekday = "\(weekday!)"
-        return (currentDate, currentWeekday, date)
+    func getFutureDate(_ numberOfDays:Int) -> Date {
+        var timeInterval = DateComponents()
+        timeInterval.day = numberOfDays
+        let futureDate = Calendar.current.date(byAdding: timeInterval, to: Date())!
+        return futureDate
     }
+    
+    func daysBetweenDates(startDate: Date, endDate: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        return components.day!
+    }
+    
+//    func getCurrentDate() -> (date:String, weekday:String, today:Date){
+//        let date = Date()
+//        let calendar = Calendar.current
+//        let year = calendar.component(.year, from: date)
+//        let month = calendar.component(.month, from: date)
+//        let day = calendar.component(.day, from: date)
+//        let weekday = date.dayOfWeek()
+//        let currentDate = "\(month)/\(day)/\(year)"
+//        let currentWeekday = "\(weekday!)"
+//        return (currentDate, currentWeekday, date)
+//    }
     
     func clearData(entity:String){
         let context = CoreDataStack.getContext()

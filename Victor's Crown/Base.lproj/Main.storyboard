@@ -114,7 +114,7 @@
                                                 </subviews>
                                             </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="teH-SK-f6E">
-                                                <rect key="frame" x="0.0" y="53" width="384" height="448.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="53" width="384" height="497"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" id="iUV-vS-M9F" customClass="ProfileTableViewCell" customModule="Victor_s_Crown" customModuleProvider="target">
@@ -180,13 +180,6 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDA-T7-W9q">
-                                                <rect key="frame" x="0.0" y="511.33333333333343" width="384" height="38.666666666666572"/>
-                                                <state key="normal" title="Clear History"/>
-                                                <connections>
-                                                    <action selector="clearHistory:" destination="Yxg-Hk-FT3" eventType="touchUpInside" id="X9p-sj-GFy"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -229,51 +222,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMg-e6-UUR">
-                                <rect key="frame" x="86.666666666666686" y="200" width="241" height="57"/>
-                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-fl-O1s">
-                                <rect key="frame" x="301" y="307" width="43" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="xgk-fK-LKq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySK-HC-wRU">
-                                <rect key="frame" x="70" y="307" width="51" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Reset"/>
-                                <connections>
-                                    <action selector="resetButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="btN-Ai-sES"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sB-TK-4Tc">
-                                <rect key="frame" x="119" y="601" width="176" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Record Prayer Time"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="oZ8-wW-TAi"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-1l-BK4" userLabel="timecode stack">
+                                <rect key="frame" x="57.666666666666657" y="184.33333333333331" width="300" height="368.66666666666669"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Wjx-X0-yOL">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="132.66666666666666"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMg-e6-UUR">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="56.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="50"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-fI-wfE">
+                                                <rect key="frame" x="0.0" y="96.666666666666657" width="300" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySK-HC-wRU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73.333333333333343" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="Reset"/>
+                                                        <connections>
+                                                            <action selector="resetButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="btN-Ai-sES"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-fl-O1s">
+                                                        <rect key="frame" x="113.33333333333333" y="0.0" width="73.333333333333357" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="Start"/>
+                                                        <connections>
+                                                            <action selector="startButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="xgk-fK-LKq"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8z0-rx-qrZ" userLabel="Done">
+                                                        <rect key="frame" x="226.66666666666669" y="0.0" width="73.333333333333371" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="Done"/>
+                                                        <connections>
+                                                            <action selector="doneButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="2oB-hg-RmY"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sB-TK-4Tc">
+                                        <rect key="frame" x="0.0" y="332.66666666666663" width="300" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Record Prayer Time"/>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="Deh-jP-j9b" eventType="touchUpInside" id="oZ8-wW-TAi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="xzS-zF-fuX"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UCi-Az-eMo" firstAttribute="top" secondItem="3sB-TK-4Tc" secondAttribute="bottom" constant="50" id="2pg-vL-EM9"/>
-                            <constraint firstItem="ySK-HC-wRU" firstAttribute="top" secondItem="wMg-e6-UUR" secondAttribute="bottom" constant="50" id="GYP-gz-R6O"/>
-                            <constraint firstItem="wMg-e6-UUR" firstAttribute="centerX" secondItem="ai8-96-pwF" secondAttribute="centerX" id="NtW-XU-CXV"/>
-                            <constraint firstItem="wMg-e6-UUR" firstAttribute="top" secondItem="k6M-5n-FlB" secondAttribute="bottom" constant="180" id="X7c-Uw-xbO"/>
-                            <constraint firstItem="ySK-HC-wRU" firstAttribute="leading" secondItem="ai8-96-pwF" secondAttribute="leadingMargin" constant="50" id="Yer-LN-dEP"/>
-                            <constraint firstItem="3sB-TK-4Tc" firstAttribute="centerX" secondItem="ai8-96-pwF" secondAttribute="centerX" id="fmj-dl-fu5"/>
-                            <constraint firstItem="rLy-fl-O1s" firstAttribute="top" secondItem="wMg-e6-UUR" secondAttribute="bottom" constant="50" id="l3D-fj-6mX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rLy-fl-O1s" secondAttribute="trailing" constant="50" id="lvy-cm-Y7b"/>
+                            <constraint firstItem="UBc-1l-BK4" firstAttribute="centerY" secondItem="ai8-96-pwF" secondAttribute="centerY" id="PvH-kF-eWj"/>
+                            <constraint firstItem="UBc-1l-BK4" firstAttribute="centerX" secondItem="ai8-96-pwF" secondAttribute="centerX" id="x28-S1-5xB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pray" image="pray" id="qh0-Rk-N58"/>
                     <connections>
+                        <outlet property="doneButton" destination="8z0-rx-qrZ" id="aeU-48-UVU"/>
                         <outlet property="saveTimecode" destination="3sB-TK-4Tc" id="GjL-pd-sDe"/>
                         <outlet property="start" destination="rLy-fl-O1s" id="6Wt-o8-wiV"/>
                         <outlet property="timecode" destination="wMg-e6-UUR" id="TNY-4c-i7a"/>

@@ -24,6 +24,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var prayingProgressLabel: UILabel!
     
     //Mark: Goals
+    var setStartDate:Date?
+    var setEndDate:Date?
     var setDaysGoal:Int = 0
     var setReadingGoal:Double = 0.0
     var setPrayerTimeGoal:Double = 0.0
@@ -33,7 +35,9 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     //Mark: History Table View
     @IBOutlet weak var profileTableView: UITableView!
     
-    //var notes:[Note] = [Note]()
+    let today = Date()
+    var timestamp = ""
+    var dayOfWeek = ""
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -52,18 +56,17 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
-        performUIUpdatesOnMain {
-            self.profileTableView.reloadData()
-            print("Reloaded profileTableView data.")
-        }
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        // MARK: Set goal progress
         let defaults = UserDefaults.standard
-        if let daysGoal = defaults.string(forKey: "daysGoal"), let readingGoal = defaults.string(forKey: "readingGoal"), let prayerTimeGoal = defaults.string(forKey: "prayerTimeGoal"){
-            
+        if let daysGoal = defaults.string(forKey: "daysGoal"), let readingGoal = defaults.string(forKey: "readingGoal"), let prayerTimeGoal = defaults.string(forKey: "prayerTimeGoal"), let startDate = defaults.object(forKey: "startDate"), let endDate = defaults.object(forKey: "endDate"){
+            setStartDate = startDate as? Date
+            setEndDate = endDate as? Date
+            print("setStartDate: \(setStartDate!)")
+            print("setEndDate: \(setEndDate!)")
             setDaysGoal = Int(daysGoal)!
             setReadingGoal = Double(readingGoal)!
             setPrayerTimeGoal = Double(prayerTimeGoal)!
@@ -71,13 +74,18 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             goalDescriptionText.text = "Your goal is to read \(readingGoal) chapters \n pray \(prayerTimeGoal) minutes for \(daysGoal) days."
         } else {
             //Set default goal values.
-            goalDescriptionText.text = "Your goal is to read 7 chapters \n pray 70 minutes for 7 days."
+            setStartDate = today
+            setEndDate = getFutureDate(7)
+            defaults.set(today, forKey: "startDate")
+            defaults.set(setEndDate, forKey: "endDate")
             defaults.set(7, forKey: "daysGoal")
             defaults.set(7.0, forKey: "readingGoal")
             defaults.set(70.0, forKey: "prayerTimeGoal")
             setDaysGoal = 7
             setReadingGoal = 7.0
             setPrayerTimeGoal = 70.0
+            
+            goalDescriptionText.text = "Your goal is to read 7 chapters \n pray 70 minutes for 7 days."
         }
         
         var totalnumberOfChapters:Int = 0
@@ -93,12 +101,20 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             totalAmountOfTime += Int(time)
         }
         
-        let daysLeft:Int = setDaysGoal - DataModel.notes.count
-        daysLeftLabel.text = String(daysLeft)
         let readingProgress:Double = (Double(totalnumberOfChapters)/setReadingGoal)*100
         readingProgressLabel.text = "\(round(readingProgress))%"
         let prayingProgress:Double = ((Double(totalAmountOfTime)/60)/setPrayerTimeGoal)*100
         prayingProgressLabel.text = String(round(prayingProgress)) + "%"
+        
+        let daysLeft = daysBetweenDates(startDate: setStartDate!, endDate: setEndDate!)
+        print("\(daysLeft) days left.")
+        daysLeftLabel.text = String(daysLeft)
+        
+        performUIUpdatesOnMain {
+            self.profileTableView.reloadData()
+            print("Reloaded profileTableView data.")
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -106,6 +122,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         profileTableView.delegate = self
         profileTableView.dataSource = self
         profilePhoto.image = UIImage(named: "crown")
+        
+
     }
     
     @IBAction func setGoals(_ sender: Any) {
@@ -115,39 +133,49 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func clearHistory(_ sender: Any) {
         
     }
+    
 
-    // MARK: - Table view data source
+    // MARK: Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataModel.notes.count
+        //return DataModel.notes.count
+        return setDaysGoal
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ProfileTableViewCell
-        let note = DataModel.notes[(indexPath as NSIndexPath).row]
-        
-        if let date = note.date {
-            cell.dateLabel.text = date
+        //let note = DataModel.notes[(indexPath as NSIndexPath).row]
+        var listOfDaysArray = [Date]()
+        for index in 0...setDaysGoal {
+            listOfDaysArray.append(getFutureDate(index))
         }
-        cell.weekdayLabel.text = note.day
+        let futureDate = listOfDaysArray[(indexPath as NSIndexPath).row]
+        timestamp = DateFormatter.localizedString(from: futureDate, dateStyle: .short, timeStyle: .none)
+        cell.dateLabel.text = timestamp
+        cell.weekdayLabel.text = futureDate.dayOfWeek()!
+        cell.chaptersRead.text = ""
+        cell.prayerTime.text = ""
         
-        if let readingRecord = note.readingRecord as? [String] {
-            var chaptersRead = ""
-            for (index, chapter) in readingRecord.enumerated() {
-                if index == (readingRecord.count - 1){
-                    chaptersRead += "\(chapter)"
-                } else {
-                    chaptersRead += "\(chapter), "
+        for note in DataModel.notes {
+            if let date = note.date, date == timestamp {
+                if let readingRecord = note.readingRecord as? [String] {
+                    var chaptersRead = ""
+                    for (index, chapter) in readingRecord.enumerated() {
+                        if index == (readingRecord.count - 1){
+                            chaptersRead += "\(chapter)"
+                        } else {
+                            chaptersRead += "\(chapter), "
+                        }
+                    }
+                    cell.chaptersRead.text = chaptersRead
                 }
+                cell.prayerTime.text = timeString(time: TimeInterval(note.prayerRecord))
             }
-            cell.chaptersRead.text = chaptersRead
         }
-        cell.prayerTime.text = timeString(time: TimeInterval(note.prayerRecord))
-        
         
         return cell
     }
@@ -161,8 +189,10 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             // handle delete (by removing the data from your array and updating the tableview)
             let note = DataModel.notes[(indexPath as NSIndexPath).row]
             
+            
         }
     }
+    
 }
 
 extension Date {

@@ -14,55 +14,34 @@ class TimerViewController: UIViewController {
     
     @IBOutlet weak var timecode: UILabel!
     @IBOutlet weak var start: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var saveTimecode: UIButton!
     
     var seconds = 0
     var timer = Timer()
     var isTimerRunning = false
     
-    //let today = Date()
+    let today = Date()
     var timestamp = ""
     var dayOfWeek = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveTimecode.isEnabled = false
-        let today = getCurrentDate().today
+        doneButton.isEnabled = false
         timestamp = DateFormatter.localizedString(from: today, dateStyle: .short, timeStyle: .none)
         dayOfWeek = today.dayOfWeek()!
         print("today's date: \(timestamp)")
-        //let isToday = Calendar.current.isDateInToday(today)
     }
     
-    @IBAction func startButtonTapped(_ sender: Any) {
-        runTimer()
-        isTimerRunning = !isTimerRunning
-    }
-    
-    @IBAction func resetButtonTapped(_ sender: Any) {
-        timer.invalidate()
-        seconds = 0
-        timecode.text = timeString(time: TimeInterval(seconds))
-        start.setTitle("Start", for: .normal)
-        isTimerRunning = false
-        saveTimecode.isEnabled = false
-    }
-    
-    @IBAction func saveButtonTapped(_ sender:Any) {
-        print(seconds)
-        fetchNotes()
-    }
-
     func runTimer(){
         if isTimerRunning {
             timer.invalidate()
             start.setTitle("Start", for: .normal)
-            saveTimecode.isEnabled = true
             
         } else {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(TimerViewController.updateTimer)), userInfo: nil, repeats: true)
             start.setTitle("Pause", for: .normal)
-            saveTimecode.isEnabled = false
         }
     }
     
@@ -71,7 +50,34 @@ class TimerViewController: UIViewController {
         timecode.text = timeString(time: TimeInterval(seconds))
     }
     
-    func fetchNotes(){
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        timer.invalidate()
+        start.setTitle("Start", for: .normal)
+        isTimerRunning = false
+        start.isEnabled = false
+        saveTimecode.isEnabled = true
+    }
+    
+    @IBAction func startButtonTapped(_ sender: Any) {
+        runTimer()
+        isTimerRunning = !isTimerRunning
+        doneButton.isEnabled = true
+    }
+    
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        timer.invalidate()
+        seconds = 0
+        timecode.text = timeString(time: TimeInterval(seconds))
+        start.setTitle("Start", for: .normal)
+        isTimerRunning = false
+        start.isEnabled = true
+        doneButton.isEnabled = false
+        saveTimecode.isEnabled = false
+        
+        
+    }
+    
+    @IBAction func saveButtonTapped(_ sender:Any) {
         //MARK: Fetch Request
         let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
         fetchRequest.sortDescriptors = []
@@ -81,7 +87,7 @@ class TimerViewController: UIViewController {
         
         do {
             try fetchedResultsController.performFetch()
-
+            
         } catch {
             let fetchError = error as NSError
             print("Unable to Perform Fetch Request")
@@ -101,7 +107,13 @@ class TimerViewController: UIViewController {
             CoreDataStack.saveContext()
             print("Today's prayer record has been saved.")
         }
+        seconds = 0
+        timecode.text = timeString(time: TimeInterval(seconds))
+        saveTimecode.isEnabled = false
+        doneButton.isEnabled = false
+        start.isEnabled = true
     }
+
     
     
 

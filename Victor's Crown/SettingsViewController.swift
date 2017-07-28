@@ -51,15 +51,18 @@ class SettingsViewController: UIViewController {
             readingGoalLabel.text = readingGoal
             prayerGoalLabel.text = prayerTimeGoal
             
-        } else {
-            //Set default goal values.
-            defaults.set(7, forKey: "daysGoal")
-            defaults.set(7.0, forKey: "readingGoal")
-            defaults.set(70.0, forKey: "prayerTimeGoal")
-            numberOfDaysLabel.text = "7"
-            readingGoalLabel.text = "7"
-            prayerGoalLabel.text = "70"
         }
+//        else {
+//            //Set default goal values.
+//            defaults.set(Date(), forKey: "startDate")
+//            defaults.set(getFutureDate(7), forKey: "endDate")
+//            defaults.set(7, forKey: "daysGoal")
+//            defaults.set(7.0, forKey: "readingGoal")
+//            defaults.set(70.0, forKey: "prayerTimeGoal")
+//            numberOfDaysLabel.text = "7"
+//            readingGoalLabel.text = "7"
+//            prayerGoalLabel.text = "70"
+//        }
 
     }
 
@@ -80,6 +83,8 @@ class SettingsViewController: UIViewController {
         numberOfDaysLabel.text = daysGoal.description
         //Q: Where to save the user setting?
         defaults.set(daysGoal, forKey: "daysGoal")
+        defaults.set(Date(), forKey: "startDate")
+        defaults.set(getFutureDate(daysGoal), forKey: "endDate")
     }
     
     @IBAction func setReadingGoal(_ sender: UIStepper) {
