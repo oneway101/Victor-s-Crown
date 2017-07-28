@@ -13,10 +13,9 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     private let reuseIdentifier = "ScriptureCell"
     
-
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var breadButton: UIButton!
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     let chapterNavButton =  UIButton(type: .custom)
     var navigationTitle:String!
@@ -36,14 +35,11 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         //Fetch all Core Data first.
-        //loadEntityData(Book.self)
         loadBookData()
         
         //clearData(entity: "Book")
         //clearData(entity: "Chapter")
         //clearData(entity: "Scripture")
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,16 +58,22 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
             scriptures = DataModel.selectedScripture
         }
         
+        performUIUpdatesOnMain {
+            self.showActivityIndicator(self.activityIndicator)
+        }
+        
         //Get Data to display
         bookFetchRequest(bookName: bookName, chapterId: chapterId) { (result, error) in
             if let result = result {
                 performUIUpdatesOnMain {
+                    self.hideActivityIndicator(self.activityIndicator)
                     self.scriptures = result
                     self.tableView.reloadData()
                     print("Scripture tableView reloaded.")
                 }
             } else {
                 performUIUpdatesOnMain {
+                    self.hideActivityIndicator(self.activityIndicator)
                     let message = error?.localizedDescription
                     self.displayAlert(title: "Error", message: message)
                 }
@@ -125,7 +127,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         let verse = scriptures[(indexPath as NSIndexPath).row]
   
         cell.verseTextView.setHTMLFromString(htmlText: verse.verseText as! String)
-        
+ 
         return cell
     }
     

@@ -11,7 +11,6 @@ import CoreData
 
 class TimerViewController: UIViewController {
     
-    
     @IBOutlet weak var timecode: UILabel!
     @IBOutlet weak var start: UIButton!
     @IBOutlet weak var doneButton: UIButton!
@@ -73,8 +72,6 @@ class TimerViewController: UIViewController {
         start.isEnabled = true
         doneButton.isEnabled = false
         saveTimecode.isEnabled = false
-        
-        
     }
     
     @IBAction func saveButtonTapped(_ sender:Any) {

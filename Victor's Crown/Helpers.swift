@@ -20,6 +20,23 @@ extension UIViewController {
             present(alert, animated: true, completion: nil)
         }
     }
+
+    // MARK: Activity Indicator
+    func showActivityIndicator(_ activityIndicator: UIActivityIndicatorView){
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = .gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func hideActivityIndicator(_ activityIndicator: UIActivityIndicatorView){
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
+    // Mark: Convert seconds to timecode format
     
     func timeString(time:TimeInterval) -> String{
         let hours = Int(time)/3600
@@ -28,6 +45,8 @@ extension UIViewController {
         
         return String(format:"%02i:%02i:%02i",hours,minutes,seconds)
     }
+    
+    // Mark: Date Calculations
     
     func getFutureDate(_ numberOfDays:Int) -> Date {
         var timeInterval = DateComponents()
