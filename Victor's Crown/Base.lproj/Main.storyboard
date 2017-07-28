@@ -703,7 +703,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="crown" width="66" height="53"/>
+        <image name="crown" width="83" height="53"/>
         <image name="pray" width="25" height="25"/>
         <image name="profile" width="25" height="25"/>
         <image name="read" width="25" height="25"/>

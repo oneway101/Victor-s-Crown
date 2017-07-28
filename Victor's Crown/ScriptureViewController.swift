@@ -72,7 +72,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                 }
             } else {
                 performUIUpdatesOnMain {
-                    self.displayAlert(title: "Error", message: error?.localizedDescription)
+                    let message = error?.localizedDescription
+                    self.displayAlert(title: "Error", message: message)
                 }
                 
             }
