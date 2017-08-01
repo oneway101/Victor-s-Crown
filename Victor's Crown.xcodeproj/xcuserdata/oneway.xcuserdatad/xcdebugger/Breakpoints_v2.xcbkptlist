@@ -10,11 +10,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "523307585.814186"
+            timestampString = "523315010.135571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
+            timestampString = "523315016.287323"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "523307585.814186"
+            timestampString = "523315020.344015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "523307585.814186"
+            timestampString = "523315022.384152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "523308663.119834"
+            timestampString = "523315023.408106"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,29 +90,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "523308663.119834"
+            timestampString = "523315025.352308"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Victor&apos;s Crown/ScriptureViewController.swift"
-            timestampString = "523308663.119834"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Victor_s_Crown.ScriptureViewController.viewDidAppear (Swift.Bool) -&gt; ()"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/ScriptureViewController.swift"
+                  timestampString = "523315529.17238"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "5916">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Victor_s_Crown.ScriptureViewController.(viewDidAppear (Swift.Bool) -&gt; ()).(closure #2)"
+                  moduleName = "Victor&apos;s Crown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oneway/Code/Udacity/Victor&apos;s%20Crown/Victor&apos;s%20Crown/ScriptureViewController.swift"
+                  timestampString = "523315529.175562"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

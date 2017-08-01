@@ -17,7 +17,7 @@ class DataModel:NSObject {
     //Bible
     static var bookLists = [Book]()
     static var chapters = [Chapter]()
-    static var scripture = [Scripture]()
+    static var scriptures = [Scripture]()
     
     static var selectedBook:Book?
     static var selectedChapter:Chapter?

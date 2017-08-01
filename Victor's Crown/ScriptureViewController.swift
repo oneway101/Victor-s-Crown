@@ -35,11 +35,12 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         //Fetch all Core Data first.
-        loadBookData()
-        
-        //clearData(entity: "Book")
-        //clearData(entity: "Chapter")
-        //clearData(entity: "Scripture")
+        //loadBookData()
+        if DataModel.bookLists.count == 0 {
+            DataModel.bookLists = loadEntityData(Book.self)!
+            DataModel.chapters = loadEntityData(Chapter.self)!
+            //DataModel.scriptures = loadEntityData(Scripture.self)!
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,9 +59,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                 bookName = selectedBookName
                 chapterId = selectedChapterId
                 chapterNumber = selectedChapterNumber
-                print("*** from UserDefaults ***")
-                print("SelectedChapterNumber: \(chapterNumber!)")
-                print("SelectedChapterId: \(chapterId!)")
+                
             } else {
                 bookName = "Genesis"
                 chapterId = "eng-KJV:Gen.1"
@@ -68,10 +67,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
             }
         } else {
             chapterNumber = DataModel.selectedChapter?.number
-            chapterId = DataModel.selectedChapterId
+            chapterId = DataModel.selectedChapter?.id
             scriptures = DataModel.selectedScripture
-            print("SelectedChapterNumber: \(chapterNumber!)")
-            print("SelectedChapterId: \(chapterId!)")
         }
         
         performUIUpdatesOnMain {
@@ -86,7 +83,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                     self.scriptures = result
                     self.tableView.reloadData()
                     //self.tableView.setContentOffset(.zero, animated: false)
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
+                    //self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
                     print("Scripture tableView reloaded.")
                 }
             } else {

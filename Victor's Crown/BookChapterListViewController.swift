@@ -26,8 +26,11 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         
         //Q: Should I use the fetch request to sort chapters of the selected book?
         //What would be the better way to sort the chapters array?
-        numberOfChapters = Int(DataModel.selectedBook!.numOfChapters)
-        selectedBookChaptersArray = (DataModel.selectedBook?.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
+        if let selectedBookchapters = DataModel.selectedBook?.numOfChapters {
+            numberOfChapters = Int(selectedBookchapters)
+            selectedBookChaptersArray = (DataModel.selectedBook?.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
+        }
+        
     }
     
     
