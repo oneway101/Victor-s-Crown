@@ -45,16 +45,15 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     override func viewDidAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
         bookName = DataModel.selectedBook?.name
+        debugPrint("bookName:\(bookName)")
+        debugPrint("defaults:", defaults.string(forKey: Constants.UserDefaults.SelectedBookName), defaults.string(forKey: Constants.UserDefaults.SelectedChapterId), defaults.string(forKey: Constants.UserDefaults.SelectedChapterNumber))
         
         if bookName == nil {
         
             if let selectedBookName = defaults.string(forKey: Constants.UserDefaults.SelectedBookName), let selectedChapterId = defaults.string(forKey: Constants.UserDefaults.SelectedChapterId), let selectedChapterNumber = defaults.string(forKey: Constants.UserDefaults.SelectedChapterNumber) {
                 /*DataModel.selectedBookName = selectedBookName
                 DataModel.selectedChapterId = selectedChapterId
-                DataModel.selectedChapterNumber = selectedChapterNumber
-                print("SelectedBookName: \(selectedBookName)")
-                print("SelectedChapterId: \(selectedChapterId)")
-                print("SelectedChapterNumber: \(selectedChapterNumber)")*/
+                DataModel.selectedChapterNumber = selectedChapterNumber*/
                 
                 bookName = selectedBookName
                 chapterId = selectedChapterId
@@ -62,6 +61,10 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                 print("*** from UserDefaults ***")
                 print("SelectedChapterNumber: \(chapterNumber!)")
                 print("SelectedChapterId: \(chapterId!)")
+            } else {
+                bookName = "Genesis"
+                chapterId = "eng-KJV:Gen.1"
+                chapterNumber = "1"
             }
         } else {
             chapterNumber = DataModel.selectedChapter?.number
@@ -82,6 +85,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                     self.hideActivityIndicator(self.activityIndicator)
                     self.scriptures = result
                     self.tableView.reloadData()
+                    //self.tableView.setContentOffset(.zero, animated: false)
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
                     print("Scripture tableView reloaded.")
                 }
             } else {
@@ -142,7 +147,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == scriptures.count {
+        if indexPath.row + 1 >= scriptures.count {
             print("end of the row")
             breadButton.isHidden = false
         } else {

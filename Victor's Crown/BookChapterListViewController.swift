@@ -62,6 +62,7 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath) as! BookChapterCell
         let selectedChapter = selectedBookChaptersArray[(indexPath as NSIndexPath).row]
+        DataModel.selectedBookName = selectedChapter.book?.name
         DataModel.selectedChapter = selectedChapter
         DataModel.selectedChapterNumber = selectedChapter.number!
         DataModel.selectedChapterId = selectedChapter.id!
