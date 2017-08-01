@@ -35,25 +35,11 @@ class BookNameListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedBook = DataModel.bookLists[(indexPath as NSIndexPath).row]
-        print("You've selected book: \(selectedBook.name!)")
         DataModel.selectedBook = selectedBook
-        //DataModel.selectedBook = selectedBook.name!
+        DataModel.selectedBookName = selectedBook.name!
+        print("You've selected book: \(selectedBook.name!)")
         self.performSegue(withIdentifier: segueIdentifier, sender: self)
     }
-
-
-    
-    // MARK: - Navigation
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == segueIdentifier {
-//            let controller = segue.destination as! BookChapterListViewController
-//            let selectedBook = sender as! Book
-//            controller.selectedBook = selectedBook
-//            controller.numberOfChapters = selectedBook.numOfChapters
-//        }
-//        
-//    }
  
 
 }

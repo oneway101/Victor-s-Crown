@@ -15,7 +15,6 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     
     //Mark: Progress View
     @IBOutlet weak var profilePhoto: UIImageView!
-    
     @IBOutlet weak var goalTermLabel: UILabel!
     @IBOutlet weak var daysLeftLabel: UILabel!
     @IBOutlet weak var readingLabel: UILabel!
@@ -67,6 +66,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         // MARK: Set goal progress
         let defaults = UserDefaults.standard
+        
         if let daysGoal = defaults.string(forKey: "daysGoal"), let readingGoal = defaults.string(forKey: "readingGoal"), let prayerTimeGoal = defaults.string(forKey: "prayerTimeGoal"), let startDate = defaults.object(forKey: "startDate"), let endDate = defaults.object(forKey: "endDate"){
             setStartDate = startDate as? Date
             setEndDate = endDate as? Date
@@ -81,17 +81,17 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             //Set default goal values.
             setStartDate = today
             setEndDate = getFutureDate(7)
-            defaults.set(today, forKey: "startDate")
-            defaults.set(setEndDate, forKey: "endDate")
-            defaults.set(7, forKey: "daysGoal")
-            defaults.set(7.0, forKey: "readingGoal")
-            defaults.set(70.0, forKey: "prayerTimeGoal")
             setDaysGoal = 7
             setReadingGoal = 7.0
             setPrayerTimeGoal = 70.0
-            
-            goalDescriptionText.text = "Your goal is to read 7 chapters \n pray 70 minutes for 7 days."
+            defaults.set(setStartDate, forKey: Constants.UserDefaults.StartDate)
+            defaults.set(setEndDate, forKey: Constants.UserDefaults.EndDate)
+            defaults.set(setDaysGoal, forKey: Constants.UserDefaults.DaysGoal)
+            defaults.set(setReadingGoal, forKey: Constants.UserDefaults.ReadingGoal)
+            defaults.set(setPrayerTimeGoal, forKey: Constants.UserDefaults.PrayerTimeGoal)
+            goalDescriptionText.text = "Your goal is to read \(setReadingGoal) chapters \n pray \(setPrayerTimeGoal) minutes for \(setDaysGoal) days."
         }
+
         
         performUIUpdatesOnMain {
             self.profileTableView.reloadData()
@@ -115,7 +115,11 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             let message = "You are about to reset your current goal. Would you like to continue?"
             let alert = UIAlertController(title: "Reset Goal", message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+                (action: UIAlertAction!) in
+                    self.tabBarController?.selectedIndex = 3
+                
+            }))
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -157,7 +161,6 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             timestamp = DateFormatter.localizedString(from: futureDate, dateStyle: .short, timeStyle: .none)
             for note in DataModel.notes {
                 if let date = note.date, date == timestamp {
-                    //currentGoalNotes.append(note)
                     
                     let chapters = note.readingRecord as! [String]
                     totalnumberOfChapters += chapters.count
@@ -255,18 +258,18 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         }//currentGoalTableView
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
-            let note = DataModel.notes[(indexPath as NSIndexPath).row]
-            
-            
-        }
-    }
+    //MARK: Edit Cell Feature
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if (editingStyle == UITableViewCellEditingStyle.delete) {
+//            // handle delete (by removing the data from your array and updating the tableview)
+//            let note = DataModel.notes[(indexPath as NSIndexPath).row]
+//            
+//        }
+//    }
     
 }
 

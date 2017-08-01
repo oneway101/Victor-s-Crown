@@ -52,17 +52,6 @@ class SettingsViewController: UIViewController {
             prayerGoalLabel.text = prayerTimeGoal
             
         }
-//        else {
-//            //Set default goal values.
-//            defaults.set(Date(), forKey: "startDate")
-//            defaults.set(getFutureDate(7), forKey: "endDate")
-//            defaults.set(7, forKey: "daysGoal")
-//            defaults.set(7.0, forKey: "readingGoal")
-//            defaults.set(70.0, forKey: "prayerTimeGoal")
-//            numberOfDaysLabel.text = "7"
-//            readingGoalLabel.text = "7"
-//            prayerGoalLabel.text = "70"
-//        }
 
     }
 

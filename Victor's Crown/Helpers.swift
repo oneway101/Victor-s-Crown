@@ -194,7 +194,7 @@ extension UIViewController {
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             performUIUpdatesOnMain {
                 DataModel.selectedChapter = data[0]
-                print("\(chapterId) is fetched and set as a selectedChapter: \(String(describing: DataModel.selectedChapter))")
+                print("\(chapterId) is fetched and set as a selectedChapter. )")
                 print("Fetching all scriptures of selected chapter...")
                 self.scriptureFetchRequest(selectedChapter: data[0], chapterId: chapterId, { (result, error) in
                     completionHandler(result, error)

@@ -10,17 +10,17 @@ import Foundation
 
 // MARK: - Constants
 
-extension BiblesClient {
+struct Constants {
     
     
     // MARK: Bibles API
-    struct Constants {
+    struct API {
         
-        static let APIKey = "JLHmbY2si2lgdwgy0NWpCNm7oZhdCgSxDfsSHFtu"
+        static let Key = "JLHmbY2si2lgdwgy0NWpCNm7oZhdCgSxDfsSHFtu"
         
-        static let APIScheme = "https"
-        static let APIHost = "bibles.org"
-        static let APIPath = "/v2/versions"
+        static let Scheme = "https"
+        static let Host = "bibles.org"
+        static let Path = "/v2/versions"
         
         }
     
@@ -46,6 +46,19 @@ extension BiblesClient {
         static let Search = "search"
         static let Result = "result"
         static let Passages = "passages"
+    }
+    
+    // Mark: User Defaults
+    struct UserDefaults {
+        static let StartDate = "startDate"
+        static let EndDate = "endDate"
+        static let DaysGoal = "daysGoal"
+        static let ReadingGoal = "readingGoal"
+        static let PrayerTimeGoal = "prayerTimeGoal"
+        
+        static let SelectedBookName = "selectedBookName"
+        static let SelectedChapterId = "selectedChapterId"
+        static let SelectedChapterNumber = "selectedChapterNumber"
     }
     
     

@@ -63,22 +63,15 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
         let selectedCell = collectionView.cellForItem(at: indexPath) as! BookChapterCell
         let selectedChapter = selectedBookChaptersArray[(indexPath as NSIndexPath).row]
         DataModel.selectedChapter = selectedChapter
+        DataModel.selectedChapterNumber = selectedChapter.number!
         DataModel.selectedChapterId = selectedChapter.id!
-        print("You've selected Chapter\(selectedChapter.number!). ChapterId: \(selectedChapter.id!)")
+        print("You've selected Chapter\(selectedChapter.number!). ChapterId is \(selectedChapter.id!)")
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
         } else {
             dismiss(animated: true, completion: nil)
         }
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == segueIdentifier {
-//            let controller = segue.destination as! ScriptureViewController
-//            let selectedChapter = sender as! Chapter
-//            controller.selectedChapter = selectedChapter
-//        }
-//    }
     
     @IBAction func cancel(){
         if let navigationController = navigationController {

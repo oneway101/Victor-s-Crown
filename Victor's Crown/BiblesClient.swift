@@ -21,7 +21,7 @@ class BiblesClient: NSObject {
         let includeChapters = "?include_chapters=true"
         let urlString = "https://bibles.org/v2/versions/\(versionID)/books.js"+includeChapters
         
-        let username = Constants.APIKey
+        let username = Constants.API.Key
         let password = "pass"
         let loginString = String(format: "%@:%@", username, password)
         let loginData = loginString.data(using: String.Encoding.utf8)!
@@ -36,14 +36,14 @@ class BiblesClient: NSObject {
             }
             
             /* GUARD: Is the "response" key in our result? */
-            guard let response = parsedResult?[ResponseKeys.Response] as? [String:AnyObject] else {
-                displayError("Cannot find key '\(ResponseKeys.Response)' in \(String(describing: parsedResult))")
+            guard let response = parsedResult?[Constants.ResponseKeys.Response] as? [String:AnyObject] else {
+                displayError("Cannot find key '\(Constants.ResponseKeys.Response)' in \(String(describing: parsedResult))")
                 return
             }
             
             /* GUARD: Is the "books" key in our response? */
-            guard let books = response[ResponseKeys.Books] as? [[String:AnyObject]] else {
-                displayError("Cannot find key '\(ResponseKeys.Books)' in \(response)")
+            guard let books = response[Constants.ResponseKeys.Books] as? [[String:AnyObject]] else {
+                displayError("Cannot find key '\(Constants.ResponseKeys.Books)' in \(response)")
                 return
             }
             
@@ -52,18 +52,18 @@ class BiblesClient: NSObject {
             var allChapters:[Chapter] = []
             
             for book in books {
-                guard let bookName = book[ResponseKeys.Name] as? String else {
-                    displayError("Cannot find key '\(ResponseKeys.Name)' in \(book)")
+                guard let bookName = book[Constants.ResponseKeys.Name] as? String else {
+                    displayError("Cannot find key '\(Constants.ResponseKeys.Name)' in \(book)")
                     return
                 }
                 
-                guard let bookId = book[ResponseKeys.Id] as? String else {
-                    displayError("Cannot find key '\(ResponseKeys.Id)' in \(book)")
+                guard let bookId = book[Constants.ResponseKeys.Id] as? String else {
+                    displayError("Cannot find key '\(Constants.ResponseKeys.Id)' in \(book)")
                     return
                 }
                 
-                guard let chapters = book[ResponseKeys.Chapters] as? [[String:AnyObject]] else {
-                    displayError("Cannot find key '\(ResponseKeys.Chapters)' in \(book)")
+                guard let chapters = book[Constants.ResponseKeys.Chapters] as? [[String:AnyObject]] else {
+                    displayError("Cannot find key '\(Constants.ResponseKeys.Chapters)' in \(book)")
                     return
                 }
                 
@@ -78,12 +78,12 @@ class BiblesClient: NSObject {
                     CoreDataStack.saveContext()
                     
                     for chapterObj in chapters {
-                        guard let chapterNumber = chapterObj[ResponseKeys.Chapter] as? String else {
-                            displayError("Cannot find key '\(ResponseKeys.Chapter)' in \(chapterObj)")
+                        guard let chapterNumber = chapterObj[Constants.ResponseKeys.Chapter] as? String else {
+                            displayError("Cannot find key '\(Constants.ResponseKeys.Chapter)' in \(chapterObj)")
                             return
                         }
-                        guard let chapterId = chapterObj[ResponseKeys.Id] as? String else {
-                            displayError("Cannot find key '\(ResponseKeys.Id)' in \(chapterObj)")
+                        guard let chapterId = chapterObj[Constants.ResponseKeys.Id] as? String else {
+                            displayError("Cannot find key '\(Constants.ResponseKeys.Id)' in \(chapterObj)")
                             return
                         }
                         
@@ -112,7 +112,7 @@ class BiblesClient: NSObject {
         
         let urlString = "https://bibles.org/v2/chapters/\(chapterId)/verses.js"
         
-        let username = Constants.APIKey
+        let username = Constants.API.Key
         let password = "pass"
         let loginString = String(format: "%@:%@", username, password)
         let loginData = loginString.data(using: String.Encoding.utf8)!
@@ -127,14 +127,14 @@ class BiblesClient: NSObject {
             }
             
             /* GUARD: Is the "response" key in our result? */
-            guard let response = parsedResult?[ResponseKeys.Response] as? [String:AnyObject] else {
-                displayError("Cannot find key '\(ResponseKeys.Response)' in \(String(describing: parsedResult))")
+            guard let response = parsedResult?[Constants.ResponseKeys.Response] as? [String:AnyObject] else {
+                displayError("Cannot find key '\(Constants.ResponseKeys.Response)' in \(String(describing: parsedResult))")
                 return
             }
             
             /* GUARD: Is the "verses" key in our response? */
-            guard let verses = response[ResponseKeys.Verses] as? [[String:AnyObject]] else {
-                displayError("Cannot find key '\(ResponseKeys.Verses)' in \(response)")
+            guard let verses = response[Constants.ResponseKeys.Verses] as? [[String:AnyObject]] else {
+                displayError("Cannot find key '\(Constants.ResponseKeys.Verses)' in \(response)")
                 return
             }
             
@@ -143,12 +143,12 @@ class BiblesClient: NSObject {
                 
                 for verseObj in verses {
                     
-                    guard let verseNumber = verseObj[ResponseKeys.Verse] as? String else {
-                        displayError("Cannot find key '\(ResponseKeys.Verse)' in \(verseObj)")
+                    guard let verseNumber = verseObj[Constants.ResponseKeys.Verse] as? String else {
+                        displayError("Cannot find key '\(Constants.ResponseKeys.Verse)' in \(verseObj)")
                         return
                     }
-                    guard let verseText = verseObj[ResponseKeys.Text] as? String else {
-                        displayError("Cannot find key '\(ResponseKeys.Text)' in \(verseObj)")
+                    guard let verseText = verseObj[Constants.ResponseKeys.Text] as? String else {
+                        displayError("Cannot find key '\(Constants.ResponseKeys.Text)' in \(verseObj)")
                         return
                     }
                     
@@ -229,9 +229,9 @@ class BiblesClient: NSObject {
     private func biblesURLFromParameters(_ parameters: [String:String]) -> URL {
         
         var components = URLComponents()
-        components.scheme = Constants.APIScheme
-        components.host = Constants.APIHost
-        components.path = Constants.APIPath
+        components.scheme = Constants.API.Scheme
+        components.host = Constants.API.Host
+        components.path = Constants.API.Path
         components.queryItems = [URLQueryItem]()
         
         for (key, value) in parameters {

@@ -23,6 +23,8 @@ class DataModel:NSObject {
     static var selectedChapter:Chapter?
     static var selectedScripture = [Scripture]()
     
-    static var selectedBookName = "Genesis"
-    static var selectedChapterId = "eng-KJV:Gen.1"
+    static var selectedBookName:String?
+    static var selectedChapterId:String?
+    static var selectedChapterNumber:String?
+    
 }

@@ -43,19 +43,32 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        let defaults = UserDefaults.standard
         bookName = DataModel.selectedBook?.name
         
         if bookName == nil {
-            print("Genesis 1 set as a default chapter")
-            bookName = "Genesis"
-            chapterId = "eng-KJV:Gen.1"
-            chapterNumber = "1"
+        
+            if let selectedBookName = defaults.string(forKey: Constants.UserDefaults.SelectedBookName), let selectedChapterId = defaults.string(forKey: Constants.UserDefaults.SelectedChapterId), let selectedChapterNumber = defaults.string(forKey: Constants.UserDefaults.SelectedChapterNumber) {
+                /*DataModel.selectedBookName = selectedBookName
+                DataModel.selectedChapterId = selectedChapterId
+                DataModel.selectedChapterNumber = selectedChapterNumber
+                print("SelectedBookName: \(selectedBookName)")
+                print("SelectedChapterId: \(selectedChapterId)")
+                print("SelectedChapterNumber: \(selectedChapterNumber)")*/
+                
+                bookName = selectedBookName
+                chapterId = selectedChapterId
+                chapterNumber = selectedChapterNumber
+                print("*** from UserDefaults ***")
+                print("SelectedChapterNumber: \(chapterNumber!)")
+                print("SelectedChapterId: \(chapterId!)")
+            }
         } else {
-            print("\(bookName!)'s chapter number, id and scriptures are set.")
             chapterNumber = DataModel.selectedChapter?.number
             chapterId = DataModel.selectedChapterId
             scriptures = DataModel.selectedScripture
+            print("SelectedChapterNumber: \(chapterNumber!)")
+            print("SelectedChapterId: \(chapterId!)")
         }
         
         performUIUpdatesOnMain {
@@ -122,10 +135,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScriptureCell
-        
-        //let verse = DataModel.selectedScripture[(indexPath as NSIndexPath).row]
         let verse = scriptures[(indexPath as NSIndexPath).row]
-  
         cell.verseTextView.setHTMLFromString(htmlText: verse.verseText as! String)
  
         return cell
@@ -135,7 +145,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         if indexPath.row + 1 == scriptures.count {
             print("end of the row")
             breadButton.isHidden = false
-
+        } else {
+            breadButton.isHidden = true
         }
     }
     
@@ -154,7 +165,6 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         
         //Mark: Create a chapter list navigation
         chapterNavButton.setTitle("\(bookName) \(chapterNumber)", for: .normal)
-      
         chapterNavButton.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         chapterNavButton.setTitleColor(UIColor(red: 3/255, green: 121/255, blue: 251/255, alpha: 1.0), for: .normal)
         chapterNavButton.addTarget(self, action: #selector(self.clickOnBookTitle), for: .touchUpInside)
