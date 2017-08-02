@@ -31,27 +31,30 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var prayerStepper: UIStepper!
     
-    //let defaultGoalTermDays = "7"
-    //let defaultReadingGoal = "1"
-    //let defaultPrayerTimeGoal = "5"
+    //User Defaults
+    let defaults = UserDefaults.standard
+    var setStartDate:Date?
+    var setEndDate:Date?
+    var setDaysGoal:Int = 0
+    var setReadingGoal:Int = 0
+    var setPrayerTimeGoal:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bookDownloadButton.isEnabled = false
+        daysStepper.minimumValue = 1
+        readingStepper.minimumValue = 1
+        prayerStepper.minimumValue = 5
         
-        //stepper setting
-        //readingStepper.minimumValue = 1
-        //prayerStepper.minimumValue = 5
+        setDaysGoal = defaults.integer(forKey: Constants.UserDefaults.DaysGoal)
+        setReadingGoal = defaults.integer(forKey: Constants.UserDefaults.ReadingGoal)
+        setPrayerTimeGoal = defaults.integer(forKey: Constants.UserDefaults.PrayerTimeGoal)
         
-        let defaults = UserDefaults.standard
-        if let daysGoal = defaults.string(forKey: "daysGoal"), let readingGoal = defaults.string(forKey: "readingGoal"), let prayerTimeGoal = defaults.string(forKey: "prayerTimeGoal"){
-            
-            numberOfDaysLabel.text = daysGoal
-            readingGoalLabel.text = readingGoal
-            prayerGoalLabel.text = prayerTimeGoal
-            
-        }
+        numberOfDaysLabel.text = String(setDaysGoal)
+        readingGoalLabel.text = String(setReadingGoal)
+        prayerGoalLabel.text = String(setPrayerTimeGoal)
+
 
     }
 
@@ -67,30 +70,37 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func setGoalTerm(_ sender: UIStepper) {
-        let defaults = UserDefaults.standard
-        let daysGoal = Int(sender.value)
-        numberOfDaysLabel.text = daysGoal.description
-        //Q: Where to save the user setting?
-        defaults.set(daysGoal, forKey: "daysGoal")
-        defaults.set(Date(), forKey: "startDate")
-        defaults.set(getFutureDate(daysGoal), forKey: "endDate")
+        setDaysGoal = Int(sender.value)
+        numberOfDaysLabel.text = setDaysGoal.description
+        
     }
     
     @IBAction func setReadingGoal(_ sender: UIStepper) {
-        let defaults = UserDefaults.standard
-        let readingGoal = Int(sender.value)
-        readingGoalLabel.text = readingGoal.description
-        //Q: Where to save the user setting?
-        defaults.set(readingGoal, forKey: "readingGoal")
+        setReadingGoal = Int(sender.value)
+        readingGoalLabel.text = setReadingGoal.description
+        
     }
     
     @IBAction func setPrayerTimeGoal(_ sender: UIStepper) {
-        let defaults = UserDefaults.standard
-        let prayerTimeGoal = Int(sender.value)
-        prayerGoalLabel.text = prayerTimeGoal.description
-        defaults.set(prayerTimeGoal, forKey: "prayerTimeGoal")
+        setPrayerTimeGoal = Int(sender.value)
+        prayerGoalLabel.text = setPrayerTimeGoal.description
+        
     }
-    
+  
+    @IBAction func saveSettings(_ sender: Any){
+        
+        defaults.set(setDaysGoal, forKey: "daysGoal")
+        defaults.set(Date(), forKey: "startDate")
+        defaults.set(getFutureDate(setDaysGoal), forKey: "endDate")
+        defaults.set(setReadingGoal, forKey: "readingGoal")
+        defaults.set(setPrayerTimeGoal, forKey: "prayerTimeGoal")
+        
+        performUIUpdatesOnMain {
+            self.displayAlert(title: "Settings Saved", message: "Successfully saved your changes.")
+            debugPrint("saved settings")
+        }
+        
+    }
     
 
 }

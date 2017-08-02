@@ -26,8 +26,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     var setStartDate:Date?
     var setEndDate:Date?
     var setDaysGoal:Int = 0
-    var setReadingGoal:Double = 0.0
-    var setPrayerTimeGoal:Double = 0.0
+    var setReadingGoal:Int = 0
+    var setPrayerTimeGoal:Int = 0
     var currentGoalNotes = [Note]()
     
     @IBOutlet weak var goalDescriptionText: UILabel!
@@ -73,8 +73,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             print("setStartDate: \(setStartDate!)")
             print("setEndDate: \(setEndDate!)")
             setDaysGoal = Int(daysGoal)!
-            setReadingGoal = Double(readingGoal)!
-            setPrayerTimeGoal = Double(prayerTimeGoal)!
+            setReadingGoal = Int(readingGoal)!
+            setPrayerTimeGoal = Int(prayerTimeGoal)!
             
             goalDescriptionText.text = "Your goal is to read \(readingGoal) chapters \n pray \(prayerTimeGoal) minutes for \(daysGoal) days."
         } else {
@@ -82,8 +82,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             setStartDate = today
             setEndDate = getFutureDate(7)
             setDaysGoal = 7
-            setReadingGoal = 7.0
-            setPrayerTimeGoal = 70.0
+            setReadingGoal = 7
+            setPrayerTimeGoal = 70
             defaults.set(setStartDate, forKey: Constants.UserDefaults.StartDate)
             defaults.set(setEndDate, forKey: Constants.UserDefaults.EndDate)
             defaults.set(setDaysGoal, forKey: Constants.UserDefaults.DaysGoal)
@@ -95,6 +95,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         performUIUpdatesOnMain {
             self.profileTableView.reloadData()
+            self.currentProgress()
             print("Reloaded profileTableView data.")
         }
         
@@ -171,9 +172,9 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-        let readingProgress:Double = (Double(totalnumberOfChapters)/setReadingGoal)*100
+        let readingProgress:Double = (Double(totalnumberOfChapters)/Double(setReadingGoal))*100
         readingProgressLabel.text = "\(round(readingProgress))%"
-        let prayingProgress:Double = ((Double(totalAmountOfTime)/60)/setPrayerTimeGoal)*100
+        let prayingProgress:Double = ((Double(totalAmountOfTime)/60)/Double(setPrayerTimeGoal))*100
         prayingProgressLabel.text = String(round(prayingProgress)) + "%"
         
         let daysLeft = daysBetweenDates(startDate: setStartDate!, endDate: setEndDate!)
@@ -253,7 +254,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                     cell.prayerTime.text = timeString(time: TimeInterval(note.prayerRecord))
                 }
             }
-            currentProgress()
+            //currentProgress()
             return cell
         }//currentGoalTableView
     }
