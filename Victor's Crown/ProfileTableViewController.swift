@@ -111,7 +111,6 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func setGoals(_ sender: Any) {
-        //Q: How to show the settings tab?
         performUIUpdatesOnMain {
             let message = "You are about to reset your current goal. Would you like to continue?"
             let alert = UIAlertController(title: "Reset Goal", message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -119,30 +118,22 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
                 (action: UIAlertAction!) in
                     self.tabBarController?.selectedIndex = 3
-                
             }))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     @IBAction func selectedTableView(_ sender: AnyObject) {
-        switch selectedTableViewControl.selectedSegmentIndex
-        {
+        switch selectedTableViewControl.selectedSegmentIndex {
         case 0:
             historyTableViewSelected = false
             print("Current goal tableView is selected.")
-            performUIUpdatesOnMain {
-                self.profileTableView.reloadData()
-                print("Reloaded profileTableView data.")
-            }
+            self.profileTableView.reloadData()
             break
         case 1:
             historyTableViewSelected = true
             print("History tableView is selected.")
-            performUIUpdatesOnMain {
-                self.profileTableView.reloadData()
-                print("Reloaded profileTableView data.")
-            }
+            self.profileTableView.reloadData()
             break
         default:
             break
@@ -254,23 +245,9 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                     cell.prayerTime.text = timeString(time: TimeInterval(note.prayerRecord))
                 }
             }
-            //currentProgress()
             return cell
-        }//currentGoalTableView
+        } /* currentGoalTableView */
     }
-    
-    //MARK: Edit Cell Feature
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if (editingStyle == UITableViewCellEditingStyle.delete) {
-//            // handle delete (by removing the data from your array and updating the tableview)
-//            let note = DataModel.notes[(indexPath as NSIndexPath).row]
-//            
-//        }
-//    }
     
 }
 

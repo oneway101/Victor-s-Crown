@@ -62,9 +62,6 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         if bookName == nil {
         
             if let selectedBookName = defaults.string(forKey: Constants.UserDefaults.SelectedBookName), let selectedChapterId = defaults.string(forKey: Constants.UserDefaults.SelectedChapterId), let selectedChapterNumber = defaults.string(forKey: Constants.UserDefaults.SelectedChapterNumber) {
-                /*DataModel.selectedBookName = selectedBookName
-                DataModel.selectedChapterId = selectedChapterId
-                DataModel.selectedChapterNumber = selectedChapterNumber*/
                 
                 bookName = selectedBookName
                 chapterId = selectedChapterId
@@ -84,7 +81,6 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         performUIUpdatesOnMain {
             self.showActivityIndicator(self.activityIndicator)
         }
-        //if scriptures.count >  0 // self.scriptures  = [] // reload the table view  // it will show empty screen (no data)
         
         //Get Data to display
         bookFetchRequest(bookName: bookName, chapterId: chapterId) { (result, error) in
@@ -139,7 +135,6 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //return DataModel.selectedScripture.count
         return scriptures.count
     }
 
