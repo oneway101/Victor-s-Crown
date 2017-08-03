@@ -31,11 +31,21 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     
     var readingRecordArray:[String] = []
     
-    @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) { }
+    @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) {
+        print("Make table view empty")
+    
+    }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        //Delete
+        if scriptures.count > 0 {
+            scriptures.removeAll()
+            tableView.reloadData()
+            print("Previous scriputres removed.")
+        }
+        
         //Fetch all Core Data first.
-        //loadBookData()
         if DataModel.bookLists.count == 0 {
             DataModel.bookLists = loadEntityData(Book.self)!
             DataModel.chapters = loadEntityData(Chapter.self)!
@@ -74,6 +84,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         performUIUpdatesOnMain {
             self.showActivityIndicator(self.activityIndicator)
         }
+        //if scriptures.count >  0 // self.scriptures  = [] // reload the table view  // it will show empty screen (no data)
         
         //Get Data to display
         bookFetchRequest(bookName: bookName, chapterId: chapterId) { (result, error) in
@@ -82,8 +93,6 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                     self.hideActivityIndicator(self.activityIndicator)
                     self.scriptures = result
                     self.tableView.reloadData()
-                    //self.tableView.setContentOffset(.zero, animated: false)
-                    //self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
                     print("Scripture tableView reloaded.")
                 }
             } else {

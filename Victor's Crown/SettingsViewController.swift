@@ -51,6 +51,10 @@ class SettingsViewController: UIViewController {
         setReadingGoal = defaults.integer(forKey: Constants.UserDefaults.ReadingGoal)
         setPrayerTimeGoal = defaults.integer(forKey: Constants.UserDefaults.PrayerTimeGoal)
         
+        daysStepper.value = Double(setDaysGoal)
+        readingStepper.value = Double(setReadingGoal)
+        prayerStepper.value = Double(setPrayerTimeGoal)
+        
         numberOfDaysLabel.text = String(setDaysGoal)
         readingGoalLabel.text = String(setReadingGoal)
         prayerGoalLabel.text = String(setPrayerTimeGoal)

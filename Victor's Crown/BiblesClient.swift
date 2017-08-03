@@ -35,6 +35,13 @@ class BiblesClient: NSObject {
                 completionHandler(nil, nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
             
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                let errorString = error?.localizedDescription
+                displayError("\(errorString!)")
+                return
+            }
+            
             /* GUARD: Is the "response" key in our result? */
             guard let response = parsedResult?[Constants.ResponseKeys.Response] as? [String:AnyObject] else {
                 displayError("Cannot find key '\(Constants.ResponseKeys.Response)' in \(String(describing: parsedResult))")
@@ -126,6 +133,13 @@ class BiblesClient: NSObject {
                 completionHandler(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
             
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                let errorString = error?.localizedDescription
+                displayError("\(errorString!)")
+                return
+            }
+            
             /* GUARD: Is the "response" key in our result? */
             guard let response = parsedResult?[Constants.ResponseKeys.Response] as? [String:AnyObject] else {
                 displayError("Cannot find key '\(Constants.ResponseKeys.Response)' in \(String(describing: parsedResult))")
@@ -192,14 +206,15 @@ class BiblesClient: NSObject {
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             func sendError(_ error: String) {
-                print(error)
+                print("sendError:\(error)")
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandlerForGET(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError("There was an error with your request: \(String(describing: error))")
+                let errorString = error?.localizedDescription
+                sendError("\(errorString!)")
                 return
             }
             
