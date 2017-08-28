@@ -1,8 +1,6 @@
 # Victor's Crown
 
-Victor's Crown is a goal driven devotional app.
-Like a runner running the race till the finish line to attain the crown of victory, 
-It keeps the track of all your saved reading and prayer time data of your set goal.
+Victor's Crown goal driven devotional app that records scripture reading and prayer time of the set number of days. History and the current progress of set goal data are stored using Core Data.
 
 
 ## Profile
@@ -24,4 +22,4 @@ Pressing the `Start` button activates the timer. `Reset` button sets the timer b
 ## Settings 
 Download bible to read offline is currently disabled.
 You can set a new goal with total number of chapters and total prayer time of Goal term (number of days).
-`Save Setting` buttons saves the changed values in settings tab view. Otherwise it will not be reflected on the profile tab view.
+`Save Setting` button saves the changed values in settings tab view. Otherwise it will not be reflected on the profile tab view.
