@@ -13,6 +13,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var readBibleOfflineLabel: UILabel!
     @IBOutlet weak var bookDownloadButton: UIButton!
     
+    @IBOutlet weak var startDateLabel: UILabel!
+    var comp = NSDateComponents()
+    
     //Goal Term Setting
     @IBOutlet weak var goalTermLabel: UILabel!
     @IBOutlet weak var numberOfDaysLabel: UILabel!
@@ -58,7 +61,8 @@ class SettingsViewController: UIViewController {
         numberOfDaysLabel.text = String(setDaysGoal)
         readingGoalLabel.text = String(setReadingGoal)
         prayerGoalLabel.text = String(setPrayerTimeGoal)
-
+        
+        datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
 
     }
 
@@ -99,6 +103,14 @@ class SettingsViewController: UIViewController {
             self.displayAlert(title: "Settings Saved", message: "Successfully saved your changes.")
             debugPrint("saved settings")
         }
+        
+    }
+    
+    
+    @IBAction func datePicker(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
         
     }
     
