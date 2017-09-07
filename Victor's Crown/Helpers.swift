@@ -48,11 +48,11 @@ extension UIViewController {
     
     // Mark: Date Calculations
     
-    func getFutureDate(_ numberOfDays:Int) -> Date {
+    func getFutureDate(_ numberOfDays:Int, _ startDate:Date) -> Date {
         var timeInterval = DateComponents()
         timeInterval.day = numberOfDays
-        let futureDate = Calendar.current.date(byAdding: timeInterval, to: Date())!
-        return futureDate
+        let futureDate = Calendar.current.date(byAdding: timeInterval, to: startDate)
+        return futureDate!
     }
     
     func daysBetweenDates(startDate: Date, endDate: Date) -> Int {

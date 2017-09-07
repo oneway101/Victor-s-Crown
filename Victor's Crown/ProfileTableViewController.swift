@@ -80,7 +80,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             //Set default goal values.
             setStartDate = today
-            setEndDate = getFutureDate(7)
+            setEndDate = getFutureDate(7, today)
             setDaysGoal = 7
             setReadingGoal = 7
             setPrayerTimeGoal = 70
@@ -147,7 +147,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         var listOfDaysArray = [Date]()
         for index in 0...setDaysGoal {
-            listOfDaysArray.append(getFutureDate(index))
+            listOfDaysArray.append(getFutureDate(index, setStartDate!))
         }
         for futureDate in listOfDaysArray {
             timestamp = DateFormatter.localizedString(from: futureDate, dateStyle: .short, timeStyle: .none)
@@ -219,7 +219,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             var listOfDaysArray = [Date]()
             for index in 0...setDaysGoal {
-                listOfDaysArray.append(getFutureDate(index))
+                listOfDaysArray.append(getFutureDate(index, setStartDate!))
             }
             let futureDate = listOfDaysArray[(indexPath as NSIndexPath).row]
             timestamp = DateFormatter.localizedString(from: futureDate, dateStyle: .short, timeStyle: .none)
@@ -257,5 +257,9 @@ extension Date {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self).capitalized
         // or use capitalized(with: locale) if you want
+    }
+    
+    func timestamp() -> String? {
+        return DateFormatter.localizedString(from: self, dateStyle: .short, timeStyle: .none)
     }
 }

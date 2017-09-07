@@ -530,17 +530,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BeX-8g-uAk">
                                 <rect key="frame" x="20" y="120" width="374" height="517"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vC-cP-ZuF">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8vC-cP-ZuF">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read Bible Offline" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ity-vt-5lW">
-                                                <rect key="frame" x="0.0" y="0.0" width="144" height="50"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read Bible Offline" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ity-vt-5lW">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kg-Zw-QgY">
-                                                <rect key="frame" x="144" y="0.0" width="230" height="50"/>
+                                                <rect key="frame" x="187" y="0.0" width="187" height="50"/>
                                                 <state key="normal" title="Download"/>
                                                 <connections>
                                                     <action selector="downloadEntireBook:" destination="lrB-ib-eoF" eventType="touchUpInside" id="iYg-xS-ltT"/>
@@ -551,23 +551,28 @@
                                             <constraint firstAttribute="height" constant="50" id="TU1-qN-hqb"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJo-Pf-pZp">
-                                        <rect key="frame" x="0.0" y="62.333333333333343" width="374" height="21.666666666666657"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Mkz-Zt-Dfa">
-                                        <rect key="frame" x="0.0" y="96.333333333333329" width="374" height="216"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="525743762.75174397">
-                                            <!--2017-08-29 23:56:02 +0000-->
-                                        </date>
-                                        <connections>
-                                            <action selector="datePicker:" destination="lrB-ib-eoF" eventType="valueChanged" id="aIV-By-iJV"/>
-                                        </connections>
-                                    </datePicker>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yq1-rs-GLz">
+                                        <rect key="frame" x="0.0" y="135.66666666666669" width="374" height="30.000000000000028"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJo-Pf-pZp">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="30.000000000000028"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DsT-0X-sPA">
+                                                <rect key="frame" x="187" y="0.0" width="187" height="30.000000000000028"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="setDateTextField:" destination="lrB-ib-eoF" eventType="touchUpInside" id="q1D-Ld-XhI"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="gpb-qC-YIj">
-                                        <rect key="frame" x="0.0" y="324.33333333333337" width="374" height="130.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="250.99999999999997" width="374" height="130.33333333333329"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kTc-au-z0V" userLabel="Set Reading Amount">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="130.33333333333331"/>
@@ -706,6 +711,7 @@
                         <outlet property="readingStepper" destination="ovo-bY-fJb" id="mHF-Ui-yId"/>
                         <outlet property="scriptureReadingLabel" destination="ir8-fH-1Sc" id="ccY-1P-pkl"/>
                         <outlet property="startDateLabel" destination="aJo-Pf-pZp" id="SzP-y4-mnn"/>
+                        <outlet property="txtDatePicker" destination="DsT-0X-sPA" id="UjH-3c-izY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkT-Zh-0oy" userLabel="First Responder" sceneMemberID="firstResponder"/>

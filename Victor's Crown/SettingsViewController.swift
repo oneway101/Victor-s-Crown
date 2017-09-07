@@ -14,7 +14,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var bookDownloadButton: UIButton!
     
     @IBOutlet weak var startDateLabel: UILabel!
-    var comp = NSDateComponents()
+    
+    @IBOutlet weak var txtDatePicker: UITextField!
+    
+    let datePicker = UIDatePicker()
+    var startDate = Date()
     
     //Goal Term Setting
     @IBOutlet weak var goalTermLabel: UILabel!
@@ -62,8 +66,10 @@ class SettingsViewController: UIViewController {
         readingGoalLabel.text = String(setReadingGoal)
         prayerGoalLabel.text = String(setPrayerTimeGoal)
         
-        datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-
+        showDatePicker()
+        setStartDate = defaults.object(forKey: Constants.UserDefaults.StartDate) as! Date
+        txtDatePicker.text = setStartDate?.timestamp()
+        
     }
 
     
@@ -93,9 +99,11 @@ class SettingsViewController: UIViewController {
   
     @IBAction func saveSettings(_ sender: Any){
         
+        startDate = datePicker.date
+        
         defaults.set(setDaysGoal, forKey: "daysGoal")
-        defaults.set(Date(), forKey: "startDate")
-        defaults.set(getFutureDate(setDaysGoal), forKey: "endDate")
+        defaults.set(startDate, forKey: "startDate")
+        defaults.set(getFutureDate(setDaysGoal, startDate), forKey: "endDate")
         defaults.set(setReadingGoal, forKey: "readingGoal")
         defaults.set(setPrayerTimeGoal, forKey: "prayerTimeGoal")
         
@@ -107,11 +115,40 @@ class SettingsViewController: UIViewController {
     }
     
     
-    @IBAction func datePicker(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.short
-        dateFormatter.timeStyle = DateFormatter.Style.short
+    
+    
+    
+    func showDatePicker(){
+        //Formate Date
+        datePicker.datePickerMode = .date
         
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        
+        //done button & cancel button
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.bordered, target: self, action: "donedatePicker")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.bordered, target: self, action: "cancelDatePicker")
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        // add toolbar to textField
+        txtDatePicker.inputAccessoryView = toolbar
+        // add datepicker to textField
+        txtDatePicker.inputView = datePicker
+        
+    }
+    
+    func donedatePicker(){
+        txtDatePicker.text = datePicker.date.timestamp()
+        startDate = datePicker.date
+        //dismiss date picker dialog
+        self.view.endEditing(true)
+    }
+    
+    func cancelDatePicker(){
+        //cancel button dismiss datepicker dialog
+        self.view.endEditing(true)
     }
     
 
