@@ -71,7 +71,7 @@ extension UIViewController {
             try context.execute(deleteRequest)
             try context.save()
         } catch {
-            print ("There was an error")
+            debugPrint ("There was an error")
         }
 
     }
@@ -88,8 +88,8 @@ extension UIViewController {
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
             return nil
         }
     }
@@ -107,8 +107,8 @@ extension UIViewController {
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
         }
         
     }
@@ -127,34 +127,31 @@ extension UIViewController {
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             performUIUpdatesOnMain {
                 DataModel.selectedBook = data[0]
                 
-                print("\(bookName) is fetched and set as a selectedBook")
+                debugPrint("\(bookName) is fetched and set as a selectedBook")
                 self.chapterFetchRequest(chapterId: chapterId, { (result, error) in
                     completionHandler(result,error)
                 })
             }
             
         } else {
-            print("No data returned from the bookFetcheRquest. Getting the Book list from the network...")
-            
             BiblesClient.sharedInstance.getBookList() { (books, chapters, error) in
                 if let allBooks = books, let allChapters = chapters {
                     performUIUpdatesOnMain {
                         DataModel.bookLists = allBooks
                         DataModel.chapters = allChapters
-                        self.chapterFetchRequest(chapterId: chapterId, { (result, error) in
-                            completionHandler(result,error)
+                        self.chapterFetchRequest(chapterId: chapterId, { (result, error) in completionHandler(result,error)
                         })
+                        debugPrint("Bible book list returned!")
                     }
-                    print("Bible book list returned!")
-                }else{
+                } else {
                     completionHandler(nil, error)
                 }
             }//getBookList
@@ -176,21 +173,21 @@ extension UIViewController {
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             performUIUpdatesOnMain {
                 DataModel.selectedChapter = data[0]
-                print("\(chapterId) is fetched and set as a selectedChapter. )")
-                print("Fetching all scriptures of selected chapter...")
+                debugPrint("\(chapterId) is fetched and set as a selectedChapter. )")
+                debugPrint("Fetching all scriptures of selected chapter...")
                 self.scriptureFetchRequest(selectedChapter: data[0], chapterId: chapterId, { (result, error) in
                     completionHandler(result, error)
                 })
             }
         }else {
-            print("No data returned from the chapter fetch request.")
+            debugPrint("No data returned from the chapter fetch request.")
         }
         
     }
@@ -209,19 +206,19 @@ extension UIViewController {
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             performUIUpdatesOnMain {
                 DataModel.selectedScripture = data
-                print("Scriputres fetched for \(chapterId) and set as selectedScripture.")
+                debugPrint("Scriputres fetched for \(chapterId) and set as selectedScripture.")
                 completionHandler(data, nil)
             }
             
         } else {
-            print("No data returned from the scripture fetch request. Getting the scripture from the network...")
+            debugPrint("No data returned from the scripture fetch request. Getting the scripture from the network...")
             
             BiblesClient.sharedInstance.getScriptures(selectedChapter, selectedChapter.id!) { (result, error) in
                 
@@ -229,7 +226,7 @@ extension UIViewController {
                     performUIUpdatesOnMain {
                         DataModel.selectedScripture = result
                         completionHandler(result, nil)
-                        print("Selected chapter scriptures are returned!")
+                        debugPrint("Selected chapter scriptures are returned!")
                     }
                     
                     

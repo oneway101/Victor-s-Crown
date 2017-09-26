@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 private let reuseIdentifier = "BookChapterCell"
-//private let segueIdentifier = "ScriptureViewSegue"
 private let segueIdentifier = "unWindToScriptureView"
 
 class BookChapterListViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -18,14 +17,11 @@ class BookChapterListViewController: UIViewController, UINavigationControllerDel
     @IBOutlet weak var bibleCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
-    //var selectedBook:Book!
     var numberOfChapters:Int!
     var selectedBookChaptersArray:[Chapter] = []
     
     override func viewWillAppear(_ animated: Bool) {
         
-        //Q: Should I use the fetch request to sort chapters of the selected book?
-        //What would be the better way to sort the chapters array?
         if let selectedBookchapters = DataModel.selectedBook?.numOfChapters {
             numberOfChapters = Int(selectedBookchapters)
             selectedBookChaptersArray = (DataModel.selectedBook?.chapters?.allObjects as! [Chapter]).sorted{Int($0.number!)! < Int($1.number!)!}
