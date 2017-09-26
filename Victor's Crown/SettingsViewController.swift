@@ -67,7 +67,7 @@ class SettingsViewController: UIViewController {
         prayerGoalLabel.text = String(setPrayerTimeGoal)
         
         showDatePicker()
-        setStartDate = defaults.object(forKey: Constants.UserDefaults.StartDate) as! Date
+        setStartDate = defaults.object(forKey: Constants.UserDefaults.StartDate) as? Date
         txtDatePicker.text = setStartDate?.timestamp()
         
     }

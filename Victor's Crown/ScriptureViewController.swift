@@ -32,7 +32,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     var readingRecordArray:[String] = []
     
     @IBAction func unWindToScriptureView(segue:UIStoryboardSegue) {
-        print("Make table view empty")
+        debugPrint("Make table view empty")
     
     }
     
@@ -42,7 +42,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
         if scriptures.count > 0 {
             scriptures.removeAll()
             tableView.reloadData()
-            print("Previous scriputres removed.")
+            debugPrint("Previous scriputres removed.")
         }
         
         //Fetch all Core Data first.
@@ -89,7 +89,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                     self.hideActivityIndicator(self.activityIndicator)
                     self.scriptures = result
                     self.tableView.reloadData()
-                    print("Scripture tableView reloaded.")
+                    debugPrint("Scripture tableView reloaded.")
                 }
             } else {
                 performUIUpdatesOnMain {
@@ -148,8 +148,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 >= scriptures.count {
-            print("end of the row")
+        if indexPath.row + 2 >= scriptures.count {
+            debugPrint(indexPath.row)
             breadButton.isHidden = false
         } else {
             breadButton.isHidden = true
@@ -198,8 +198,8 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
@@ -207,7 +207,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
                 readingRecordArray.append("\(bookname) \(chapternumber)")
                 data[0].readingRecord = readingRecordArray as NSObject
             }
-            print("Reading record has been upated to \(data[0].readingRecord!).")
+            debugPrint("Reading record has been upated to \(data[0].readingRecord!).")
             CoreDataStack.saveContext()
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
@@ -220,7 +220,7 @@ class ScriptureViewController: UIViewController, UINavigationControllerDelegate,
             }
             
             CoreDataStack.saveContext()
-            print("Today's reading record has been saved: \(note.readingRecord!).")
+            debugPrint("Today's reading record has been saved: \(note.readingRecord!).")
         }
         
         breadButton.isHidden = true

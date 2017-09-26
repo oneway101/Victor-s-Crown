@@ -413,7 +413,7 @@
 				DEVELOPMENT_TEAM = 3XP2JYEG2Z;
 				INFOPLIST_FILE = "Victor's Crown/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cosmostream.victors-crown";
+				PRODUCT_BUNDLE_IDENTIFIER = "studio.cosmostream.victors-crown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -426,7 +426,7 @@
 				DEVELOPMENT_TEAM = 3XP2JYEG2Z;
 				INFOPLIST_FILE = "Victor's Crown/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cosmostream.victors-crown";
+				PRODUCT_BUNDLE_IDENTIFIER = "studio.cosmostream.victors-crown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
