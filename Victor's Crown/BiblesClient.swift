@@ -82,6 +82,8 @@ class BiblesClient: NSObject {
                     book.id = bookId
                     book.numOfChapters = Int16(chapters.count)
                     bookLists.append(book)
+                    DataModel.bookLists = bookLists
+                    debugPrint(DataModel.bookLists.count)
                     CoreDataStack.saveContext()
                     
                     for chapterObj in chapters {

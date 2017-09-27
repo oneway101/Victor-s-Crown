@@ -145,7 +145,7 @@ extension UIViewController {
             BiblesClient.sharedInstance.getBookList() { (books, chapters, error) in
                 if let allBooks = books, let allChapters = chapters {
                     performUIUpdatesOnMain {
-                        DataModel.bookLists = allBooks
+                        //DataModel.bookLists = allBooks
                         DataModel.chapters = allChapters
                         self.chapterFetchRequest(chapterId: chapterId, { (result, error) in completionHandler(result,error)
                         })

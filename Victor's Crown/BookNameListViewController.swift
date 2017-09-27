@@ -14,14 +14,6 @@ class BookNameListController: UITableViewController {
     private let reuseIdentifier = "BookNameCell"
     private let segueIdentifier = "ChapterListSegue"
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        debugPrint(DataModel.bookLists.count)
-        if DataModel.bookLists.count < 66 {
-            displayAlert(title: "Relaunch the app", message: "All the book list has not been fully downloaded. Terminate and relaunch the app.")
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
