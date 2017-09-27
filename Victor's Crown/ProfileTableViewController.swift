@@ -52,12 +52,12 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         do {
             
             DataModel.notes = try context.fetch(fetchRequest)
-            print("Successfully fetched \(DataModel.notes.count)  notes. ")
+            debugPrint("Successfully fetched \(DataModel.notes.count)  notes. ")
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
         }
         
     }
@@ -70,8 +70,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         if let daysGoal = defaults.string(forKey: "daysGoal"), let readingGoal = defaults.string(forKey: "readingGoal"), let prayerTimeGoal = defaults.string(forKey: "prayerTimeGoal"), let startDate = defaults.object(forKey: "startDate"), let endDate = defaults.object(forKey: "endDate"){
             setStartDate = startDate as? Date
             setEndDate = endDate as? Date
-            print("setStartDate: \(setStartDate!)")
-            print("setEndDate: \(setEndDate!)")
+            debugPrint("setStartDate: \(setStartDate!)")
+            debugPrint("setEndDate: \(setEndDate!)")
             setDaysGoal = Int(daysGoal)!
             setReadingGoal = Int(readingGoal)!
             setPrayerTimeGoal = Int(prayerTimeGoal)!
@@ -96,7 +96,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         performUIUpdatesOnMain {
             self.profileTableView.reloadData()
             self.currentProgress()
-            print("Reloaded profileTableView data.")
+            debugPrint("Reloaded profileTableView data.")
         }
         
     }
@@ -127,12 +127,12 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         switch selectedTableViewControl.selectedSegmentIndex {
         case 0:
             historyTableViewSelected = false
-            print("Current goal tableView is selected.")
+            debugPrint("Current goal tableView is selected.")
             self.profileTableView.reloadData()
             break
         case 1:
             historyTableViewSelected = true
-            print("History tableView is selected.")
+            debugPrint("History tableView is selected.")
             self.profileTableView.reloadData()
             break
         default:
@@ -169,7 +169,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         prayingProgressLabel.text = String(round(prayingProgress)) + "%"
         
         let daysLeft = daysBetweenDates(startDate: setStartDate!, endDate: setEndDate!)
-        print("\(daysLeft) days left.")
+        debugPrint("\(daysLeft) days left.")
         daysLeftLabel.text = String(daysLeft)
 
     }

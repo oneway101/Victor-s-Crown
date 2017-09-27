@@ -18,7 +18,7 @@ class BookNameListController: UITableViewController {
         
         debugPrint(DataModel.bookLists.count)
         if DataModel.bookLists.count < 66 {
-            displayAlert(title: "Relaunch", message: "All the list has not been fully downloaded. Terminate the app and relaunch again.")
+            displayAlert(title: "Relaunch the app", message: "All the book list has not been fully downloaded. Terminate and relaunch the app.")
         }
     }
     

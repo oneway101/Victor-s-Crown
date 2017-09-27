@@ -30,7 +30,7 @@ class TimerViewController: UIViewController {
         doneButton.isEnabled = false
         timestamp = DateFormatter.localizedString(from: today, dateStyle: .short, timeStyle: .none)
         dayOfWeek = today.dayOfWeek()!
-        print("today's date: \(timestamp)")
+        debugPrint("today's date: \(timestamp)")
     }
     
     func runTimer(){
@@ -87,13 +87,13 @@ class TimerViewController: UIViewController {
             
         } catch {
             let fetchError = error as NSError
-            print("Unable to Perform Fetch Request")
-            print("\(fetchError), \(fetchError.localizedDescription)")
+            debugPrint("Unable to Perform Fetch Request")
+            debugPrint("\(fetchError), \(fetchError.localizedDescription)")
         }
         
         if let data = fetchedResultsController.fetchedObjects, data.count > 0 {
             data[0].prayerRecord += Int16(seconds)
-            print("Prayer time has been upated to \(data[0].prayerRecord).")
+            debugPrint("Prayer time has been upated to \(data[0].prayerRecord).")
             CoreDataStack.saveContext()
         } else {
             let note:Note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context ) as! Note
@@ -102,7 +102,7 @@ class TimerViewController: UIViewController {
             note.prayerRecord = Int16(seconds)
             note.readingRecord = [String]() as NSObject
             CoreDataStack.saveContext()
-            print("Today's prayer record has been saved.")
+            debugPrint("Today's prayer record has been saved.")
         }
         seconds = 0
         timecode.text = timeString(time: TimeInterval(seconds))
